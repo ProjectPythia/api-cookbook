@@ -13,7 +13,7 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
  Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots 
  
 ## Authors
-[Cora Schneck](@cyschneck)
+[Cora Schneck](@cyschneck),[Ana Krelling](@apkrelling) 
 
 ### Contributors
 
