@@ -13,8 +13,7 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
  Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots 
  
 ## Authors
-
-[First Author](@first-author), [Second Author](@second-author), etc. _Acknowledge primary content authors here_
+[Cora Schneck](@cyschneck)
 
 ### Contributors
 
@@ -32,7 +31,7 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
 
 ### Section 2 ( Replace with the title of this section, e.g. "Example workflows" )
 
-(Add content for this section, e.g., "Example workflows include ... ")
+- [Center for Near Earth Object Studies (CNEOS)](https://api.nasa.gov/)
 
 ## Running the Notebooks
 
