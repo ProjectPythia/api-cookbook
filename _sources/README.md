@@ -1,6 +1,6 @@
 <img src="thumbnail.png" alt="thumbnail" width="300"/>
 
-# (Replace_with_your_title) Cookbook
+# API Cookbook
 
 [![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
@@ -10,8 +10,8 @@ This Project Pythia Cookbook covers ... (replace `...` with the main subject of 
 
 ## Motivation
 
-(Add a few sentences stating why this cookbook will be useful. What skills will you, "the chef", gain once you have reached the end of the cookbook?)
-
+ Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots 
+ 
 ## Authors
 
 [First Author](@first-author), [Second Author](@second-author), etc. _Acknowledge primary content authors here_
