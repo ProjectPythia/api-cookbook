@@ -6,14 +6,14 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., _working with radar data in Python_)
+This Project Pythia Cookbook covers the basics of retrieving and visualizing data from APIs in Python
 
 ## Motivation
 
  Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots 
  
 ## Authors
-[Cora Schneck](@cyschneck),[Ana Krelling](@apkrelling), [Adam Deitsch](@AMDeitsch) , [Hannah Zafar](@hannahzafar)
+[Cora Schneck](@cyschneck), [Ana Krelling](@apkrelling), [Adam Deitsch](@AMDeitsch) , [Hannah Zafar](@hannahzafar)
 
 ### Contributors
 
