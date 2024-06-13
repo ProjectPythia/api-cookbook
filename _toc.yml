@@ -4,7 +4,7 @@ parts:
   - caption: Preamble
     chapters:
       - file: notebooks/how-to-cite
-  - caption: API Basics
+  - caption: API Foundations
     chapters:
       - file: notebooks/api-foundations/api-basics
   - caption: Example Workflows
