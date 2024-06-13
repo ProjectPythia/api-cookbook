@@ -10,7 +10,7 @@ This Project Pythia Cookbook covers the basics of retrieving and visualizing dat
 
 ## Motivation
 
- Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots 
+ Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs, then creating an informational and visually appealing plots 
  
  APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
 
