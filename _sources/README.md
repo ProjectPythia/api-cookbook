@@ -6,32 +6,37 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-This Project Pythia Cookbook covers ... (replace `...` with the main subject of your cookbook ... e.g., _working with radar data in Python_)
+This Project Pythia Cookbook covers the basics of retrieving and visualizing data from APIs in Python
 
 ## Motivation
 
- Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots 
+ Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs, then creating an informational and visually appealing plots 
  
+ APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
+
 ## Authors
-[Cora Schneck](@cyschneck),[Ana Krelling](@apkrelling), [Adam Deitsch](@AMDeitsch) , [Hannah Zafar](@hannahzafar)
+[Cora Schneck](@cyschneck), [Ana Krelling](@apkrelling), [Adam Deitsch](@AMDeitsch)
 
 ### Contributors
 
 <a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ProjectPythia/cookbook-template" />
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/api-cookbook" />
 </a>
 
 ## Structure
 
-(State one or more sections that will comprise the notebook. E.g., _This cookbook is broken up into two main sections - "Foundations" and "Example Workflows."_ Then, describe each section below.)
+This cookbook will be broken up into two main sections: "Foundations" to cover the basics of working with and understanding APIs and "Example Workflows" for complete working examples
 
-### Section 1 ( Replace with the title of this section, e.g. "Foundations" )
+### API Foundations
 
-(Add content for this section, e.g., "The foundational content includes ... ")
+API Foundations will cover the terminology of APIs and how to make use of the data retrieved from API in Python
 
-### Section 2 ( Replace with the title of this section, e.g. "Example workflows" )
+### Example Workflows
 
-- [Center for Near Earth Object Studies (CNEOS)](https://api.nasa.gov/)
+Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots
+
+- NASA API: Visualize the location and total impact energy of fireballs and bolides on a world map
+- EarthAccess:
 
 ## Running the Notebooks
 
@@ -58,17 +63,15 @@ Jupyter](https://foundations.projectpythia.org/foundations/getting-started-jupyt
 
 If you are interested in running this material locally on your computer, you will need to follow this workflow:
 
-(Replace "cookbook-example" with the title of your cookbooks)
-
-1. Clone the `https://github.com/ProjectPythia/cookbook-example` repository:
+1. Clone the `https://github.com/ProjectPythia/api-cookbook` repository:
 
    ```bash
-    git clone https://github.com/ProjectPythia/cookbook-example.git
+    git clone https://github.com/ProjectPythia/api-cookbook.git
    ```
 
-1. Move into the `cookbook-example` directory
+1. Move into the `api-cookbook` directory
    ```bash
-   cd cookbook-example
+   cd api-cookbook
    ```
 1. Create and activate your conda environment from the `environment.yml` file
    ```bash
