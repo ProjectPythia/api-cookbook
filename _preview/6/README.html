@@ -80,7 +80,7 @@
     <link rel="next" title="How to Cite This Cookbook" href="notebooks/how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="12 June 2024"/>
+    <meta name="docbuild:last-update" content="13 June 2024"/>
   </head>
   
   
@@ -415,28 +415,31 @@
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs provided by NASA, NOAA, and USGS, then creating an informational and visually appealing plots</p>
+<p>APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.</p>
 </section>
 <section id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference internal" href="#&#64;cyschneck"><span class="xref myst">Cora Schneck</span></a>, <a class="reference internal" href="#&#64;apkrelling"><span class="xref myst">Ana Krelling</span></a>, <a class="reference internal" href="#&#64;AMDeitsch"><span class="xref myst">Adam Deitsch</span></a> , <a class="reference internal" href="#&#64;hannahzafar"><span class="xref myst">Hannah Zafar</span></a></p>
+<p><a class="reference internal" href="#&#64;cyschneck"><span class="xref myst">Cora Schneck</span></a>, <a class="reference internal" href="#&#64;apkrelling"><span class="xref myst">Ana Krelling</span></a>, <a class="reference internal" href="#&#64;AMDeitsch"><span class="xref myst">Adam Deitsch</span></a></p>
 <section id="contributors">
 <h3>Contributors<a class="headerlink" href="#contributors" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=ProjectPythia/cookbook-template" />
+  <img src="https://contrib.rocks/image?repo=ProjectPythia/api-cookbook" />
 </a>
 </section>
 </section>
 <section id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>(State one or more sections that will comprise the notebook. E.g., <em>This cookbook is broken up into two main sections - “Foundations” and “Example Workflows.”</em> Then, describe each section below.)</p>
-<section id="section-1-replace-with-the-title-of-this-section-e-g-foundations">
-<h3>Section 1 ( Replace with the title of this section, e.g. “Foundations” )<a class="headerlink" href="#section-1-replace-with-the-title-of-this-section-e-g-foundations" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>(Add content for this section, e.g., “The foundational content includes … “)</p>
+<p>This cookbook will be broken up into two main sections: “Foundations” to cover the basics of working with and understanding APIs and “Example Workflows” for complete working examples</p>
+<section id="api-foundations">
+<h3>API Foundations<a class="headerlink" href="#api-foundations" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>API Foundations will cover the terminology of APIs and how to make use of the data retrieved from API in Python</p>
 </section>
-<section id="section-2-replace-with-the-title-of-this-section-e-g-example-workflows">
-<h3>Section 2 ( Replace with the title of this section, e.g. “Example workflows” )<a class="headerlink" href="#section-2-replace-with-the-title-of-this-section-e-g-example-workflows" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="example-workflows">
+<h3>Example Workflows<a class="headerlink" href="#example-workflows" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://api.nasa.gov/">Center for Near Earth Object Studies (CNEOS)</a></p></li>
+<li><p>NASA API: Visualize the location and total impact energy of fireballs and bolides on a world map</p></li>
+<li><p>EarthAccess:</p></li>
 </ul>
 </section>
 </section>
@@ -463,15 +466,14 @@ Jupyter</a>.</p>
 <section id="running-on-your-own-machine">
 <h3>Running on Your Own Machine<a class="headerlink" href="#running-on-your-own-machine" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>If you are interested in running this material locally on your computer, you will need to follow this workflow:</p>
-<p>(Replace “cookbook-example” with the title of your cookbooks)</p>
 <ol class="arabic">
-<li><p>Clone the <code class="docutils literal notranslate"><span class="pre">https://github.com/ProjectPythia/cookbook-example</span></code> repository:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ProjectPythia/cookbook-example.git
+<li><p>Clone the <code class="docutils literal notranslate"><span class="pre">https://github.com/ProjectPythia/api-cookbook</span></code> repository:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ProjectPythia/api-cookbook.git
 </pre></div>
 </div>
 </li>
-<li><p>Move into the <code class="docutils literal notranslate"><span class="pre">cookbook-example</span></code> directory</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>cookbook-example
+<li><p>Move into the <code class="docutils literal notranslate"><span class="pre">api-cookbook</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>api-cookbook
 </pre></div>
 </div>
 </li>
@@ -560,8 +562,8 @@ jupyter<span class="w"> </span>lab
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#structure">Structure</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-1-replace-with-the-title-of-this-section-e-g-foundations">Section 1 ( Replace with the title of this section, e.g. “Foundations” )</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#section-2-replace-with-the-title-of-this-section-e-g-example-workflows">Section 2 ( Replace with the title of this section, e.g. “Example workflows” )</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#api-foundations">API Foundations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-workflows">Example Workflows</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-notebooks">Running the Notebooks</a><ul class="nav section-nav flex-column">
@@ -780,7 +782,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 12 June 2024.
+  Last updated on 13 June 2024.
   <br/>
 </p>
   </div>
@@ -834,7 +836,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 12 June 2024.
+          Last updated on 13 June 2024.
         </p>
       </div>
     </div>
