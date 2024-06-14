@@ -10,4 +10,4 @@ dependencies:
   - sphinx-pythia-theme
   - pip
   - pip:
-      - https://github.com/USEPA/pyaqsapi.git
+      - git+https://github.com/USEPA/pyaqsapi.git
