@@ -7,6 +7,10 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  AQS_USERNAME: ${{ secrets.AQS_USERNAME }}
+  AQS_KEY: ${{ secrets.AQS_KEY }}
+
 jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
