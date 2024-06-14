@@ -10,6 +10,8 @@ on:
 env:
   AQS_USERNAME: ${{ secrets.AQS_USERNAME }}
   AQS_KEY: ${{ secrets.AQS_KEY }}
+  EARTHDATA_USERNAME: ${{ secrets.EARTHDATA_USERNAME }}
+  EARTHDATA_PASSWORD: ${{ secrets.EARTHDATA_PASSWORD }}
 
 jobs:
   build:
