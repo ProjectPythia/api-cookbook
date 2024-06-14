@@ -11,3 +11,4 @@ parts:
     chapters:
       - file: notebooks/api-foundations/Air-Quality-System-API
       - file: notebooks/example-workflows/cneos-fireball
+      - file: notebooks/example-workflows/example-workflow-earthaccess

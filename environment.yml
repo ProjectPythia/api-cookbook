@@ -9,5 +9,11 @@ dependencies:
   - jupyterlab
   - sphinx-pythia-theme
   - pip
+  - hvplot
+  - cartopy
+  - xarray
+  - earthaccess
+  - h5netcdf
+  - dask
   - pip:
       - git+https://github.com/USEPA/pyaqsapi.git
