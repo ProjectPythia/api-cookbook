@@ -12,7 +12,7 @@ This Project Pythia Cookbook covers the basics of retrieving and visualizing dat
 
 There are many ways to gather data. Science and research entities like NASA are constantly producing and collecting data. As a result, attempting to collect and display live data can be difficult since new data is always being added or modified. An API is a method to query a data source over the internet to retrieve data from a remote source.
 
-Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs, then creating an informational and visually appealing plots. 
+This cookbook focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step-by-step tutorials on retrieving data from some public APIs, as well as creating informational and visually appealing graphics to communicate the data to a general audience. 
  
  APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
 
