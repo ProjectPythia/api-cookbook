@@ -9,5 +9,5 @@ parts:
       - file: notebooks/api-foundations/api-basics
   - caption: Example Workflows
     chapters:
-      - file: notebooks/api-foundations/Air\ Quality\ System\ API\ Workflow.ipynb
+      - file: notebooks/api-foundations/Air-Quality-System-API-Workflow.ipynb
       - file: notebooks/example-workflows/example-workflow
