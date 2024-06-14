@@ -10,7 +10,6 @@ dependencies:
   - sphinx-pythia-theme
   - pip
   - hvplot
-  - matplotlib
   - cartopy
   - xarray
   - earthaccess
