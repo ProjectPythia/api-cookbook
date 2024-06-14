@@ -9,4 +9,4 @@ parts:
       - file: notebooks/api-foundations/api-basics
   - caption: Example Workflows
     chapters:
-      - file: notebooks/example-workflows/example-workflow
+      - file: notebooks/example-workflows/cneos-fireball
