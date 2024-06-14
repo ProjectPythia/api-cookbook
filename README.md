@@ -36,7 +36,7 @@ API Foundations will cover the terminology of APIs and how to make use of the da
 Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots.
 
 - [NASA API](https://api.nasa.gov/): Visualize the location and total impact energy of fireballs and bolides on a world map.
-- [EarthAccess](https://github.com/nsidc/earthaccess):
+- [EarthAccess](https://github.com/nsidc/earthaccess): Access and visualize sea surface height and sea surface salinity data
 - [EPA Air Quality System (AQS) API](https://aqs.epa.gov/aqsweb/documents/data_api.html): Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the EPA's [PyAQSAPI](https://github.com/USEPA/pyaqsapi) package.
 
 ## Running the Notebooks
