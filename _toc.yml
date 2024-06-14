@@ -10,4 +10,4 @@ parts:
   - caption: Example Workflows
     chapters:
       - file: notebooks/api-foundations/Air-Quality-System-API-Workflow.ipynb
-      - file: notebooks/example-workflows/example-workflow
+      - file: notebooks/example-workflows/cneos-fireball
