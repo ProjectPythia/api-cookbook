@@ -37,9 +37,9 @@ API Foundations will cover the terminology of APIs and how to make use of the da
 
 Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots.
 
-- [NASA API](https://api.nasa.gov/): Visualize the location and total impact energy of fireballs and bolides on a world map.
-- [EarthAccess](https://github.com/nsidc/earthaccess): Access and visualize sea surface height and sea surface salinity data
-- [EPA Air Quality System (AQS) API](https://aqs.epa.gov/aqsweb/documents/data_api.html): Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the EPA's [PyAQSAPI](https://github.com/USEPA/pyaqsapi) package.
+- [JPL Center for Near-Earth Orbit Studies (CNEOS) API](https://ssd-api.jpl.nasa.gov/): Visualize the location and total impact energy of fireballs and bolides on a world map using the CNEOS [Fireball API](https://ssd-api.jpl.nasa.gov/doc/fireball.html).
+- [Earthdata API](https://www.earthdata.nasa.gov/learn/find-data): Access and visualize sea surface height and sea surface salinity data using the National Aeronautics and Space Administration's [earthaccess](https://github.com/nsidc/earthaccess) Python package.
+- [Air Quality System (AQS) API](https://aqs.epa.gov/aqsweb/documents/data_api.html): Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the Environmental Protection Agency's [pyaqsapi](https://github.com/USEPA/pyaqsapi) Python package.
 
 ## Running the Notebooks
 
