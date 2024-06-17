@@ -17,7 +17,7 @@ This cookbook focuses on accessing and visualizing data from various geoscience 
  APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
 
 ## Authors
-[Cora Schneck](https://github.com/cyschneck), [Ana Krelling](https://github.com/apkrelling), [Adam Deitsch](https://github.com/AMDeitsch)
+[Cora Schneck](https://github.com/cyschneck), [Ana Krelling](https://github.com/apkrelling), [Adam Deitsch](https://github.com/AMDeitsch), [Hannah Zafar](@hannahzafar)
 
 ### Contributors
 
