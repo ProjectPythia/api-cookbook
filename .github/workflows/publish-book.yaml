@@ -16,6 +16,11 @@ env:
 jobs:
   build:
     uses: ProjectPythia/cookbook-actions/.github/workflows/build-book.yaml@main
+    secrets:
+      AQS_USERNAME: ${{ secrets.AQS_USERNAME }}
+      AQS_KEY: ${{ secrets.AQS_KEY }}
+      EARTHDATA_USERNAME: ${{ secrets.EARTHDATA_USERNAME }}
+      EARTHDATA_PASSWORD: ${{ secrets.EARTHDATA_PASSWORD }}
     with:
       environment_name: cookbook-dev
 
