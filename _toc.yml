@@ -9,6 +9,7 @@ parts:
       - file: notebooks/api-foundations/api-basics
   - caption: Example Workflows
     chapters:
-      - file: notebooks/api-foundations/Air-Quality-System-API
+      - file: notebooks/example-workflows/air-quality-system-api
       - file: notebooks/example-workflows/cneos-fireball
       - file: notebooks/example-workflows/earthaccess-sla-sss
+      - file: notebooks/example-workflows/wfm-cloud-water
