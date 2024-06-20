@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -75,10 +75,11 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="API Basics" href="../api-foundations/api-basics.html" />
+    <link rel="next" title="Data access via earthaccess library and vizualization with cartopy" href="earthaccess-sla-sss.html" />
+    <link rel="prev" title="Visualizing Data with EPA’s Air Quality System (AQS) API" href="air-quality-system-api.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="14 June 2024"/>
+    <meta name="docbuild:last-update" content="20 June 2024"/>
   </head>
   
   
@@ -371,7 +372,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="air-quality-system-api.html">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
+
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">NASA API: World Map of Fireball Impacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wfm-cloud-water.html">Whiteface Mountain Cloud Water Data</a></li>
+
 </ul>
 
     </div>
@@ -401,7 +407,8 @@
 <div id="searchbox"></div>
                   <article class="bd-article">
                     
-  <p><img alt="Bay Area Fireball" src="https://www.nasa.gov/wp-content/uploads/2023/03/704419main_meteor-gif-full_full.gif?w=1041" /></img>
+  <p><a class="reference internal" href="../../_images/ProjectPythia_Logo_Final-01-Blue.svg"><img alt="Project Pythia Logo" src="../../_images/ProjectPythia_Logo_Final-01-Blue.svg" width="300" /></a></img>
+<img alt="Bay Area Fireball" src="https://www.nasa.gov/wp-content/uploads/2023/03/704419main_meteor-gif-full_full.gif?w=1041" /></img>
 <a class="reference external" href="https://www.nasa.gov/image-article/bay-area-fireball-oct-17-2012/">Bay Area Fireball, October 17, 2012</a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="nasa-api-world-map-of-fireball-impacts">
 <h1>NASA API: World Map of Fireball Impacts<a class="headerlink" href="#nasa-api-world-map-of-fireball-impacts" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
@@ -679,6 +686,30 @@
   <tbody>
     <tr>
       <th>0</th>
+      <td>2024-06-18 21:01:32</td>
+      <td>2.2</td>
+      <td>0.079</td>
+      <td>32.2</td>
+      <td>N</td>
+      <td>31.8</td>
+      <td>W</td>
+      <td>28.7</td>
+      <td>16.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2024-06-18 13:51:19</td>
+      <td>49.1</td>
+      <td>1.2</td>
+      <td>44.3</td>
+      <td>N</td>
+      <td>173.2</td>
+      <td>E</td>
+      <td>44.3</td>
+      <td>35.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
       <td>2024-06-03 01:13:51</td>
       <td>2.6</td>
       <td>0.092</td>
@@ -690,7 +721,7 @@
       <td>None</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>3</th>
       <td>2024-06-01 23:24:59</td>
       <td>7.9</td>
       <td>0.25</td>
@@ -702,7 +733,7 @@
       <td>12.6</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>4</th>
       <td>2024-05-27 03:19:36</td>
       <td>8.4</td>
       <td>0.26</td>
@@ -712,30 +743,6 @@
       <td>W</td>
       <td>56.0</td>
       <td>39.2</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2024-05-24 16:19:59</td>
-      <td>5.4</td>
-      <td>0.18</td>
-      <td>6.6</td>
-      <td>N</td>
-      <td>114.2</td>
-      <td>E</td>
-      <td>42.0</td>
-      <td>36.5</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2024-05-18 22:46:50</td>
-      <td>3.7</td>
-      <td>0.13</td>
-      <td>41.0</td>
-      <td>N</td>
-      <td>8.8</td>
-      <td>W</td>
-      <td>74.3</td>
-      <td>40.4</td>
     </tr>
     <tr>
       <th>...</th>
@@ -750,7 +757,7 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>375</th>
+      <th>377</th>
       <td>2014-02-18 12:50:44</td>
       <td>2.6</td>
       <td>0.092</td>
@@ -762,7 +769,7 @@
       <td>None</td>
     </tr>
     <tr>
-      <th>376</th>
+      <th>378</th>
       <td>2014-02-13 06:47:42</td>
       <td>63</td>
       <td>1.5</td>
@@ -774,7 +781,7 @@
       <td>None</td>
     </tr>
     <tr>
-      <th>377</th>
+      <th>379</th>
       <td>2014-01-15 02:46:19</td>
       <td>14.0</td>
       <td>0.41</td>
@@ -786,7 +793,7 @@
       <td>None</td>
     </tr>
     <tr>
-      <th>378</th>
+      <th>380</th>
       <td>2014-01-12 16:00:48</td>
       <td>7.8</td>
       <td>0.24</td>
@@ -798,7 +805,7 @@
       <td>16.2</td>
     </tr>
     <tr>
-      <th>379</th>
+      <th>381</th>
       <td>2014-01-08 17:05:34</td>
       <td>3.1</td>
       <td>0.11</td>
@@ -811,7 +818,7 @@
     </tr>
   </tbody>
 </table>
-<p>380 rows × 9 columns</p>
+<p>382 rows × 9 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -878,9 +885,33 @@
   <tbody>
     <tr>
       <th>0</th>
+      <td>2024-06-18 21:01:32</td>
+      <td>2.2</td>
+      <td>0.079</td>
+      <td>32.2</td>
+      <td>N</td>
+      <td>-31.8</td>
+      <td>W</td>
+      <td>28.7</td>
+      <td>16.2</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2024-06-18 13:51:19</td>
+      <td>49.1</td>
+      <td>1.200</td>
+      <td>44.3</td>
+      <td>N</td>
+      <td>173.2</td>
+      <td>E</td>
+      <td>44.3</td>
+      <td>35.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
       <td>2024-06-01 23:24:59</td>
       <td>7.9</td>
-      <td>0.25</td>
+      <td>0.250</td>
       <td>-1.0</td>
       <td>S</td>
       <td>-15.9</td>
@@ -889,10 +920,10 @@
       <td>12.6</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>3</th>
       <td>2024-05-27 03:19:36</td>
       <td>8.4</td>
-      <td>0.26</td>
+      <td>0.260</td>
       <td>1.7</td>
       <td>N</td>
       <td>-39.4</td>
@@ -901,40 +932,16 @@
       <td>39.2</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>4</th>
       <td>2024-05-24 16:19:59</td>
       <td>5.4</td>
-      <td>0.18</td>
+      <td>0.180</td>
       <td>6.6</td>
       <td>N</td>
       <td>114.2</td>
       <td>E</td>
       <td>42.0</td>
       <td>36.5</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2024-05-18 22:46:50</td>
-      <td>3.7</td>
-      <td>0.13</td>
-      <td>41.0</td>
-      <td>N</td>
-      <td>-8.8</td>
-      <td>W</td>
-      <td>74.3</td>
-      <td>40.4</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2024-05-05 20:11:03</td>
-      <td>3.7</td>
-      <td>0.13</td>
-      <td>-7.1</td>
-      <td>S</td>
-      <td>-112.7</td>
-      <td>W</td>
-      <td>39.0</td>
-      <td>13.9</td>
     </tr>
     <tr>
       <th>...</th>
@@ -949,10 +956,10 @@
       <td>...</td>
     </tr>
     <tr>
-      <th>208</th>
+      <th>210</th>
       <td>2014-05-16 12:42:48</td>
       <td>30.9</td>
-      <td>0.82</td>
+      <td>0.820</td>
       <td>-44.2</td>
       <td>S</td>
       <td>-176.2</td>
@@ -961,10 +968,10 @@
       <td>16.5</td>
     </tr>
     <tr>
-      <th>209</th>
+      <th>211</th>
       <td>2014-05-08 19:42:37</td>
       <td>105.0</td>
-      <td>2.40</td>
+      <td>2.400</td>
       <td>-36.9</td>
       <td>S</td>
       <td>87.3</td>
@@ -973,10 +980,10 @@
       <td>19.0</td>
     </tr>
     <tr>
-      <th>210</th>
+      <th>212</th>
       <td>2014-03-29 13:45:41</td>
       <td>3.9</td>
-      <td>0.13</td>
+      <td>0.130</td>
       <td>-28.7</td>
       <td>S</td>
       <td>121.5</td>
@@ -985,10 +992,10 @@
       <td>16.3</td>
     </tr>
     <tr>
-      <th>211</th>
+      <th>213</th>
       <td>2014-01-12 16:00:48</td>
       <td>7.8</td>
-      <td>0.24</td>
+      <td>0.240</td>
       <td>2.9</td>
       <td>N</td>
       <td>64.4</td>
@@ -997,10 +1004,10 @@
       <td>16.2</td>
     </tr>
     <tr>
-      <th>212</th>
+      <th>214</th>
       <td>2014-01-08 17:05:34</td>
       <td>3.1</td>
-      <td>0.11</td>
+      <td>0.110</td>
       <td>-1.3</td>
       <td>S</td>
       <td>147.6</td>
@@ -1010,7 +1017,7 @@
     </tr>
   </tbody>
 </table>
-<p>213 rows × 9 columns</p>
+<p>215 rows × 9 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1021,21 +1028,21 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-RangeIndex: 213 entries, 0 to 212
+RangeIndex: 215 entries, 0 to 214
 Data columns (total 9 columns):
  #   Column               Non-Null Count  Dtype  
 ---  ------               --------------  -----  
- 0   date                 213 non-null    object 
- 1   energy               213 non-null    float64
- 2   impact energy        213 non-null    float64
- 3   latitude             213 non-null    float64
- 4   latitude direction   213 non-null    object 
- 5   longitude            213 non-null    float64
- 6   longitude direction  213 non-null    object 
- 7   altitude             213 non-null    float64
- 8   velocity             213 non-null    float64
+ 0   date                 215 non-null    object 
+ 1   energy               215 non-null    float64
+ 2   impact energy        215 non-null    float64
+ 3   latitude             215 non-null    float64
+ 4   latitude direction   215 non-null    object 
+ 5   longitude            215 non-null    float64
+ 6   longitude direction  215 non-null    object 
+ 7   altitude             215 non-null    float64
+ 8   velocity             215 non-null    float64
 dtypes: float64(6), object(3)
-memory usage: 15.1+ KB
+memory usage: 15.2+ KB
 </pre></div>
 </div>
 </div>
@@ -1069,11 +1076,11 @@ memory usage: 15.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2408/1829906866.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2577/1829906866.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
   world_map = geopandas.read_file(geopandas.datasets.get_path(&quot;naturalearth_lowres&quot;))
 </pre></div>
 </div>
-<img alt="../../_images/ce2d7dbb5af2c5c7125ce4d043c4e3948882cc961e3876c801578003bd5a0d3d.png" src="../../_images/ce2d7dbb5af2c5c7125ce4d043c4e3948882cc961e3876c801578003bd5a0d3d.png" />
+<img alt="../../_images/5acdf084f3a09b1613d79adf8f0a721ef42e4728648fd0db6f49e77ec05f84a2.png" src="../../_images/5acdf084f3a09b1613d79adf8f0a721ef42e4728648fd0db6f49e77ec05f84a2.png" />
 </div>
 </div>
 </section>
@@ -1106,11 +1113,11 @@ memory usage: 15.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2408/3576206611.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2577/3576206611.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
   world_map = geopandas.read_file(geopandas.datasets.get_path(&quot;naturalearth_lowres&quot;))
 </pre></div>
 </div>
-<img alt="../../_images/035dd8f9b35779d2a9fbae14a80ca821a4b40dbeab75f855c815fd6a633c8870.png" src="../../_images/035dd8f9b35779d2a9fbae14a80ca821a4b40dbeab75f855c815fd6a633c8870.png" />
+<img alt="../../_images/ac3ee04cfe366dba3bf312e80ca30b499201cc4d2f90b31f72e6048dcdb5f826.png" src="../../_images/ac3ee04cfe366dba3bf312e80ca30b499201cc4d2f90b31f72e6048dcdb5f826.png" />
 </div>
 </div>
 </section>
@@ -1143,11 +1150,11 @@ memory usage: 15.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2408/1005838665.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2577/1005838665.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
   world_map = geopandas.read_file(geopandas.datasets.get_path(&quot;naturalearth_lowres&quot;))
 </pre></div>
 </div>
-<img alt="../../_images/e6b7f3c4f2c8f45f455779a871c0462507308958b69236d1ea83c0e1673d3974.png" src="../../_images/e6b7f3c4f2c8f45f455779a871c0462507308958b69236d1ea83c0e1673d3974.png" />
+<img alt="../../_images/22917bd5941c4d57f2601d78398d7b2368e7be04c421a71c8c06dca7eaf58d7b.png" src="../../_images/22917bd5941c4d57f2601d78398d7b2368e7be04c421a71c8c06dca7eaf58d7b.png" />
 </div>
 </div>
 </section>
@@ -1180,11 +1187,11 @@ memory usage: 15.1+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2408/3372262186.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/tmp/ipykernel_2577/3372262186.py:2: FutureWarning: The geopandas.dataset module is deprecated and will be removed in GeoPandas 1.0. You can get the original &#39;naturalearth_lowres&#39; data from https://www.naturalearthdata.com/downloads/110m-cultural-vectors/.
   world_map = geopandas.read_file(geopandas.datasets.get_path(&quot;naturalearth_lowres&quot;))
 </pre></div>
 </div>
-<img alt="../../_images/1bcf5140c061a0da2cf68dc0540fb22968dabe3de99911ef2192dc5eb125cc67.png" src="../../_images/1bcf5140c061a0da2cf68dc0540fb22968dabe3de99911ef2192dc5eb125cc67.png" />
+<img alt="../../_images/58692c499f6760739dc0af38ad83bb8b3574e7d8bebdaf52e90bb382389601cc.png" src="../../_images/58692c499f6760739dc0af38ad83bb8b3574e7d8bebdaf52e90bb382389601cc.png" />
 </div>
 </div>
 </section>
@@ -1259,13 +1266,22 @@ memory usage: 15.1+ KB
                     
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../api-foundations/api-basics.html"
+       href="air-quality-system-api.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">API Basics</p>
+        <p class="prev-next-title">Visualizing Data with EPA’s Air Quality System (AQS) API</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="earthaccess-sla-sss.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Data access via earthaccess library and vizualization with cartopy</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                   </footer>
@@ -1547,7 +1563,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 14 June 2024.
+  Last updated on 20 June 2024.
   <br/>
 </p>
   </div>
@@ -1601,7 +1617,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 14 June 2024.
+          Last updated on 20 June 2024.
         </p>
       </div>
     </div>

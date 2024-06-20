@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=d0efeab3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -78,7 +78,7 @@
     <link rel="next" title="How to Cite This Cookbook" href="notebooks/how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="14 June 2024"/>
+    <meta name="docbuild:last-update" content="20 June 2024"/>
   </head>
   
   
@@ -373,7 +373,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example-workflows/air-quality-system-api.html">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="notebooks/example-workflows/cneos-fireball.html">NASA API: World Map of Fireball Impacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example-workflows/earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="notebooks/example-workflows/wfm-cloud-water.html">Whiteface Mountain Cloud Water Data</a></li>
+
 </ul>
 
     </div>
@@ -409,15 +414,16 @@
 <p><a class="reference external" href="https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml"><img alt="nightly-build" src="https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg" /></a>
 <a class="reference external" href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks"><img alt="Binder" src="https://binder.projectpythia.org/badge_logo.svg" /></a>
 <a class="reference external" href="https://zenodo.org/badge/latestdoi/475509405"><img alt="DOI" src="https://zenodo.org/badge/475509405.svg" /></a></p>
-<p>This Project Pythia Cookbook covers the basics of retrieving and visualizing data from APIs in Python</p>
+<p>This Project Pythia Cookbook covers the basics of retrieving and visualizing data using APIs with Python.</p>
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs, then creating an informational and visually appealing plots</p>
-<p>APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.</p>
+<p>There are many ways to gather data. Science and research entities like NASA are constantly producing and collecting data. As a result, attempting to collect and display live data can be difficult since new data is always being added or modified.</p>
+<p>An API is a method to query a data source over the internet to retrieve data from a remote source. APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.</p>
+<p>This cookbook focuses on accessing and visualizing data from various geoscience related APIs. Over the course of the cookbook, we will show step-by-step tutorials on retrieving data from some public APIs, as well as creating informational and visually appealing graphics to communicate the data to a general audience.</p>
 </section>
 <section id="authors">
 <h2>Authors<a class="headerlink" href="#authors" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p><a class="reference external" href="https://github.com/cyschneck">Cora Schneck</a>, <a class="reference external" href="https://github.com/apkrelling">Ana Krelling</a>, <a class="reference external" href="https://github.com/AMDeitsch">Adam Deitsch</a></p>
+<p><a class="reference external" href="https://github.com/cyschneck">Cora Schneck</a>, <a class="reference external" href="https://github.com/apkrelling">Ana Krelling</a>, <a class="reference external" href="https://github.com/AMDeitsch">Adam Deitsch</a>, <a class="reference internal" href="#&#64;hannahzafar"><span class="xref myst">Hannah Zafar</span></a></p>
 <section id="contributors">
 <h3>Contributors<a class="headerlink" href="#contributors" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
@@ -427,17 +433,19 @@
 </section>
 <section id="structure">
 <h2>Structure<a class="headerlink" href="#structure" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>This cookbook will be broken up into two main sections: “Foundations” to cover the basics of working with and understanding APIs and “Example Workflows” for complete working examples</p>
+<p>This cookbook will be broken up into two main sections: “Foundations” to cover the basics of working with and understanding APIs and “Example Workflows” for complete working examples.</p>
 <section id="api-foundations">
 <h3>API Foundations<a class="headerlink" href="#api-foundations" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>API Foundations will cover the terminology of APIs and how to make use of the data retrieved from API in Python</p>
+<p>API Foundations will cover the terminology of APIs and how to make use of the data retrieved from API in Python.</p>
 </section>
 <section id="example-workflows">
 <h3>Example Workflows<a class="headerlink" href="#example-workflows" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots</p>
+<p>Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots.</p>
 <ul class="simple">
-<li><p>NASA API: Visualize the location and total impact energy of fireballs and bolides on a world map</p></li>
-<li><p>EarthAccess:</p></li>
+<li><p><a class="reference external" href="https://ssd-api.jpl.nasa.gov/">JPL Center for Near-Earth Orbit Studies (CNEOS) API</a>: Visualize the location and total impact energy of fireballs and bolides on a world map using the CNEOS <a class="reference external" href="https://ssd-api.jpl.nasa.gov/doc/fireball.html">Fireball API</a>.</p></li>
+<li><p><a class="reference external" href="https://www.earthdata.nasa.gov/learn/find-data">Earthdata API</a>: Access and visualize sea surface height and sea surface salinity data using the National Aeronautics and Space Administration’s <a class="reference external" href="https://github.com/nsidc/earthaccess">earthaccess</a> Python package.</p></li>
+<li><p><a class="reference external" href="https://aqs.epa.gov/aqsweb/documents/data_api.html">Air Quality System (AQS) API</a>: Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the Environmental Protection Agency’s <a class="reference external" href="https://github.com/USEPA/pyaqsapi">pyaqsapi</a> Python package.</p></li>
+<li><p><a class="reference external" href="http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm">Whiteface Mountain Cloud Water Request</a>: Request access to recent and historical cloud water chemistry data from the <a class="reference internal" href="#&#64;LanceLab-ASRC"><span class="xref myst">Lance Research Laboratory</span></a> at the Atmospheric Sciences Research Center.</p></li>
 </ul>
 </section>
 </section>
@@ -780,7 +788,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 14 June 2024.
+  Last updated on 20 June 2024.
   <br/>
 </p>
   </div>
@@ -834,7 +842,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 14 June 2024.
+          Last updated on 20 June 2024.
         </p>
       </div>
     </div>

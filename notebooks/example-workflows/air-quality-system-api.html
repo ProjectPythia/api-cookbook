@@ -1,0 +1,3504 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Visualizing Data with EPA’s Air Quality System (AQS) API &#8212; Project Pythia Cookbook Template</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/example-workflows/air-quality-system-api';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="NASA API: World Map of Fireball Impacts" href="cneos-fireball.html" />
+    <link rel="prev" title="API Basics" href="../api-foundations/api-basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="20 June 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    API Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../api-foundations/api-basics.html">API Basics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="cneos-fireball.html">NASA API: World Map of Fireball Impacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="wfm-cloud-water.html">Whiteface Mountain Cloud Water Data</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <p><a class="reference internal" href="../../_images/ProjectPythia_Logo_Final-01-Blue.svg"><img alt="Project Pythia Logo" src="../../_images/ProjectPythia_Logo_Final-01-Blue.svg" width="300" /></a></img><img alt="Wildfire smoke over New York City (June 7, 2023)" src="https://images.unsplash.com/photo-1686179225818-c07909cd2911?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /></img>
+Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ahmer Kalam</a> on <a href="https://unsplash.com/photos/a-foggy-city-skyline-with-the-sun-in-the-distance-Reuk1nmutFI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="visualizing-data-with-epas-air-quality-system-aqs-api">
+<h1>Visualizing Data with EPA’s Air Quality System (AQS) API<a class="headerlink" href="#visualizing-data-with-epas-air-quality-system-aqs-api" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="aqs-api-workflow">
+<h1>AQS API Workflow<a class="headerlink" href="#aqs-api-workflow" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Air quality data are an important aspect of both atmospheric and environmental sciences. Understanding the concentrations of particulate matter and chemical species (e.g., O<sub>3</sub> and NO<sub>x</sub>) can be useful for air pollution analysis from both the physical science and health science perspectives.</p>
+<p>The US EPA AQS has archived data that have gone through quality assurance.</p>
+<p>In this notebook, we will cover:</p>
+<ol class="arabic simple">
+<li><p>Accessing data from the AQS</p></li>
+<li><p>Exploring the format of the data</p></li>
+<li><p>Preparing the data for visualization</p></li>
+<li><p>Generating a timeseries plot</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/pandas/pandas.html">Introduction to Pandas</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>How to deal with dataframes and datasets</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Matplotlib Basics</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Skills for different plotting styles and techniques</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 30 minutes</p></li>
+<li><p><strong>System requirements</strong>:</p>
+<ul>
+<li><p><b>Email address</b> for AQS API access</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Info</p>
+<p>Here we’ll import lots of stuff, but we might not end up using them all…</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pyaqsapi</span> <span class="k">as</span> <span class="nn">aqs</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="accessing-data-from-the-aqs">
+<h2>Accessing Data from the AQS<a class="headerlink" href="#accessing-data-from-the-aqs" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p><b>If you have previously registered an account with the AQS</b>, now will be a good time to get that information out and <b>skip past the</b> <code class="docutils literal notranslate"><span class="pre">aqs.aqs_sign_up()</span></code> <b>step below</b>.</p>
+<p><b>If not</b>, you should have an email address in mind that you’d like to use.</p>
+</div><section id="register-a-new-email-with-aqs-sign-up">
+<h3>Register a new email with <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code><a class="headerlink" href="#register-a-new-email-with-aqs-sign-up" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<p>In the cell below, uncomment the code and replace ‘<code class="docutils literal notranslate"><span class="pre">EMAIL</span></code>’ with an email address to use for API credentials.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># aqs.aqs_sign_up(&#39;EMAIL&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><b>Replace your email address</b> with ‘<b>EMAIL</b>’ after you’ve run <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code>, or <b>comment out</b> the line!
+<p>A <b>new API key</b> will be generated <i><b>every time</b></i> that line of code is executed!</p>
+</div><section id="data-can-be-pulled-from-the-aqs-in-a-number-of-different-ways">
+<h4>Data can be pulled from the AQS in a number of different ways…<a class="headerlink" href="#data-can-be-pulled-from-the-aqs-in-a-number-of-different-ways" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<ol class="arabic simple">
+<li><p>By Sample Site</p></li>
+<li><p>By County</p></li>
+<li><p>By State</p></li>
+<li><p>By Lat/Lon Box</p></li>
+<li><p>By Monitoring Agency</p></li>
+<li><p>By Primary Quality Assurance Organization</p></li>
+<li><p>By Core Based Statistical Aera (as defined by the US Census Bureau)</p></li>
+</ol>
+</section>
+</section>
+<section id="lets-look-at-how-the-package-deals-with-states">
+<h3>Let’s look at how the package deals with states…<a class="headerlink" href="#lets-look-at-how-the-package-deals-with-states" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqs</span><span class="o">.</span><span class="n">aqs_states</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please use the aqs_credentials  function to enter your credentials before using this function
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">Whoops!</p>
+<p>You need to input your credentials before any of the functions will work!</p>
+</div>
+<section id="use-the-aqs-credentials-function-to-input-your-username-email-address-and-access-key">
+<h4>Use the <code class="docutils literal notranslate"><span class="pre">aqs_credentials()</span></code> function to input your username (email address) and access key.<a class="headerlink" href="#use-the-aqs-credentials-function-to-input-your-username-email-address-and-access-key" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<p><b>This is all found in the email you received when verifying your email address.</b></p>
+<p>If you’ve previously registered your address and do not have the key, you can simply generate a new key by using the <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code> funtion to resubmit your email address.</p>
+<p><em>Let’s also save our username and key as variables that we can easily call later.</em></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Comment</span></code> out the first line and <code class="docutils literal notranslate"><span class="pre">Uncomment</span></code> back in the second line in the cell below.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">'AQS_USERNAME'</span></code> and <code class="docutils literal notranslate"><span class="pre">'AQS_KEY'</span></code> with your credentials. We stored them as <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html">environment variables</a>, to ensure they are kept secret.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqs</span><span class="o">.</span><span class="n">aqs_credentials</span><span class="p">(</span><span class="n">username</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AQS_USERNAME&#39;</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AQS_KEY&#39;</span><span class="p">))</span>
+<span class="c1">#aqs.aqs_credentials(username=AQS_USERNAME, key=AQS_KEY)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">MAKE SURE TO CLEAR VARIABLES!</p>
+<p>Make sure to <b>clear</b> these variables <b>before</b> submitting a <b>pull request</b>! You <b>do not</b> want to <b>share your credentials</b>!</p>
+</div>
+</section>
+</section>
+<section id="lets-look-at-those-states-now">
+<h3>Let’s look at those states now…<a class="headerlink" href="#lets-look-at-those-states-now" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqs</span><span class="o">.</span><span class="n">aqs_states</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>code</th>
+      <th>value_represented</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>01</td>
+      <td>Alabama</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>02</td>
+      <td>Alaska</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>04</td>
+      <td>Arizona</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>05</td>
+      <td>Arkansas</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>06</td>
+      <td>California</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>08</td>
+      <td>Colorado</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>09</td>
+      <td>Connecticut</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>10</td>
+      <td>Delaware</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>11</td>
+      <td>District Of Columbia</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>12</td>
+      <td>Florida</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>13</td>
+      <td>Georgia</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>15</td>
+      <td>Hawaii</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>16</td>
+      <td>Idaho</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>17</td>
+      <td>Illinois</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>18</td>
+      <td>Indiana</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>19</td>
+      <td>Iowa</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>20</td>
+      <td>Kansas</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>21</td>
+      <td>Kentucky</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>22</td>
+      <td>Louisiana</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>23</td>
+      <td>Maine</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>24</td>
+      <td>Maryland</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>25</td>
+      <td>Massachusetts</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>26</td>
+      <td>Michigan</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>27</td>
+      <td>Minnesota</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>28</td>
+      <td>Mississippi</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>29</td>
+      <td>Missouri</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>30</td>
+      <td>Montana</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>31</td>
+      <td>Nebraska</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>32</td>
+      <td>Nevada</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>33</td>
+      <td>New Hampshire</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>34</td>
+      <td>New Jersey</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>35</td>
+      <td>New Mexico</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>36</td>
+      <td>New York</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>37</td>
+      <td>North Carolina</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>38</td>
+      <td>North Dakota</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>39</td>
+      <td>Ohio</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>40</td>
+      <td>Oklahoma</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>41</td>
+      <td>Oregon</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>42</td>
+      <td>Pennsylvania</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>44</td>
+      <td>Rhode Island</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>45</td>
+      <td>South Carolina</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>46</td>
+      <td>South Dakota</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>47</td>
+      <td>Tennessee</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>48</td>
+      <td>Texas</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>49</td>
+      <td>Utah</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>50</td>
+      <td>Vermont</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>51</td>
+      <td>Virginia</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>53</td>
+      <td>Washington</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>54</td>
+      <td>West Virginia</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>55</td>
+      <td>Wisconsin</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>56</td>
+      <td>Wyoming</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>66</td>
+      <td>Guam</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>72</td>
+      <td>Puerto Rico</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>78</td>
+      <td>Virgin Islands</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>80</td>
+      <td>Country Of Mexico</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>CC</td>
+      <td>Canada</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p><b>Since states will be input via a number, let’s store <code class="docutils literal notranslate"><span class="pre">aqs_states()</span></code> as a variable that we can call on later to remind ourselves of what states we need.</b></p>
+<p>Let’s assume for now that we want to focus on New York and also save that code as variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">states</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">aqs_states</span><span class="p">()</span>
+<span class="n">NY</span> <span class="o">=</span> <span class="mi">36</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">Everything Is Currently Input Numerically</p>
+<p>It’s important that we also address the fact that, currently, everything is input as a numerical value for pulling these data from the AQS with this Python package.</p>
+</div>
+<p>Parameter Codes can be accessed from the EPA <a class="reference external" href="https://aqs.epa.gov/aqsweb/documents/codetables/parameters.html">here</a>, but to simplify things here are codes for a few common pollutants with defined Air Quality Index values you might be looking for…</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Pollutant</p></th>
+<th class="head"><p>Parameter Code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Carbon Monoxide (CO)</p></td>
+<td><p>42101</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nitrogen Dioxide (NO<sub>2</sub>)</p></td>
+<td><p>42602</p></td>
+</tr>
+<tr class="row-even"><td><p>Ozone (O<sub>3</sub>)</p></td>
+<td><p>44201</p></td>
+</tr>
+<tr class="row-odd"><td><p>PM 10 (Total)</p></td>
+<td><p>81102</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Other variables that might be of interest:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>MET</p></th>
+<th class="head"><p>Parameter Code</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Wind Speed - Resultant (knots)</p></td>
+<td><p>61103</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wind Direction - Resultant (deg)</p></td>
+<td><p>61104</p></td>
+</tr>
+<tr class="row-even"><td><p>Outdoor Temperature (F)</p></td>
+<td><p>62101</p></td>
+</tr>
+<tr class="row-odd"><td><p>Average Ambient Temperature ©</p></td>
+<td><p>68105</p></td>
+</tr>
+<tr class="row-even"><td><p>Relative Humidity (%)</p></td>
+<td><p>62201</p></td>
+</tr>
+<tr class="row-odd"><td><p>Barometric Pressure (mbar)</p></td>
+<td><p>64101</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<section id="lets-also-store-the-parameter-codes-as-variables-to-make-things-more-simple">
+<h4>Let’s also store the parameter codes as variables to make things more simple.<a class="headerlink" href="#lets-also-store-the-parameter-codes-as-variables-to-make-things-more-simple" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CO</span> <span class="o">=</span> <span class="mi">42101</span>
+<span class="n">NO2</span> <span class="o">=</span> <span class="mi">42602</span>
+<span class="n">O3</span> <span class="o">=</span> <span class="mi">44201</span>
+<span class="n">PM10</span> <span class="o">=</span> <span class="mi">81102</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="exploring-the-format-of-the-data">
+<h2>Exploring the format of the data<a class="headerlink" href="#exploring-the-format-of-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Let’s look at current O<sub>3</sub> data for New York State.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">today</span><span class="p">()</span>
+<span class="n">year</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">year</span>
+<span class="n">month</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">month</span>
+<span class="n">day</span> <span class="o">=</span> <span class="n">now</span><span class="o">.</span><span class="n">day</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="p">,</span> <span class="n">day</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024 6 20
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>The AQS does <b>not</b> have real-time data. Also, note that the above times are in UTC!</p>
+</div>
+<p>We’ll subtract one day so we have the past day of data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">bystate</span><span class="o">.</span><span class="n">sampledata</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span> <span class="n">O3</span><span class="p">,</span> <span class="n">bdate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">edate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="p">),</span> <span class="n">stateFIPS</span><span class="o">=</span><span class="n">NY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">Oh, no!</p>
+<p>Looks like there isn’t current O<sub>3</sub> data available. We must go <i>even further</i> back in time.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">bystate</span><span class="o">.</span><span class="n">sampledata</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span> <span class="n">O3</span><span class="p">,</span> <span class="n">bdate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">edate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="p">),</span> <span class="n">stateFIPS</span><span class="o">=</span><span class="n">NY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state_code</th>
+      <th>county_code</th>
+      <th>site_number</th>
+      <th>parameter_code</th>
+      <th>poc</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>datum</th>
+      <th>parameter</th>
+      <th>date_local</th>
+      <th>...</th>
+      <th>detection_limit</th>
+      <th>uncertainty</th>
+      <th>qualifier</th>
+      <th>method_type</th>
+      <th>method</th>
+      <th>method_code</th>
+      <th>state</th>
+      <th>county</th>
+      <th>date_of_last_change</th>
+      <th>cbsa_code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>36</td>
+      <td>055</td>
+      <td>1007</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>43.14618</td>
+      <td>-77.54817</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
+      <td>New York</td>
+      <td>Monroe</td>
+      <td>2023-07-31</td>
+      <td>40380</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>36</td>
+      <td>055</td>
+      <td>1007</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>43.14618</td>
+      <td>-77.54817</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
+      <td>New York</td>
+      <td>Monroe</td>
+      <td>2023-07-31</td>
+      <td>40380</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>36</td>
+      <td>055</td>
+      <td>1007</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>43.14618</td>
+      <td>-77.54817</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
+      <td>New York</td>
+      <td>Monroe</td>
+      <td>2023-07-31</td>
+      <td>40380</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36</td>
+      <td>055</td>
+      <td>1007</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>43.14618</td>
+      <td>-77.54817</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
+      <td>New York</td>
+      <td>Monroe</td>
+      <td>2023-07-31</td>
+      <td>40380</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36</td>
+      <td>055</td>
+      <td>1007</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>43.14618</td>
+      <td>-77.54817</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
+      <td>New York</td>
+      <td>Monroe</td>
+      <td>2023-07-31</td>
+      <td>40380</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1339</th>
+      <td>36</td>
+      <td>045</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>44.08747</td>
+      <td>-75.97316</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Jefferson</td>
+      <td>2023-07-31</td>
+      <td>48060</td>
+    </tr>
+    <tr>
+      <th>1340</th>
+      <td>36</td>
+      <td>045</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>44.08747</td>
+      <td>-75.97316</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Jefferson</td>
+      <td>2023-07-31</td>
+      <td>48060</td>
+    </tr>
+    <tr>
+      <th>1341</th>
+      <td>36</td>
+      <td>045</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>44.08747</td>
+      <td>-75.97316</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Jefferson</td>
+      <td>2023-07-31</td>
+      <td>48060</td>
+    </tr>
+    <tr>
+      <th>1342</th>
+      <td>36</td>
+      <td>045</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>44.08747</td>
+      <td>-75.97316</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Jefferson</td>
+      <td>2023-07-31</td>
+      <td>48060</td>
+    </tr>
+    <tr>
+      <th>1343</th>
+      <td>36</td>
+      <td>045</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>44.08747</td>
+      <td>-75.97316</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Jefferson</td>
+      <td>2023-07-31</td>
+      <td>48060</td>
+    </tr>
+  </tbody>
+</table>
+<p>1344 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>Great! Now we have some data. Let’s look at the columns.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;state_code&#39;, &#39;county_code&#39;, &#39;site_number&#39;, &#39;parameter_code&#39;, &#39;poc&#39;,
+       &#39;latitude&#39;, &#39;longitude&#39;, &#39;datum&#39;, &#39;parameter&#39;, &#39;date_local&#39;,
+       &#39;time_local&#39;, &#39;date_gmt&#39;, &#39;time_gmt&#39;, &#39;sample_measurement&#39;,
+       &#39;units_of_measure&#39;, &#39;units_of_measure_code&#39;, &#39;sample_duration&#39;,
+       &#39;sample_duration_code&#39;, &#39;sample_frequency&#39;, &#39;detection_limit&#39;,
+       &#39;uncertainty&#39;, &#39;qualifier&#39;, &#39;method_type&#39;, &#39;method&#39;, &#39;method_code&#39;,
+       &#39;state&#39;, &#39;county&#39;, &#39;date_of_last_change&#39;, &#39;cbsa_code&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<p><b>There is a lot of information in this dataset.</b></p>
+<ol class="arabic simple">
+<li><p>Geospatial Information</p></li>
+<li><p>Temporal Information</p></li>
+<li><p>Sample Information</p></li>
+<li><p>Data QA Information</p></li>
+</ol>
+<div class="admonition alert alert-info">
+<p class="admonition-title">We’ll focus on a few from 1, 2, and 3:</p>
+<p><b>Latitude</b> and <b>Longitude</b> can be used to plot these data over a map, which will be addressed in <i>Notebook 3 of this Cookbook</i>.
+<p>
+<b>Local Date</b> and <b>Time</b>, as well as <b>State</b>, <b>County</b>, and <b>Site Number</b> can be used as to isolate data for a time series.
+<p>
+<b>Units of Measure</b> will be necessary for annotations and labels.</p>
+</p></p>
+</div>
+<div class="admonition alert alert-info">
+<p class="admonition-title">PAUSE</p>
+<p>We’ve seen how to pull the data, and we’ve seen that pulling current data is not possible due to the lag between sample time and quality-assurance checks.
+<p>You are encouraged to check for more current data but, for now, let’s look at this month’s data from last year.</p>
+</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">start</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">end</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1">#(Replace this value to match the appropriate &quot;last day&quot; of the month you are running this notebook)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">bystate</span><span class="o">.</span><span class="n">sampledata</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span> <span class="n">O3</span><span class="p">,</span> <span class="n">bdate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">start</span><span class="p">),</span> <span class="n">edate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">end</span><span class="p">),</span> <span class="n">stateFIPS</span><span class="o">=</span><span class="n">NY</span><span class="p">)</span>
+<span class="n">ozone</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state_code</th>
+      <th>county_code</th>
+      <th>site_number</th>
+      <th>parameter_code</th>
+      <th>poc</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>datum</th>
+      <th>parameter</th>
+      <th>date_local</th>
+      <th>...</th>
+      <th>detection_limit</th>
+      <th>uncertainty</th>
+      <th>qualifier</th>
+      <th>method_type</th>
+      <th>method</th>
+      <th>method_code</th>
+      <th>state</th>
+      <th>county</th>
+      <th>date_of_last_change</th>
+      <th>cbsa_code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>36</td>
+      <td>013</td>
+      <td>0006</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.49963</td>
+      <td>-79.31881</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-01</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Chautauqua</td>
+      <td>2024-02-21</td>
+      <td>27460</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>36</td>
+      <td>013</td>
+      <td>0006</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.49963</td>
+      <td>-79.31881</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-01</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Chautauqua</td>
+      <td>2024-02-21</td>
+      <td>27460</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>36</td>
+      <td>013</td>
+      <td>0006</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.49963</td>
+      <td>-79.31881</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-01</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Chautauqua</td>
+      <td>2024-02-21</td>
+      <td>27460</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>36</td>
+      <td>013</td>
+      <td>0006</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.49963</td>
+      <td>-79.31881</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-01</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Chautauqua</td>
+      <td>2024-02-21</td>
+      <td>27460</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>36</td>
+      <td>013</td>
+      <td>0006</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.49963</td>
+      <td>-79.31881</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-01</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Chautauqua</td>
+      <td>2024-02-21</td>
+      <td>27460</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20142</th>
+      <td>36</td>
+      <td>001</td>
+      <td>0012</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-30</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Albany</td>
+      <td>2023-07-31</td>
+      <td>10580</td>
+    </tr>
+    <tr>
+      <th>20143</th>
+      <td>36</td>
+      <td>001</td>
+      <td>0012</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-30</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Albany</td>
+      <td>2023-07-31</td>
+      <td>10580</td>
+    </tr>
+    <tr>
+      <th>20144</th>
+      <td>36</td>
+      <td>001</td>
+      <td>0012</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-30</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Albany</td>
+      <td>2023-07-31</td>
+      <td>10580</td>
+    </tr>
+    <tr>
+      <th>20145</th>
+      <td>36</td>
+      <td>001</td>
+      <td>0012</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-30</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Albany</td>
+      <td>2023-07-31</td>
+      <td>10580</td>
+    </tr>
+    <tr>
+      <th>20146</th>
+      <td>36</td>
+      <td>001</td>
+      <td>0012</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-30</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>New York</td>
+      <td>Albany</td>
+      <td>2023-07-31</td>
+      <td>10580</td>
+    </tr>
+  </tbody>
+</table>
+<p>20147 rows × 29 columns</p>
+</div></div></div>
+</div>
+<p>A quick check at plotting the data in its original format shows that some polishing is necessary.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">],</span> <span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;sample_measurement&#39;</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7efd4fb399c0&gt;]
+</pre></div>
+</div>
+<img alt="../../_images/6311c15b3ce78729b2d9cc74ab073e600670b3e17abf8a719b642cd2639a66ee.png" src="../../_images/6311c15b3ce78729b2d9cc74ab073e600670b3e17abf8a719b642cd2639a66ee.png" />
+</div>
+</div>
+<div class="admonition alert alert-warning">
+<p class="admonition-title">Spatiotemporal Issues Abound!</p>
+<p>It looks like the primary hiccups in trying to plot these data are the fact that the DataFrame has a separate column for date and time, and that there are multiple sample sites across the DataFrame.</p>
+</div>
+<p></p>We can combine the dates and times into a single datetime value.<p>
+<p>We can also specify the sample sites we want to look at, or take averages across a county or the whole state.<p>Either way, we’ll need to prepare the data.</p></p>
+</div></section>
+<hr class="docutils" />
+<section id="preparing-the-data-for-visualization">
+<h2>Preparing the data for visualization<a class="headerlink" href="#preparing-the-data-for-visualization" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Let’s utilize some Pandas features to generate a more manageable DataFrame for plotting.</p>
+<section id="first-lets-select-only-one-specific-countyalbany">
+<h3>First, let’s select only one specific county–Albany<a class="headerlink" href="#first-lets-select-only-one-specific-countyalbany" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="admonition alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>Not every county samples every type of pollutant!</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">O3alb</span> <span class="o">=</span> <span class="n">ozone</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Albany&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">,</span> <span class="s1">&#39;time_local&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_measurement&#39;</span><span class="p">,</span> <span class="s1">&#39;units_of_measure&#39;</span><span class="p">,</span> <span class="s1">&#39;site_number&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">O3alb</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date_local</th>
+      <th>time_local</th>
+      <th>sample_measurement</th>
+      <th>units_of_measure</th>
+      <th>site_number</th>
+      <th>latitude</th>
+      <th>longitude</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19427</th>
+      <td>2023-06-01</td>
+      <td>00:00</td>
+      <td>0.047</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>19428</th>
+      <td>2023-06-01</td>
+      <td>01:00</td>
+      <td>0.046</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>19429</th>
+      <td>2023-06-01</td>
+      <td>02:00</td>
+      <td>0.043</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>19430</th>
+      <td>2023-06-01</td>
+      <td>03:00</td>
+      <td>0.042</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>19431</th>
+      <td>2023-06-01</td>
+      <td>04:00</td>
+      <td>0.038</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20142</th>
+      <td>2023-06-30</td>
+      <td>19:00</td>
+      <td>0.059</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>20143</th>
+      <td>2023-06-30</td>
+      <td>20:00</td>
+      <td>0.057</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>20144</th>
+      <td>2023-06-30</td>
+      <td>21:00</td>
+      <td>0.058</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>20145</th>
+      <td>2023-06-30</td>
+      <td>22:00</td>
+      <td>0.059</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+    <tr>
+      <th>20146</th>
+      <td>2023-06-30</td>
+      <td>23:00</td>
+      <td>0.065</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+    </tr>
+  </tbody>
+</table>
+<p>720 rows × 7 columns</p>
+</div></div></div>
+</div>
+<div class="admonition alert alert-warning">
+<p class="admonition-title">Warning</p>
+<p>Something is a bit off, here. We see that the datetimes are mostly, but not entirely in order.</p>
+</div>
+<p><b>OR…</b> you see that there is no data at all. This is the result of data being sporatic over space and time.</p>
+</div>
+<p><b>Perhaps this notebook should choose a specific time that we know there is data in, at least after showing that this problem might arise?</b></div></p>
+<p>Let’s make sure our new DataFrame for Albany is properly chronological.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;time_local&#39;</span><span class="p">])</span>
+<span class="n">O3alb</span> <span class="o">=</span> <span class="n">O3alb</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">O3alb</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>date_local</th>
+      <th>time_local</th>
+      <th>sample_measurement</th>
+      <th>units_of_measure</th>
+      <th>site_number</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>datetime</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19427</th>
+      <td>2023-06-01</td>
+      <td>00:00</td>
+      <td>0.047</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-01 00:00:00</td>
+    </tr>
+    <tr>
+      <th>19428</th>
+      <td>2023-06-01</td>
+      <td>01:00</td>
+      <td>0.046</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-01 01:00:00</td>
+    </tr>
+    <tr>
+      <th>19429</th>
+      <td>2023-06-01</td>
+      <td>02:00</td>
+      <td>0.043</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-01 02:00:00</td>
+    </tr>
+    <tr>
+      <th>19430</th>
+      <td>2023-06-01</td>
+      <td>03:00</td>
+      <td>0.042</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-01 03:00:00</td>
+    </tr>
+    <tr>
+      <th>19431</th>
+      <td>2023-06-01</td>
+      <td>04:00</td>
+      <td>0.038</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-01 04:00:00</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>20142</th>
+      <td>2023-06-30</td>
+      <td>19:00</td>
+      <td>0.059</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-30 19:00:00</td>
+    </tr>
+    <tr>
+      <th>20143</th>
+      <td>2023-06-30</td>
+      <td>20:00</td>
+      <td>0.057</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-30 20:00:00</td>
+    </tr>
+    <tr>
+      <th>20144</th>
+      <td>2023-06-30</td>
+      <td>21:00</td>
+      <td>0.058</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-30 21:00:00</td>
+    </tr>
+    <tr>
+      <th>20145</th>
+      <td>2023-06-30</td>
+      <td>22:00</td>
+      <td>0.059</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-30 22:00:00</td>
+    </tr>
+    <tr>
+      <th>20146</th>
+      <td>2023-06-30</td>
+      <td>23:00</td>
+      <td>0.065</td>
+      <td>Parts per million</td>
+      <td>0012</td>
+      <td>42.68075</td>
+      <td>-73.75733</td>
+      <td>2023-06-30 23:00:00</td>
+    </tr>
+  </tbody>
+</table>
+<p>720 rows × 8 columns</p>
+</div></div></div>
+</div>
+<p>Now we should be able to plot a basic ozone time series for Albany, NY that covers this month for last year.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="generating-a-time-series-plot">
+<h2>Generating a time series plot<a class="headerlink" href="#generating-a-time-series-plot" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Let’s quickly test a lineplot of our data using seaborn.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sample_measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">O3alb</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;datetime&#39;, ylabel=&#39;sample_measurement&#39;&gt;
+</pre></div>
+</div>
+<img alt="../../_images/51d3b8eb2092155e2e0c2ec656133a83e71c0cb4ea62ebfa3955436e818c0cc5.png" src="../../_images/51d3b8eb2092155e2e0c2ec656133a83e71c0cb4ea62ebfa3955436e818c0cc5.png" />
+</div>
+</div>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Success</p>
+<p>We have a time series! Now let’s polish it up a bit…</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Design the figure:</span>
+
+<span class="c1"># Figure shape</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="c1"># Give it a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">((</span><span class="sa">f</span><span class="s1">&#39;Ozone Concentration Albany, NY - </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Plot the data</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sample_measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">O3alb</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="c1"># Title the axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;[O$_</span><span class="si">{3}</span><span class="s1">$] (ppm)&#39;</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+
+    <span class="c1"># For the X-Axis</span>
+
+<span class="c1"># Set major x-ticks for midnight (00h)</span>
+<span class="n">x_major</span> <span class="o">=</span> <span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">][</span><span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_major</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="c1"># Set minor ticks at every 6 hours</span>
+<span class="n">x_minor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span> <span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span> <span class="n">O3alb</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;6h&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_minor</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Clean up the date label so it doesn&#39;t show the year or minutes</span>
+<span class="n">formatted_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%m-</span><span class="si">%d</span><span class="s1"> %H&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;h&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_major</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">formatted_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># For the Y-Axis</span>
+
+<span class="c1"># Add minor ticks to the y-axis</span>
+<span class="n">y_minor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y_minor</span><span class="p">,</span> <span class="n">minor</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Fix the fontsize for the y-tick labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-06-01 00:00:00
+2023-06-30 23:00:00
+</pre></div>
+</div>
+<img alt="../../_images/46c152f0e27d35d13481d7a365db09cadedb8b233f65a1ec2989e83de9ea2694.png" src="../../_images/46c152f0e27d35d13481d7a365db09cadedb8b233f65a1ec2989e83de9ea2694.png" />
+</div>
+</div>
+<p>We can also add a new data points to compare (e.g., NO<sub>2</sub>)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NO2_data</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">bystate</span><span class="o">.</span><span class="n">sampledata</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span> <span class="n">NO2</span><span class="p">,</span> <span class="n">bdate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">start</span><span class="p">),</span> <span class="n">edate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">end</span><span class="p">),</span> <span class="n">stateFIPS</span><span class="o">=</span><span class="n">NY</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NO2_data</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Queens&#39;, &#39;Suffolk&#39;, &#39;Bronx&#39;, &#39;Monroe&#39;, &#39;Erie&#39;], dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">ALBANY?!</p>
+<p>Albany doesn’t seem to display data for NO<sub>2</sub>.
+You’re welcome to check on your own for another pollutant to compare, but we’ll shift to another county that covers both O<sub>3</sub> and NO<sub>2</sub>.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Chautauqua&#39;, &#39;Erie&#39;, &#39;Saratoga&#39;, &#39;Niagara&#39;, &#39;New York&#39;, &#39;Monroe&#39;,
+       &#39;Steuben&#39;, &#39;Richmond&#39;, &#39;Essex&#39;, &#39;Suffolk&#39;, &#39;Wayne&#39;, &#39;Oswego&#39;,
+       &#39;Bronx&#39;, &#39;Queens&#39;, &#39;Rockland&#39;, &#39;Putnam&#39;, &#39;Tompkins&#39;, &#39;Jefferson&#39;,
+       &#39;Onondaga&#39;, &#39;Dutchess&#39;, &#39;Westchester&#39;, &#39;Hamilton&#39;, &#39;Albany&#39;],
+      dtype=object)
+</pre></div>
+</div>
+</div>
+</div>
+<p>The Bronx seems like a good county to work with for the purposes of this Notebook.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronxNO2</span> <span class="o">=</span> <span class="n">NO2_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">NO2_data</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Bronx&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">,</span> <span class="s1">&#39;time_local&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_measurement&#39;</span><span class="p">,</span> <span class="s1">&#39;units_of_measure&#39;</span><span class="p">,</span> <span class="s1">&#39;site_number&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">]]</span>
+<span class="n">bronxO3</span> <span class="o">=</span> <span class="n">ozone</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Bronx&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">,</span> <span class="s1">&#39;time_local&#39;</span><span class="p">,</span> <span class="s1">&#39;sample_measurement&#39;</span><span class="p">,</span> <span class="s1">&#39;units_of_measure&#39;</span><span class="p">,</span> <span class="s1">&#39;site_number&#39;</span><span class="p">,</span> <span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="s1">&#39;longitude&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;O3: &#39;</span><span class="p">,</span> <span class="n">bronxO3</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:],</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;NO2: &#39;</span><span class="p">,</span> <span class="n">bronxNO2</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">,:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>O3:  date_local                   2023-06-01
+time_local                        00:00
+sample_measurement                  0.0
+units_of_measure      Parts per million
+site_number                        0110
+latitude                         40.816
+longitude                       -73.902
+Name: 8739, dtype: object 
+
+NO2:  date_local                   2023-06-01
+time_local                        00:00
+sample_measurement                 41.1
+units_of_measure      Parts per billion
+site_number                        0110
+latitude                         40.816
+longitude                       -73.902
+Name: 159, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<p>We’ve seen that both data are present for Bronx County.</p>
+<p>Again, let’s make sure our new DataFrames are properly chronological.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;time_local&#39;</span><span class="p">])</span>
+<span class="n">bronxO3</span> <span class="o">=</span> <span class="n">bronxO3</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+
+<span class="n">bronxNO2</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">bronxNO2</span><span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="o">+</span> <span class="n">bronxNO2</span><span class="p">[</span><span class="s1">&#39;time_local&#39;</span><span class="p">])</span>
+<span class="n">bronxNO2</span> <span class="o">=</span> <span class="n">bronxNO2</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;datetime&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="now-well-plot-both-data-together">
+<h3>Now we’ll plot both data together.<a class="headerlink" href="#now-well-plot-both-data-together" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Design the figure:   </span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">shared_colors</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;muted&#39;</span><span class="p">)</span>
+
+<span class="c1"># Create a secondary y-axis</span>
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+
+<span class="c1"># Give it a title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">((</span><span class="sa">f</span><span class="s1">&#39;Air Pollution Concentration Bronx County, NY - </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
+
+<span class="c1"># Plot the data for O3</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sample_measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">bronxO3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;O$_</span><span class="si">{3}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="n">shared_colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],)</span>
+
+<span class="c1"># Plot NO2 data alongside O3 data</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sample_measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">bronxNO2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;NO$_</span><span class="si">{2}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">ax2</span><span class="p">,</span> <span class="n">legend</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span> <span class="n">shared_colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],)</span>
+
+
+    <span class="c1"># For the X-Axis:</span>
+
+<span class="c1"># Title the x-axis</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Date&#39;</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+
+<span class="c1"># Set major x-ticks for midnight (00h)</span>
+<span class="n">x_major</span> <span class="o">=</span> <span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">][</span><span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">hour</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_major</span><span class="p">)</span>
+
+<span class="c1"># Set minor ticks at every 6 hours</span>
+<span class="n">x_minor</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">start</span><span class="o">=</span> <span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">end</span><span class="o">=</span> <span class="n">bronxO3</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;6h&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">x_minor</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Clean up the date label so it doesn&#39;t show the year or minutes</span>
+<span class="n">formatted_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%m-</span><span class="si">%d</span><span class="s1"> %H&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;h&#39;</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_major</span><span class="p">]</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">formatted_labels</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># For the Y-Axes:</span>
+
+<span class="c1"># Add titles to both y-axes</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;[O$_</span><span class="si">{3}</span><span class="s1">$] (ppm)&#39;</span><span class="p">,</span> <span class="n">labelpad</span> <span class="o">=</span> <span class="mi">25</span><span class="p">,</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">16</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;[NO$_</span><span class="si">{2}</span><span class="s1">$] (ppm)&#39;</span><span class="p">,</span> <span class="n">labelpad</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">rotation</span> <span class="o">=</span> <span class="o">-</span><span class="mi">90</span><span class="p">)</span>
+
+<span class="c1"># Add minor ticks to the y-axis for O3</span>
+<span class="n">y_minor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.002</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y_minor</span><span class="p">,</span> <span class="n">minor</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Fix the fontsize for the y-tick labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+<span class="c1"># Add minor ticks to the secondary y-axis for NO2</span>
+<span class="n">y2_minor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">55</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">y2_minor</span><span class="p">,</span> <span class="n">minor</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Match fontsize for secondary y-axis</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+
+    <span class="c1"># Design the legend:</span>
+
+<span class="c1"># Combine both plot labels into a single legend</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">handles2</span><span class="p">,</span> <span class="n">labels2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">handles</span> <span class="o">+</span> <span class="n">handles2</span><span class="p">,</span> <span class="n">labels</span> <span class="o">+</span> <span class="n">labels2</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../_images/4b0273c5018503b67eb8cd595426a6750077129377c5500b8e0b1fb2889365e8.png" src="../../_images/4b0273c5018503b67eb8cd595426a6750077129377c5500b8e0b1fb2889365e8.png" />
+</div>
+</div>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Success</p>
+<p>We’ve been able to pull data from the AQS and plot a time series!</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="lets-take-a-quick-look-at-how-you-can-pull-data-based-on-a-areal-extent-and-then-well-close-out-this-notebook">
+<h3>Let’s take a quick look at how you can pull data based on a areal extent, and then we’ll close out this notebook.<a class="headerlink" href="#lets-take-a-quick-look-at-how-you-can-pull-data-based-on-a-areal-extent-and-then-well-close-out-this-notebook" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+<section id="lets-start-with-the-conus">
+<h4>Let’s start with the CONUS<a class="headerlink" href="#lets-start-with-the-conus" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lonW</span> <span class="o">=</span> <span class="s1">&#39;-130&#39;</span>
+<span class="n">lonE</span> <span class="o">=</span> <span class="s1">&#39;-62&#39;</span>
+<span class="n">latS</span> <span class="o">=</span> <span class="s1">&#39;20&#39;</span>
+<span class="n">latN</span> <span class="o">=</span> <span class="s1">&#39;55&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CONUS</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">bybox</span><span class="o">.</span><span class="n">sampledata</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span> <span class="n">O3</span><span class="p">,</span> <span class="n">bdate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> 
+                           <span class="n">edate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="p">),</span> 
+                           <span class="n">minlat</span> <span class="o">=</span> <span class="n">latS</span><span class="p">,</span> <span class="n">maxlat</span> <span class="o">=</span> <span class="n">latN</span><span class="p">,</span> <span class="n">minlon</span> <span class="o">=</span> <span class="n">lonW</span><span class="p">,</span> <span class="n">maxlon</span> <span class="o">=</span> <span class="n">lonE</span><span class="p">)</span>
+<span class="n">CONUS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state_code</th>
+      <th>county_code</th>
+      <th>site_number</th>
+      <th>parameter_code</th>
+      <th>poc</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>datum</th>
+      <th>parameter</th>
+      <th>date_local</th>
+      <th>...</th>
+      <th>detection_limit</th>
+      <th>uncertainty</th>
+      <th>qualifier</th>
+      <th>method_type</th>
+      <th>method</th>
+      <th>method_code</th>
+      <th>state</th>
+      <th>county</th>
+      <th>date_of_last_change</th>
+      <th>cbsa_code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>08</td>
+      <td>005</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>39.567887</td>
+      <td>-104.957193</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.0050</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Colorado</td>
+      <td>Arapahoe</td>
+      <td>2024-01-09</td>
+      <td>19740</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>08</td>
+      <td>005</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>39.567887</td>
+      <td>-104.957193</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.0050</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Colorado</td>
+      <td>Arapahoe</td>
+      <td>2024-01-09</td>
+      <td>19740</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>08</td>
+      <td>005</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>39.567887</td>
+      <td>-104.957193</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.0050</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Colorado</td>
+      <td>Arapahoe</td>
+      <td>2024-01-09</td>
+      <td>19740</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>08</td>
+      <td>005</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>39.567887</td>
+      <td>-104.957193</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.0050</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Colorado</td>
+      <td>Arapahoe</td>
+      <td>2024-01-09</td>
+      <td>19740</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>08</td>
+      <td>005</td>
+      <td>0002</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>39.567887</td>
+      <td>-104.957193</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.0050</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Colorado</td>
+      <td>Arapahoe</td>
+      <td>2024-01-09</td>
+      <td>19740</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>60041</th>
+      <td>06</td>
+      <td>089</td>
+      <td>0009</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.689253</td>
+      <td>-122.402194</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.0006</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>Instrumental - Chemiluminescence API Model 265...</td>
+      <td>199</td>
+      <td>California</td>
+      <td>Shasta</td>
+      <td>2024-03-25</td>
+      <td>39820</td>
+    </tr>
+    <tr>
+      <th>60042</th>
+      <td>06</td>
+      <td>089</td>
+      <td>0009</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.689253</td>
+      <td>-122.402194</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.0006</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>Instrumental - Chemiluminescence API Model 265...</td>
+      <td>199</td>
+      <td>California</td>
+      <td>Shasta</td>
+      <td>2024-03-25</td>
+      <td>39820</td>
+    </tr>
+    <tr>
+      <th>60043</th>
+      <td>06</td>
+      <td>089</td>
+      <td>0009</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.689253</td>
+      <td>-122.402194</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.0006</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>Instrumental - Chemiluminescence API Model 265...</td>
+      <td>199</td>
+      <td>California</td>
+      <td>Shasta</td>
+      <td>2024-03-25</td>
+      <td>39820</td>
+    </tr>
+    <tr>
+      <th>60044</th>
+      <td>06</td>
+      <td>089</td>
+      <td>0009</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.689253</td>
+      <td>-122.402194</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.0006</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>Instrumental - Chemiluminescence API Model 265...</td>
+      <td>199</td>
+      <td>California</td>
+      <td>Shasta</td>
+      <td>2024-03-25</td>
+      <td>39820</td>
+    </tr>
+    <tr>
+      <th>60045</th>
+      <td>06</td>
+      <td>089</td>
+      <td>0009</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.689253</td>
+      <td>-122.402194</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.0006</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>Instrumental - Chemiluminescence API Model 265...</td>
+      <td>199</td>
+      <td>California</td>
+      <td>Shasta</td>
+      <td>2024-03-25</td>
+      <td>39820</td>
+    </tr>
+  </tbody>
+</table>
+<p>60046 rows × 29 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="we-can-also-use-the-extent-parameters-for-new-york-state">
+<h4>We can also use the extent parameters for New York State.<a class="headerlink" href="#we-can-also-use-the-extent-parameters-for-new-york-state" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NY_E</span> <span class="o">=</span> <span class="o">-</span><span class="mi">71</span>
+<span class="n">NY_W</span> <span class="o">=</span> <span class="o">-</span><span class="mf">81.0</span>
+<span class="n">NY_N</span> <span class="o">=</span> <span class="mi">46</span>
+<span class="n">NY_S</span> <span class="o">=</span> <span class="mi">40</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">NYS</span> <span class="o">=</span> <span class="n">aqs</span><span class="o">.</span><span class="n">bybox</span><span class="o">.</span><span class="n">sampledata</span><span class="p">(</span><span class="n">parameter</span><span class="o">=</span> <span class="n">O3</span><span class="p">,</span> <span class="n">bdate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> 
+                           <span class="n">edate</span> <span class="o">=</span> <span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="n">month</span><span class="p">,</span> <span class="n">day</span> <span class="o">=</span> <span class="n">day</span><span class="p">),</span> 
+                           <span class="n">minlat</span> <span class="o">=</span> <span class="n">NY_S</span><span class="p">,</span> <span class="n">maxlat</span> <span class="o">=</span> <span class="n">NY_N</span><span class="p">,</span> <span class="n">minlon</span> <span class="o">=</span> <span class="n">NY_W</span><span class="p">,</span> <span class="n">maxlon</span> <span class="o">=</span> <span class="n">NY_E</span><span class="p">)</span>
+<span class="n">NYS</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state_code</th>
+      <th>county_code</th>
+      <th>site_number</th>
+      <th>parameter_code</th>
+      <th>poc</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>datum</th>
+      <th>parameter</th>
+      <th>date_local</th>
+      <th>...</th>
+      <th>detection_limit</th>
+      <th>uncertainty</th>
+      <th>qualifier</th>
+      <th>method_type</th>
+      <th>method</th>
+      <th>method_code</th>
+      <th>state</th>
+      <th>county</th>
+      <th>date_of_last_change</th>
+      <th>cbsa_code</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>42</td>
+      <td>125</td>
+      <td>5001</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.445278</td>
+      <td>-80.420833</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>AV - Power Failure.</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Washington</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>42</td>
+      <td>125</td>
+      <td>5001</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.445278</td>
+      <td>-80.420833</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>AV - Power Failure.</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Washington</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>42</td>
+      <td>125</td>
+      <td>5001</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.445278</td>
+      <td>-80.420833</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>AV - Power Failure.</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Washington</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>42</td>
+      <td>125</td>
+      <td>5001</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.445278</td>
+      <td>-80.420833</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>AV - Power Failure.</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Washington</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>42</td>
+      <td>125</td>
+      <td>5001</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.445278</td>
+      <td>-80.420833</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-19</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>AV - Power Failure.</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Washington</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6137</th>
+      <td>42</td>
+      <td>007</td>
+      <td>0008</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.691857</td>
+      <td>-80.299211</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Beaver</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>6138</th>
+      <td>42</td>
+      <td>007</td>
+      <td>0008</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.691857</td>
+      <td>-80.299211</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Beaver</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>6139</th>
+      <td>42</td>
+      <td>007</td>
+      <td>0008</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.691857</td>
+      <td>-80.299211</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Beaver</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>6140</th>
+      <td>42</td>
+      <td>007</td>
+      <td>0008</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.691857</td>
+      <td>-80.299211</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Beaver</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+    <tr>
+      <th>6141</th>
+      <td>42</td>
+      <td>007</td>
+      <td>0008</td>
+      <td>44201</td>
+      <td>1</td>
+      <td>40.691857</td>
+      <td>-80.299211</td>
+      <td>WGS84</td>
+      <td>Ozone</td>
+      <td>2023-06-20</td>
+      <td>...</td>
+      <td>0.005</td>
+      <td>None</td>
+      <td>None</td>
+      <td>FEM</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
+      <td>087</td>
+      <td>Pennsylvania</td>
+      <td>Beaver</td>
+      <td>2023-09-14</td>
+      <td>38300</td>
+    </tr>
+  </tbody>
+</table>
+<p>6142 rows × 29 columns</p>
+</div></div></div>
+</div>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Success</p>
+<p>We’ve successfully fetched data from the AQS by areal extent for both the CONUS and for NYS!</p>
+</div>
+<div class="admonition alert alert-warning">
+<p class="admonition-title">NOTE</p>
+<p>If you want to only use data for within the state, be sure to filter the new DataFrame to ommit data points from other states that cross into the boundaries of your areal extent.</p>
+</div>
+</section>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>In this notebook, we’ve</p>
+<ul class="simple">
+<li><p>managed to access air pollution data from the EPA’s AQS</p></li>
+<li><p>looked at different ways to fetch the data</p></li>
+<li><p>looked at different types of data available</p></li>
+<li><p>prepared the data for plotting</p></li>
+<li><p>generated time series plots of air pollution data</p></li>
+<li><p><b>(… include plotting over a map, direct user to other cookbooks for ideas on interactive visuals?)</b></p></li>
+</ul>
+<p><b>You are encouraged to explore other variables within the dataset, and to utilize pandas and numpy functions to look at ways to manipulate and analyze these data!</b></p>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Documentation for pyaqsapi: https://usepa.github.io/pyaqsapi/pyaqsapi.html</p>
+<p>More information about the pyaqsapi package (developed by <a class="reference external" href="https://github.com/mccroweyclinton-EPA">Clinton McCrowey, EPA Region 3</a>) can be found on GitHub: https://github.com/USEPA/pyaqsapi</p>
+<p>The EPA’s AQS has general information and documentation here: https://www.epa.gov/aqs</p>
+<p>Details about the specific parameter codes can be found here: https://aqs.epa.gov/aqsweb/documents/codetables/parameters.html</p>
+<p>To access real-time data for air pollution, the <a class="reference external" href="https://docs.airnowapi.org/">AirNow API</a> can be utilized.</p>
+<p>Thanks to Daniel Garver (EPA Region 4) for help locating the AQS API, and for directing the authors of this Cookbook to the appropriate resources.</p>
+<hr class="docutils" />
+<section id="information-about-the-author-adam-deitsch">
+<h3>Information about the author: <a class="reference external" href="https://amdeitsch.github.io/">Adam Deitsch</a><a class="headerlink" href="#information-about-the-author-adam-deitsch" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/example-workflows"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../api-foundations/api-basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">API Basics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="cneos-fireball.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">NASA API: World Map of Fireball Impacts</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aqs-api-workflow">AQS API Workflow</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-data-from-the-aqs">Accessing Data from the AQS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#register-a-new-email-with-aqs-sign-up">Register a new email with <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#data-can-be-pulled-from-the-aqs-in-a-number-of-different-ways">Data can be pulled from the AQS in a number of different ways…</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-look-at-how-the-package-deals-with-states">Let’s look at how the package deals with states…</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-aqs-credentials-function-to-input-your-username-email-address-and-access-key">Use the <code class="docutils literal notranslate"><span class="pre">aqs_credentials()</span></code> function to input your username (email address) and access key.</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-look-at-those-states-now">Let’s look at those states now…</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-also-store-the-parameter-codes-as-variables-to-make-things-more-simple">Let’s also store the parameter codes as variables to make things more simple.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-format-of-the-data">Exploring the format of the data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#preparing-the-data-for-visualization">Preparing the data for visualization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#first-lets-select-only-one-specific-countyalbany">First, let’s select only one specific county–Albany</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-a-time-series-plot">Generating a time series plot</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#now-well-plot-both-data-together">Now we’ll plot both data together.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-take-a-quick-look-at-how-you-can-pull-data-based-on-a-areal-extent-and-then-well-close-out-this-notebook">Let’s take a quick look at how you can pull data based on a areal extent, and then we’ll close out this notebook.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-start-with-the-conus">Let’s start with the CONUS</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#we-can-also-use-the-extent-parameters-for-new-york-state">We can also use the extent parameters for New York State.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-author-adam-deitsch">Information about the author: Adam Deitsch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?urlpath=lab/tree/notebooks/example-workflows/air-quality-system-api.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template/edit/main/notebooks/example-workflows/air-quality-system-api.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template/issues/new?title=Issue%20on%20page%20%2Fnotebooks/example-workflows/air-quality-system-api.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/example-workflows/air-quality-system-api.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 20 June 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 20 June 2024.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
+  <div class="container">
+    <center>
+      Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+      in Pythia Cookbooks is licensed under
+      <a href="https://opensource.org/license/apache-2-0">Apache 2.0</a>. All
+      other non-code content is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons BY 4.0 (CC BY 4.0)</a
+      >.
+    </center>
+    <br /><br />
+    <div class="row">
+      <p class="m-0">
+        <img
+          src="../../_static/footer-logo-nsf.png"
+          style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+        />
+        This material is based upon work supported by the National Science
+        Foundation under Grant Nos. 2026863 and 2026899. Any opinions, findings,
+        and conclusions or recommendations expressed in this material are those
+        of the author(s) and do not necessarily reflect the views of the
+        National Science Foundation.
+      </p>
+    </div>
+  </div>
+</div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>

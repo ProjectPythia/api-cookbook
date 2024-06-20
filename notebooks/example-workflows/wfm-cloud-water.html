@@ -1,0 +1,3625 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Whiteface Mountain Cloud Water Data &#8212; Project Pythia Cookbook Template</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css?v=ba7ce088" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-T52X8HNYE8');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'notebooks/example-workflows/wfm-cloud-water';</script>
+    <link rel="icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="prev" title="Data access via earthaccess library and vizualization with cartopy" href="earthaccess-sla-sss.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="20 June 2024"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class=" navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://projectpythia.org">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-light" alt="Project Pythia Cookbook Template - Home"/>
+    <script>document.write(`<img src="../../_static/pythia_logo-white-rtext.svg" class="logo__image only-dark" alt="Project Pythia Cookbook Template - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class=" navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+      
+        <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+
+  
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+        
+        
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org">Home</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://foundations.projectpythia.org">Foundations</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://cookbooks.projectpythia.org">Cookbooks</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/resource-gallery.html">Resources</a>
+  </li>
+  
+  <li class="nav-item">
+    
+    
+    
+    <a class="nav-link nav-internal" href="https://projectpythia.org/index.html#join-us">Community</a>
+  </li>
+  
+  
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item"><ul class="navbar-icon-links navbar-nav"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/ProjectPythia" title="GitHub" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">GitHub</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://twitter.com/project_pythia" title="Twitter" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fa-brands fa-square-twitter fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">Twitter</span></a>
+        </li>
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://www.youtube.com/channel/UCoZPBqJal5uKpO8ZiwzavCw" title="YouTube" class="nav-link" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><span><i class="fab fa-youtube-square fa-lg" aria-hidden="true"></i></span>
+            <span class="sr-only">YouTube</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../README.html">
+                    API Cookbook
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Preamble</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../how-to-cite.html">How to Cite This Cookbook</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Foundations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../api-foundations/api-basics.html">API Basics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="air-quality-system-api.html">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="cneos-fireball.html">NASA API: World Map of Fireball Impacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Whiteface Mountain Cloud Water Data</a></li>
+
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+        </div>
+
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
+                
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <p><a class="reference internal" href="../../_images/ProjectPythia_Logo_Final-01-Blue.svg"><img alt="Project Pythia Logo" src="../../_images/ProjectPythia_Logo_Final-01-Blue.svg" width="300" /></a></img></p>
+<p><img alt="Atmospheric Sciences Research Center Whiteface Mountain Field Station logo" src="https://whiteface.asrc.albany.edu/images/header_ASRC-WFM_750.png" /></img><p></p>
+<section class="tex2jax_ignore mathjax_ignore" id="whiteface-mountain-cloud-water-data">
+<h1>Whiteface Mountain Cloud Water Data<a class="headerlink" href="#whiteface-mountain-cloud-water-data" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="accessing-cloud-water-data-from-the-asrc">
+<h1>Accessing Cloud Water Data from the <a class="reference external" href="https://whiteface.asrc.albany.edu/">ASRC</a><a class="headerlink" href="#accessing-cloud-water-data-from-the-asrc" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Cloud water data provide an insight into the chemical processing of gasses and particulates in the atmosphere. While this is not technically an API, this notebook will show how to access a niche dataset for cloud water chemistry, collected in-situ at Whiteface Mountain in Wilmington, NY. The sample site serves as a relative background for atmospheric chemistry within the region, as it is a remote, mountain-top observatory.</p>
+<p>This notebook will cover</p>
+<ol class="arabic simple">
+<li><p>Requesting data access</p></li>
+<li><p>Cleaning and sorting through the data</p></li>
+<li><p>Basic cloud water chemistry analysis (Coming Soon)</p></li>
+<li><p>Plotting the data (Coming Soon)</p></li>
+</ol>
+</section>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Concepts</p></th>
+<th class="head"><p>Importance</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/pandas/pandas.html">Introduction to Pandas</a></p></td>
+<td><p>Necessary</p></td>
+<td><p>How to deal with dataframes and datasets</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://foundations.projectpythia.org/core/matplotlib/matplotlib-basics.html">Matplotlib Basics</a></p></td>
+<td><p>Helpful</p></td>
+<td><p>Skills for different plotting styles and techniques</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul class="simple">
+<li><p><strong>Time to learn</strong>: 45 minutes</p></li>
+<li><p><strong>System requirements</strong>:</p>
+<ul>
+<li><p><b>Email Address</b> for Data Access</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<hr class="docutils" />
+<section id="imports">
+<h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Info</p>
+<p>Here we’ll import lots of stuff, but we might not end up using them all…</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">date</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="accessing-the-data">
+<h2>Accessing the Data<a class="headerlink" href="#accessing-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>Currently, the data from the Whiteface Mountain summit are obtained and managed by the <a class="reference external" href="https://github.com/LanceLab-ASRC">Lance Research Laboratory</a>. Available data includes, among others, chemical speciation within cloud water:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Anions</p></th>
+<th class="head"><p>Cations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Sulfate</p></td>
+<td><p>Ammonium</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nitrate</p></td>
+<td><p>Sodium</p></td>
+</tr>
+<tr class="row-even"><td><p>Chloride</p></td>
+<td><p>Calcium</p></td>
+</tr>
+<tr class="row-odd"><td><p>Formate</p></td>
+<td><p>Magnesium</p></td>
+</tr>
+<tr class="row-even"><td><p>Acetate</p></td>
+<td><p>Potassium</p></td>
+</tr>
+<tr class="row-odd"><td><p>Oxalate</p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Some Other Data</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Total Organic Carbon</p></td>
+</tr>
+<tr class="row-odd"><td><p>pH</p></td>
+</tr>
+<tr class="row-even"><td><p>Conductivity</p></td>
+</tr>
+<tr class="row-odd"><td><p>Liquid Water Content</p></td>
+</tr>
+<tr class="row-even"><td><p>Sample Volume</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sample Dump Date/Time</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In order to access the data, we don’t need an API. We just need to fill out a simple <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Form</span></code> at the following website:</p>
+<p>http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm</p>
+<p><a class="reference internal" href="notebooks/example-workflows/notebooks/images/WFM-Data-Form.png"><img alt="WFM Data Form" src="notebooks/example-workflows/notebooks/images/WFM-Data-Form.png" style="width: 250px;" /></a></img></p>
+</div><p>Once you are granted access, you can utilize <b>recent</b> and <b>historical</b> data spanning back to 1994.<br> The data come in <code class="docutils literal notranslate"><span class="pre">*.xlsx</span></code> files, or as multiple <code class="docutils literal notranslate"><span class="pre">*.xlsx</span></code> files in a zip drive, depending on which dataset you collect.</p>
+<p>This notebook uses 2022 Cloud Water Data (current as of June 18th, 2024) as an example.<br> As the data files come with various sheets covering multiple angles of quality control, we will simplify this notebook with a <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> file of the “valid” samples.</p>
+<p>The full data file can be viewed in <code class="docutils literal notranslate"><span class="pre">../files/WFC.2022.Data.R2--6_18_24.xlsx</span></code>.</p>
+</section>
+<hr class="docutils" />
+<section id="reading-the-data">
+<h2>Reading the Data<a class="headerlink" href="#reading-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>We will utilize the Pandas package to handle our reading in our data file. We will also preemptively use the <code class="docutils literal notranslate"><span class="pre">ISO-8859-1</span></code> encoding to ensure symbols like <b>°</b> and <b>μ</b> work.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../files/WFC.2022.Data.R2--6_18_24.csv&#39;</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;ISO-8859-1&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at our dataframe…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atmospheric Sciences Research Center</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+      <th>Unnamed: 5</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>...</th>
+      <th>Unnamed: 49</th>
+      <th>Unnamed: 50</th>
+      <th>Unnamed: 51</th>
+      <th>Unnamed: 52</th>
+      <th>Unnamed: 53</th>
+      <th>Unnamed: 54</th>
+      <th>Unnamed: 55</th>
+      <th>Unnamed: 56</th>
+      <th>Unnamed: 57</th>
+      <th>Unnamed: 58</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>http://atmoschem.asrc.cestm.albany.edu/~cloudw...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Whiteface 2022 VALID DATA</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>LABNO</td>
+      <td>DUMP TIME</td>
+      <td>COLLECTION_HOURS</td>
+      <td>COLL_HR_F</td>
+      <td>POOL_VOL ml</td>
+      <td>LWC g m-3</td>
+      <td>LWC_F</td>
+      <td>TEMP °C</td>
+      <td>WINDDIR_AVG °AZ</td>
+      <td>OCTANT</td>
+      <td>...</td>
+      <td>MP_TEST</td>
+      <td>MISS_MAJ_ION</td>
+      <td>Glyoxalate_ppb</td>
+      <td>Formate_ppb</td>
+      <td>AcetateGlycolate_ppb</td>
+      <td>Lactate_ppb</td>
+      <td>Malonate_ppb</td>
+      <td>Oxalate_ppb</td>
+      <td>Pyruvate_ppb</td>
+      <td>SuccinateMalate_ppb</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>122 rows × 59 columns</p>
+</div></div></div>
+</div>
+<p>As we can see above, the data actually begin on the fifth line.</p>
+<p>Let’s take a closer look and notice that there are only 42 samples in this particular set…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">:</span><span class="mi">50</span><span class="p">,:]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Atmospheric Sciences Research Center</th>
+      <th>Unnamed: 1</th>
+      <th>Unnamed: 2</th>
+      <th>Unnamed: 3</th>
+      <th>Unnamed: 4</th>
+      <th>Unnamed: 5</th>
+      <th>Unnamed: 6</th>
+      <th>Unnamed: 7</th>
+      <th>Unnamed: 8</th>
+      <th>Unnamed: 9</th>
+      <th>...</th>
+      <th>Unnamed: 49</th>
+      <th>Unnamed: 50</th>
+      <th>Unnamed: 51</th>
+      <th>Unnamed: 52</th>
+      <th>Unnamed: 53</th>
+      <th>Unnamed: 54</th>
+      <th>Unnamed: 55</th>
+      <th>Unnamed: 56</th>
+      <th>Unnamed: 57</th>
+      <th>Unnamed: 58</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>4</th>
+      <td>LABNO</td>
+      <td>DUMP TIME</td>
+      <td>COLLECTION_HOURS</td>
+      <td>COLL_HR_F</td>
+      <td>POOL_VOL ml</td>
+      <td>LWC g m-3</td>
+      <td>LWC_F</td>
+      <td>TEMP °C</td>
+      <td>WINDDIR_AVG °AZ</td>
+      <td>OCTANT</td>
+      <td>...</td>
+      <td>MP_TEST</td>
+      <td>MISS_MAJ_ION</td>
+      <td>Glyoxalate_ppb</td>
+      <td>Formate_ppb</td>
+      <td>AcetateGlycolate_ppb</td>
+      <td>Lactate_ppb</td>
+      <td>Malonate_ppb</td>
+      <td>Oxalate_ppb</td>
+      <td>Pyruvate_ppb</td>
+      <td>SuccinateMalate_ppb</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2215304</td>
+      <td>6/2/2022 6:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>0.703</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>217</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>93</td>
+      <td>325</td>
+      <td>221</td>
+      <td>19</td>
+      <td>M</td>
+      <td>48</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2215401</td>
+      <td>6/3/2022 18:00</td>
+      <td>6.3</td>
+      <td>NaN</td>
+      <td>1183</td>
+      <td>0.363</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>59</td>
+      <td>NE</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91</td>
+      <td>250</td>
+      <td>198</td>
+      <td>19</td>
+      <td>M</td>
+      <td>127</td>
+      <td>22</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2215901</td>
+      <td>6/8/2022 18:00</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>425</td>
+      <td>0.477</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>282</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>90</td>
+      <td>98</td>
+      <td>72</td>
+      <td>21</td>
+      <td>M</td>
+      <td>75</td>
+      <td>22</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2216003</td>
+      <td>6/9/2022 18:00</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>1866</td>
+      <td>0.473</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>177</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>133</td>
+      <td>83</td>
+      <td>33</td>
+      <td>M</td>
+      <td>35</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2216104</td>
+      <td>6/10/2022 6:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>4407</td>
+      <td>0.536</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>283</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>103</td>
+      <td>157</td>
+      <td>39</td>
+      <td>19</td>
+      <td>M</td>
+      <td>43</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2216101</td>
+      <td>6/10/2022 18:00</td>
+      <td>11.0</td>
+      <td>NaN</td>
+      <td>2048</td>
+      <td>0.447</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>236</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>121</td>
+      <td>101</td>
+      <td>20</td>
+      <td>26</td>
+      <td>M</td>
+      <td>109</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2216902</td>
+      <td>6/18/2022 6:00</td>
+      <td>9.1</td>
+      <td>NaN</td>
+      <td>2634</td>
+      <td>0.511</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>265</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2219404</td>
+      <td>7/13/2022 6:00</td>
+      <td>10.0</td>
+      <td>NaN</td>
+      <td>3852</td>
+      <td>0.548</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>249</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>448</td>
+      <td>160</td>
+      <td>33</td>
+      <td>M</td>
+      <td>63</td>
+      <td>25</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2219501</td>
+      <td>7/13/2022 18:00</td>
+      <td>2.4</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>0.463</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>274</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>65</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2219502</td>
+      <td>7/14/2022 18:00</td>
+      <td>3.1</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>0.205</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>272</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>61</td>
+      <td>16</td>
+      <td>23</td>
+      <td>M</td>
+      <td>46</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2220002</td>
+      <td>7/19/2022 6:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>5733</td>
+      <td>0.740</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>232</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>48</td>
+      <td>37</td>
+      <td>44</td>
+      <td>M</td>
+      <td>25</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2220003</td>
+      <td>7/19/2022 18:00</td>
+      <td>7.8</td>
+      <td>NaN</td>
+      <td>1199</td>
+      <td>0.482</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>233</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>121</td>
+      <td>46</td>
+      <td>0</td>
+      <td>M</td>
+      <td>372</td>
+      <td>30</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2220101</td>
+      <td>7/20/2022 18:00</td>
+      <td>2.3</td>
+      <td>NaN</td>
+      <td>420</td>
+      <td>0.519</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>242</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>687</td>
+      <td>869</td>
+      <td>101</td>
+      <td>M</td>
+      <td>205</td>
+      <td>42</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2220601</td>
+      <td>7/25/2022 18:00</td>
+      <td>5.3</td>
+      <td>NaN</td>
+      <td>522</td>
+      <td>0.666</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>215</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>204</td>
+      <td>89</td>
+      <td>24</td>
+      <td>M</td>
+      <td>57</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2220702</td>
+      <td>7/26/2022 6:00</td>
+      <td>8.9</td>
+      <td>NaN</td>
+      <td>652</td>
+      <td>0.463</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>234</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>216</td>
+      <td>33</td>
+      <td>24</td>
+      <td>M</td>
+      <td>38</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2220701</td>
+      <td>7/26/2022 18:00</td>
+      <td>4.6</td>
+      <td>NaN</td>
+      <td>269</td>
+      <td>0.351</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>228</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>46</td>
+      <td>20</td>
+      <td>0</td>
+      <td>M</td>
+      <td>0</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2221103</td>
+      <td>7/30/2022 18:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>3590</td>
+      <td>0.569</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>241</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>103</td>
+      <td>49</td>
+      <td>122</td>
+      <td>M</td>
+      <td>33</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2221204</td>
+      <td>7/31/2022 6:00</td>
+      <td>11.9</td>
+      <td>NaN</td>
+      <td>3913</td>
+      <td>0.438</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>242</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>59</td>
+      <td>37</td>
+      <td>0</td>
+      <td>M</td>
+      <td>55</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2221504</td>
+      <td>8/3/2022 6:00</td>
+      <td>5.6</td>
+      <td>NaN</td>
+      <td>310</td>
+      <td>0.493</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>274</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>204</td>
+      <td>81</td>
+      <td>171</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2222102</td>
+      <td>8/9/2022 6:00</td>
+      <td>11.9</td>
+      <td>NaN</td>
+      <td>466</td>
+      <td>0.816</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>217</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>76</td>
+      <td>25</td>
+      <td>76</td>
+      <td>M</td>
+      <td>36</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2222204</td>
+      <td>8/10/2022 6:00</td>
+      <td>10.6</td>
+      <td>NaN</td>
+      <td>139</td>
+      <td>0.259</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>244</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>190</td>
+      <td>71</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2222302</td>
+      <td>8/11/2022 6:00</td>
+      <td>5.9</td>
+      <td>NaN</td>
+      <td>585</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>227</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>64</td>
+      <td>24</td>
+      <td>60</td>
+      <td>M</td>
+      <td>81</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2223003</td>
+      <td>8/18/2022 18:00</td>
+      <td>6.4</td>
+      <td>NaN</td>
+      <td>2589</td>
+      <td>0.556</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>273</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>90</td>
+      <td>188</td>
+      <td>138</td>
+      <td>158</td>
+      <td>M</td>
+      <td>103</td>
+      <td>27</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2223502</td>
+      <td>8/23/2022 6:00</td>
+      <td>6.4</td>
+      <td>NaN</td>
+      <td>327</td>
+      <td>0.224</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>129</td>
+      <td>SE</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2223503</td>
+      <td>8/23/2022 18:00</td>
+      <td>3.2</td>
+      <td>NaN</td>
+      <td>150</td>
+      <td>0.467</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>173</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2223604</td>
+      <td>8/24/2022 6:00</td>
+      <td>9.1</td>
+      <td>NaN</td>
+      <td>95</td>
+      <td>0.568</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>268</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2223601</td>
+      <td>8/24/2022 18:00</td>
+      <td>6.5</td>
+      <td>NaN</td>
+      <td>42</td>
+      <td>0.520</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>270</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2223702</td>
+      <td>8/25/2022 6:00</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>175</td>
+      <td>0.269</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>239</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>106</td>
+      <td>227</td>
+      <td>164</td>
+      <td>236</td>
+      <td>M</td>
+      <td>128</td>
+      <td>28</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2224101</td>
+      <td>8/29/2022 18:00</td>
+      <td>5.3</td>
+      <td>NaN</td>
+      <td>153</td>
+      <td>0.770</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>210</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>129</td>
+      <td>81</td>
+      <td>141</td>
+      <td>116</td>
+      <td>M</td>
+      <td>133</td>
+      <td>26</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2224301</td>
+      <td>8/31/2022 18:00</td>
+      <td>6.3</td>
+      <td>NaN</td>
+      <td>114</td>
+      <td>0.441</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>222</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>56</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>2224403</td>
+      <td>9/1/2022 18:00</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>163</td>
+      <td>0.448</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>238</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>107</td>
+      <td>45</td>
+      <td>86</td>
+      <td>17</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>2224704</td>
+      <td>9/4/2022 6:00</td>
+      <td>9.8</td>
+      <td>NaN</td>
+      <td>488</td>
+      <td>0.506</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>225</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>49</td>
+      <td>19</td>
+      <td>0</td>
+      <td>M</td>
+      <td>39</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>2224806</td>
+      <td>9/5/2022 6:00</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>478</td>
+      <td>0.545</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>211</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91</td>
+      <td>267</td>
+      <td>117</td>
+      <td>96</td>
+      <td>M</td>
+      <td>90</td>
+      <td>31</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2224807</td>
+      <td>9/5/2022 18:00</td>
+      <td>9.5</td>
+      <td>NaN</td>
+      <td>488</td>
+      <td>0.687</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>174</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>55</td>
+      <td>59</td>
+      <td>0</td>
+      <td>M</td>
+      <td>54</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>2225501</td>
+      <td>9/12/2022 18:00</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>244</td>
+      <td>0.119</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>77</td>
+      <td>E</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>50</td>
+      <td>17</td>
+      <td>0</td>
+      <td>M</td>
+      <td>70</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>2225603</td>
+      <td>9/13/2022 18:00</td>
+      <td>9.9</td>
+      <td>NaN</td>
+      <td>649</td>
+      <td>0.479</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>171</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>98</td>
+      <td>50</td>
+      <td>35</td>
+      <td>57</td>
+      <td>M</td>
+      <td>48</td>
+      <td>22</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>2225801</td>
+      <td>9/15/2022 18:00</td>
+      <td>5.4</td>
+      <td>NaN</td>
+      <td>3954</td>
+      <td>0.484</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>286</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>44</td>
+      <td>111</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>33</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2225901</td>
+      <td>9/16/2022 18:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>198</td>
+      <td>117</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>2226002</td>
+      <td>9/17/2022 6:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>225</td>
+      <td>136</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>2226302</td>
+      <td>9/20/2022 6:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>52</td>
+      <td>27</td>
+      <td>0</td>
+      <td>M</td>
+      <td>M</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>2226503</td>
+      <td>9/22/2022 8:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>0</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>2226901</td>
+      <td>9/26/2022 18:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>0</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2227002</td>
+      <td>9/27/2022 6:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>46 rows × 59 columns</p>
+</div></div></div>
+</div>
+<p>In the next cell, we will use <code class="docutils literal notranslate"><span class="pre">Row</span> <span class="pre">4</span></code> for our column headings, and slice the dataframe so it only shows our data. Cleaning up the data is helpful for preemptively halting any errors resulting from NaNs and empty cells.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span> <span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">48</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>4</th>
+      <th>LABNO</th>
+      <th>DUMP TIME</th>
+      <th>COLLECTION_HOURS</th>
+      <th>COLL_HR_F</th>
+      <th>POOL_VOL ml</th>
+      <th>LWC g m-3</th>
+      <th>LWC_F</th>
+      <th>TEMP °C</th>
+      <th>WINDDIR_AVG °AZ</th>
+      <th>OCTANT</th>
+      <th>...</th>
+      <th>MP_TEST</th>
+      <th>MISS_MAJ_ION</th>
+      <th>Glyoxalate_ppb</th>
+      <th>Formate_ppb</th>
+      <th>AcetateGlycolate_ppb</th>
+      <th>Lactate_ppb</th>
+      <th>Malonate_ppb</th>
+      <th>Oxalate_ppb</th>
+      <th>Pyruvate_ppb</th>
+      <th>SuccinateMalate_ppb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>2215304</td>
+      <td>6/2/2022 6:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>2312</td>
+      <td>0.703</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>217</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>93</td>
+      <td>325</td>
+      <td>221</td>
+      <td>19</td>
+      <td>M</td>
+      <td>48</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2215401</td>
+      <td>6/3/2022 18:00</td>
+      <td>6.3</td>
+      <td>NaN</td>
+      <td>1183</td>
+      <td>0.363</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>59</td>
+      <td>NE</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91</td>
+      <td>250</td>
+      <td>198</td>
+      <td>19</td>
+      <td>M</td>
+      <td>127</td>
+      <td>22</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>2215901</td>
+      <td>6/8/2022 18:00</td>
+      <td>7.2</td>
+      <td>NaN</td>
+      <td>425</td>
+      <td>0.477</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>282</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>90</td>
+      <td>98</td>
+      <td>72</td>
+      <td>21</td>
+      <td>M</td>
+      <td>75</td>
+      <td>22</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2216003</td>
+      <td>6/9/2022 18:00</td>
+      <td>8.0</td>
+      <td>NaN</td>
+      <td>1866</td>
+      <td>0.473</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>177</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>133</td>
+      <td>83</td>
+      <td>33</td>
+      <td>M</td>
+      <td>35</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2216104</td>
+      <td>6/10/2022 6:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>4407</td>
+      <td>0.536</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>283</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>103</td>
+      <td>157</td>
+      <td>39</td>
+      <td>19</td>
+      <td>M</td>
+      <td>43</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2216101</td>
+      <td>6/10/2022 18:00</td>
+      <td>11.0</td>
+      <td>NaN</td>
+      <td>2048</td>
+      <td>0.447</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>236</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>121</td>
+      <td>101</td>
+      <td>20</td>
+      <td>26</td>
+      <td>M</td>
+      <td>109</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2216902</td>
+      <td>6/18/2022 6:00</td>
+      <td>9.1</td>
+      <td>NaN</td>
+      <td>2634</td>
+      <td>0.511</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>265</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2219404</td>
+      <td>7/13/2022 6:00</td>
+      <td>10.0</td>
+      <td>NaN</td>
+      <td>3852</td>
+      <td>0.548</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>249</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>448</td>
+      <td>160</td>
+      <td>33</td>
+      <td>M</td>
+      <td>63</td>
+      <td>25</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2219501</td>
+      <td>7/13/2022 18:00</td>
+      <td>2.4</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>0.463</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>274</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>65</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2219502</td>
+      <td>7/14/2022 18:00</td>
+      <td>3.1</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>0.205</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>272</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>61</td>
+      <td>16</td>
+      <td>23</td>
+      <td>M</td>
+      <td>46</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2220002</td>
+      <td>7/19/2022 6:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>5733</td>
+      <td>0.740</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>232</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>48</td>
+      <td>37</td>
+      <td>44</td>
+      <td>M</td>
+      <td>25</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>2220003</td>
+      <td>7/19/2022 18:00</td>
+      <td>7.8</td>
+      <td>NaN</td>
+      <td>1199</td>
+      <td>0.482</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>233</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>121</td>
+      <td>46</td>
+      <td>0</td>
+      <td>M</td>
+      <td>372</td>
+      <td>30</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2220101</td>
+      <td>7/20/2022 18:00</td>
+      <td>2.3</td>
+      <td>NaN</td>
+      <td>420</td>
+      <td>0.519</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>242</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>687</td>
+      <td>869</td>
+      <td>101</td>
+      <td>M</td>
+      <td>205</td>
+      <td>42</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2220601</td>
+      <td>7/25/2022 18:00</td>
+      <td>5.3</td>
+      <td>NaN</td>
+      <td>522</td>
+      <td>0.666</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>215</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>204</td>
+      <td>89</td>
+      <td>24</td>
+      <td>M</td>
+      <td>57</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2220702</td>
+      <td>7/26/2022 6:00</td>
+      <td>8.9</td>
+      <td>NaN</td>
+      <td>652</td>
+      <td>0.463</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>234</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>216</td>
+      <td>33</td>
+      <td>24</td>
+      <td>M</td>
+      <td>38</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>2220701</td>
+      <td>7/26/2022 18:00</td>
+      <td>4.6</td>
+      <td>NaN</td>
+      <td>269</td>
+      <td>0.351</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>228</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>46</td>
+      <td>20</td>
+      <td>0</td>
+      <td>M</td>
+      <td>0</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>2221103</td>
+      <td>7/30/2022 18:00</td>
+      <td>12.0</td>
+      <td>NaN</td>
+      <td>3590</td>
+      <td>0.569</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>241</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>103</td>
+      <td>49</td>
+      <td>122</td>
+      <td>M</td>
+      <td>33</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>2221204</td>
+      <td>7/31/2022 6:00</td>
+      <td>11.9</td>
+      <td>NaN</td>
+      <td>3913</td>
+      <td>0.438</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>242</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>59</td>
+      <td>37</td>
+      <td>0</td>
+      <td>M</td>
+      <td>55</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>2221504</td>
+      <td>8/3/2022 6:00</td>
+      <td>5.6</td>
+      <td>NaN</td>
+      <td>310</td>
+      <td>0.493</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>274</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>204</td>
+      <td>81</td>
+      <td>171</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>2222102</td>
+      <td>8/9/2022 6:00</td>
+      <td>11.9</td>
+      <td>NaN</td>
+      <td>466</td>
+      <td>0.816</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>217</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>76</td>
+      <td>25</td>
+      <td>76</td>
+      <td>M</td>
+      <td>36</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>2222204</td>
+      <td>8/10/2022 6:00</td>
+      <td>10.6</td>
+      <td>NaN</td>
+      <td>139</td>
+      <td>0.259</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>244</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>190</td>
+      <td>71</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>2222302</td>
+      <td>8/11/2022 6:00</td>
+      <td>5.9</td>
+      <td>NaN</td>
+      <td>585</td>
+      <td>0.30</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>227</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>64</td>
+      <td>24</td>
+      <td>60</td>
+      <td>M</td>
+      <td>81</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>2223003</td>
+      <td>8/18/2022 18:00</td>
+      <td>6.4</td>
+      <td>NaN</td>
+      <td>2589</td>
+      <td>0.556</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>273</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>90</td>
+      <td>188</td>
+      <td>138</td>
+      <td>158</td>
+      <td>M</td>
+      <td>103</td>
+      <td>27</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>2223502</td>
+      <td>8/23/2022 6:00</td>
+      <td>6.4</td>
+      <td>NaN</td>
+      <td>327</td>
+      <td>0.224</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>129</td>
+      <td>SE</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>2223503</td>
+      <td>8/23/2022 18:00</td>
+      <td>3.2</td>
+      <td>NaN</td>
+      <td>150</td>
+      <td>0.467</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>173</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>2223604</td>
+      <td>8/24/2022 6:00</td>
+      <td>9.1</td>
+      <td>NaN</td>
+      <td>95</td>
+      <td>0.568</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>268</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>2223601</td>
+      <td>8/24/2022 18:00</td>
+      <td>6.5</td>
+      <td>NaN</td>
+      <td>42</td>
+      <td>0.520</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>270</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>2223702</td>
+      <td>8/25/2022 6:00</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>175</td>
+      <td>0.269</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>239</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>106</td>
+      <td>227</td>
+      <td>164</td>
+      <td>236</td>
+      <td>M</td>
+      <td>128</td>
+      <td>28</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>2224101</td>
+      <td>8/29/2022 18:00</td>
+      <td>5.3</td>
+      <td>NaN</td>
+      <td>153</td>
+      <td>0.770</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>210</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>129</td>
+      <td>81</td>
+      <td>141</td>
+      <td>116</td>
+      <td>M</td>
+      <td>133</td>
+      <td>26</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>2224301</td>
+      <td>8/31/2022 18:00</td>
+      <td>6.3</td>
+      <td>NaN</td>
+      <td>114</td>
+      <td>0.441</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>222</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>56</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>2224403</td>
+      <td>9/1/2022 18:00</td>
+      <td>6.0</td>
+      <td>NaN</td>
+      <td>163</td>
+      <td>0.448</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>238</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>107</td>
+      <td>45</td>
+      <td>86</td>
+      <td>17</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>24</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>2224704</td>
+      <td>9/4/2022 6:00</td>
+      <td>9.8</td>
+      <td>NaN</td>
+      <td>488</td>
+      <td>0.506</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>225</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>49</td>
+      <td>19</td>
+      <td>0</td>
+      <td>M</td>
+      <td>39</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>2224806</td>
+      <td>9/5/2022 6:00</td>
+      <td>7.1</td>
+      <td>NaN</td>
+      <td>478</td>
+      <td>0.545</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>211</td>
+      <td>SW</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>91</td>
+      <td>267</td>
+      <td>117</td>
+      <td>96</td>
+      <td>M</td>
+      <td>90</td>
+      <td>31</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>2224807</td>
+      <td>9/5/2022 18:00</td>
+      <td>9.5</td>
+      <td>NaN</td>
+      <td>488</td>
+      <td>0.687</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>174</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>55</td>
+      <td>59</td>
+      <td>0</td>
+      <td>M</td>
+      <td>54</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>2225501</td>
+      <td>9/12/2022 18:00</td>
+      <td>1.5</td>
+      <td>NaN</td>
+      <td>244</td>
+      <td>0.119</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>77</td>
+      <td>E</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>50</td>
+      <td>17</td>
+      <td>0</td>
+      <td>M</td>
+      <td>70</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>2225603</td>
+      <td>9/13/2022 18:00</td>
+      <td>9.9</td>
+      <td>NaN</td>
+      <td>649</td>
+      <td>0.479</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>171</td>
+      <td>S</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>98</td>
+      <td>50</td>
+      <td>35</td>
+      <td>57</td>
+      <td>M</td>
+      <td>48</td>
+      <td>22</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>2225801</td>
+      <td>9/15/2022 18:00</td>
+      <td>5.4</td>
+      <td>NaN</td>
+      <td>3954</td>
+      <td>0.484</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>286</td>
+      <td>W</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>44</td>
+      <td>111</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>33</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>2225901</td>
+      <td>9/16/2022 18:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>198</td>
+      <td>117</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>2226002</td>
+      <td>9/17/2022 6:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>225</td>
+      <td>136</td>
+      <td>0</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>2226302</td>
+      <td>9/20/2022 6:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>0</td>
+      <td>52</td>
+      <td>27</td>
+      <td>0</td>
+      <td>M</td>
+      <td>M</td>
+      <td>0</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>2226503</td>
+      <td>9/22/2022 8:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>0</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>2226901</td>
+      <td>9/26/2022 18:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>0</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>2227002</td>
+      <td>9/27/2022 6:00</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>M</td>
+      <td>BDL</td>
+      <td>M</td>
+      <td>M</td>
+    </tr>
+  </tbody>
+</table>
+<p>43 rows × 59 columns</p>
+</div></div></div>
+</div>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Some brief details about the data format…</p>
+<br>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">LABNO</span></code> values represent the <b>Julian date</b>, where the first two digits are <b>year</b>, and the next three are the <b>day</b>. The remaining two digits refer to internal identification regarding the collection bottles for same-day samples.
+<br><br>
+The cloud water at Whiteface Mountain is collected in bulk 12-hour samples, so the time the accumulated sample was “dumped” into a storage container is in the <code class="docutils literal notranslate"><span class="pre">DUMP</span> <span class="pre">TIME</span></code> column, and the duration of <b>time</b> in that 12-hour period where the summit was <b>in-cloud</b> is show in in the <code class="docutils literal notranslate"><span class="pre">COLLECTION_HOURS</span></code> column.</p>
+</div>
+<p>Let’s look at all the columns that have data in them below…</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>LABNO
+DUMP TIME
+COLLECTION_HOURS
+POOL_VOL ml
+LWC g m-3
+TEMP °C
+WINDDIR_AVG °AZ
+OCTANT
+AVG_S_WSP m s-1
+LABPH
+SPCOND µS cm-1
+HION µeq L-1
+CA mg L-1
+CA µeq L-1
+MG mg L-1
+MG µeq L-1
+NA mg L-1
+NA µeq L-1
+K mg L-1
+K µeq L-1
+NH4 mg L-1
+NH4 µeq L-1
+SO4 mg L-1
+SO4 µeq L-1
+NO3 mg L-1
+NO3 µeq L-1
+CL mg L-1
+CL µeq L-1
+TOC µmols C L-1
+TN_F
+COMMENT
+CATION_ANION_RATIO
+SUM_CATIONS µeq L-1
+SUM_ANIONS µeq L-1
+RPD
+Glyoxalate_ppb
+Formate_ppb
+AcetateGlycolate_ppb
+Lactate_ppb
+Malonate_ppb
+Oxalate_ppb
+Pyruvate_ppb
+SuccinateMalate_ppb
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now that we have our data in a manageable format, we can begin any analysis or visualizations we are interested in.</p>
+</section>
+<hr class="docutils" />
+<section id="analyzing-the-data">
+<h2>Analyzing the Data<a class="headerlink" href="#analyzing-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">Coming Soon!</p>
+<p>This section is still under development.</p>
+</div>
+</section>
+<section id="plotting-the-data">
+<h2>Plotting the Data<a class="headerlink" href="#plotting-the-data" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">Coming Soon!</p>
+<p>This section is still under development.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>In this notebook, we’ve covered how to access cloud water chemistry data from the <a class="reference internal" href="#&#64;LanceLab-ASRC"><span class="xref myst">Lance Research Laboratory</span></a> at the University at Albany’s Atmospheric Sciences Research Center. We’ve looked at the data format, and ways to process and analyze the data. This is a niche dataset, updated regularly as cloud water is collected, processed, and analyzed each summer.</p>
+</section>
+<section id="resources-and-references">
+<h2>Resources and references<a class="headerlink" href="#resources-and-references" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<p>More information about the Whiteface Mountain Field Station: https://whiteface.asrc.albany.edu/</p>
+<p>More information about the <a class="reference internal" href="#&#64;LanceLab-ASRC"><span class="xref myst">Lance Research Laboratory</span></a>: https://research.asrc.albany.edu/facstaff/lance/index.html</p>
+<p>More information about the cloud water chemistry at Whiteface Mountain: https://acp.copernicus.org/articles/23/1619/2023/</p>
+<hr class="docutils" />
+<section id="information-about-the-author-adam-deitsch">
+<h3>Information about the author: <a class="reference external" href="https://amdeitsch.github.io/">Adam Deitsch</a><a class="headerlink" href="#information-about-the-author-adam-deitsch" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./notebooks/example-workflows"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="earthaccess-sla-sss.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Data access via earthaccess library and vizualization with cartopy</p>
+      </div>
+    </a>
+</div>
+                  </footer>
+                
+              </div>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Whiteface Mountain Cloud Water Data</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-cloud-water-data-from-the-asrc">Accessing Cloud Water Data from the ASRC</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-data">Accessing the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-the-data">Reading the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-data">Analyzing the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data">Plotting the Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-author-adam-deitsch">Information about the author: Adam Deitsch</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?urlpath=lab/tree/notebooks/example-workflows/wfm-cloud-water.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch on Binder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img alt="Binder logo" src="../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template/edit/main/notebooks/example-workflows/wfm-cloud-water.ipynb" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ProjectPythia/cookbook-template/issues/new?title=Issue%20on%20page%20%2Fnotebooks/example-workflows/wfm-cloud-water.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/notebooks/example-workflows/wfm-cloud-water.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+            </div>
+
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the <a href="https://projectpythia.org/">Project Pythia</a> Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 20 June 2024.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item">
+  <div class="container-fluid footer-logos">
+    <div class="container-xl">
+      <div class="row d-flex flex-wrap align-items-center">
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="NCAR" src="../../_images/NSF-NCAR_Lockup-UCAR-Dark_102523.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="Unidata" src="../../_images/Unidata_logo_horizontal_1200x300.svg" style="width: 100%">
+        </div>
+        <div class="d-flex col-lg-3 col-md-4 col-sm-6 p-2 mx-auto">
+          <img alt="UAlbany" src="../../_images/UAlbany-A2-logo-purple-gold.svg" style="width: 100%">
+        </div>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2024.
+        
+          By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
+        
+          Last updated on 20 June 2024.
+        </p>
+      </div>
+    </div>
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
+  <div class="container">
+    <center>
+      Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+      in Pythia Cookbooks is licensed under
+      <a href="https://opensource.org/license/apache-2-0">Apache 2.0</a>. All
+      other non-code content is licensed under
+      <a href="https://creativecommons.org/licenses/by/4.0/">
+        Creative Commons BY 4.0 (CC BY 4.0)</a
+      >.
+    </center>
+    <br /><br />
+    <div class="row">
+      <p class="m-0">
+        <img
+          src="../../_static/footer-logo-nsf.png"
+          style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+        />
+        This material is based upon work supported by the National Science
+        Foundation under Grant Nos. 2026863 and 2026899. Any opinions, findings,
+        and conclusions or recommendations expressed in this material are those
+        of the author(s) and do not necessarily reflect the views of the
+        National Science Foundation.
+      </p>
+    </div>
+  </div>
+</div></div>
+      
+      </div>
+    </div>
+  
+
+  </footer>
+  </body>
+</html>

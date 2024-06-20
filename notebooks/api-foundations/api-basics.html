@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=87e54e7c" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=d0efeab3" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -53,7 +53,7 @@
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script src="../../_static/design-tabs.js?v=f930bc37"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-T52X8HNYE8"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -75,11 +75,11 @@
     <link rel="icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="NASA API: World Map of Fireball Impacts" href="../example-workflows/cneos-fireball.html" />
+    <link rel="next" title="Visualizing Data with EPA’s Air Quality System (AQS) API" href="../example-workflows/air-quality-system-api.html" />
     <link rel="prev" title="How to Cite This Cookbook" href="../how-to-cite.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
-    <meta name="docbuild:last-update" content="14 June 2024"/>
+    <meta name="docbuild:last-update" content="20 June 2024"/>
   </head>
   
   
@@ -372,7 +372,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/air-quality-system-api.html">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="../example-workflows/cneos-fireball.html">NASA API: World Map of Fireball Impacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../example-workflows/wfm-cloud-water.html">Whiteface Mountain Cloud Water Data</a></li>
+
 </ul>
 
     </div>
@@ -402,9 +407,10 @@
 <div id="searchbox"></div>
                   <article class="bd-article">
                     
-  <section class="tex2jax_ignore mathjax_ignore" id="api-basics">
+  <p><a class="reference internal" href="../../_images/ProjectPythia_Logo_Final-01-Blue.svg"><img alt="Project Pythia Logo" src="../../_images/ProjectPythia_Logo_Final-01-Blue.svg" width="300" /></a></img> <img alt="Computer code displayed on dual monitors (October 15, 2019)" src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /></img>
+Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Fotis Fotopoulos</a> on <a href="https://unsplash.com/photos/black-computer-keyboard-DuHKoV44prg?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="api-basics">
 <h1>API Basics<a class="headerlink" href="#api-basics" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
-<p>Next, title your notebook appropriately with a top-level Markdown header, <code class="docutils literal notranslate"><span class="pre">#</span></code>. Do not use this level header anywhere else in the notebook. Our book build process will use this title in the navbar, table of contents, etc. Keep it short, keep it descriptive. Follow this with a <code class="docutils literal notranslate"><span class="pre">---</span></code> cell to visually distinguish the transition to the prerequisites section.</p>
 <hr class="docutils" />
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -443,14 +449,14 @@
 <hr class="docutils" />
 <section id="motivation">
 <h2>Motivation<a class="headerlink" href="#motivation" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>There are many ways to gather data. Science and research entities like NASA are constantly producing and collecting data. As a result, attempting to collect and display live data can be difficult since new data is always being added. An API is a method to query a data source for the most current data or retrieve data from a remote source.</p>
+<p>There are many ways to gather data. Science and research entities like NASA are constantly producing and collecting data. As a result, attempting to collect and display live data can be difficult since new data is always being added. An API is a method to query a data source for the most current data or retrieve data from a remote source. This notebook will cover the basics regarding API usage to improve ease of access to publicly available data.</p>
 </section>
 <hr class="docutils" />
 <section id="api-terminology">
-<h2>Api Terminology<a class="headerlink" href="#api-terminology" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<h2>API Terminology<a class="headerlink" href="#api-terminology" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <ul class="simple">
 <li><p>API: Application Programming Interface which dictacts how code can communicate and access or update remote data through methods</p></li>
-<li><p>Request: Code send <code class="docutils literal notranslate"><span class="pre">requests</span></code> to an API to either retrieve or update data</p></li>
+<li><p>Request: Code sends <code class="docutils literal notranslate"><span class="pre">requests</span></code> to an API to either retrieve or update data</p></li>
 <li><p>GET: A <code class="docutils literal notranslate"><span class="pre">GET</span></code> request retrieves data</p></li>
 <li><p>SET: A <code class="docutils literal notranslate"><span class="pre">SET</span></code> request updates data</p></li>
 </ul>
@@ -464,6 +470,7 @@
 </ul>
 </section>
 </section>
+<hr class="docutils" />
 <section id="imports">
 <h2>Imports<a class="headerlink" href="#imports" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <div class="cell docutils container">
@@ -476,7 +483,7 @@
 </div>
 <section id="requests">
 <h3>Requests<a class="headerlink" href="#requests" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>The <a class="reference external" href="https://requests.readthedocs.io/en/latest/">requests Python package</a> is a library that manages the requests made in Python</p>
+<p>The <a class="reference external" href="https://requests.readthedocs.io/en/latest/">Requests Python package</a> is a library that manages the requests made in Python</p>
 <p>A request returns machine-readable data in a JSON. Among the data, requests returns:</p>
 <ul class="simple">
 <li><p>request.status_code: status code of the request (200, 400, etc…)</p></li>
@@ -485,10 +492,11 @@
 </ul>
 </section>
 </section>
+<hr class="docutils" />
 <section id="example-weather-api">
 <h2>Example: Weather API<a class="headerlink" href="#example-weather-api" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>The Nation Weather Serivce manage a API for weather in the United States. The API is hosted at <code class="docutils literal notranslate"><span class="pre">https://api.weather.gov/</span></code></p>
-<p>The first step when working with an API should be to check that the API is fuctioning by querying a general request without any additional parameters</p>
+<p>The <a class="reference internal" href="#&#64;weather-gov"><span class="xref myst">National Weather Serivce</span></a> manages an <a class="reference external" href="https://github.com/weather-gov/api">API</a> for weather in the United States. The API is hosted at <code class="docutils literal notranslate"><span class="pre">https://api.weather.gov/</span></code></p>
+<p>The first step when working with an API should be to check that the API is fuctioning by querying a general request without any additional parameters.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">weather_request</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;https://api.weather.gov/&quot;</span><span class="p">)</span>
@@ -502,8 +510,8 @@
 </div>
 </div>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">200</span></code> status code represents that the base API is working as expected and a query request returns no errors. However, without any additional parameters, all the data that the request returns is just the status code</p>
-<div class="cell docutils container">
+<p>A <code class="docutils literal notranslate"><span class="pre">200</span></code> status code represents that the base API is working as expected and a query request returns no errors. However, without any additional parameters, all the data that the request returns is just the status code.</p>
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All Data</span>
 <span class="n">weather_request</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -521,7 +529,7 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">api</span><span class="o">.</span><span class="n">weather</span><span class="o">.</span><span class="n">gov</span><span class="o">/</span><span class="n">points</span><span class="o">/&lt;</span><span class="n">latitude</span><span class="o">&gt;</span><span class="p">,</span><span class="o">&lt;</span><span class="n">longitude</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>For more information about <a class="reference external" href="https://www.weather.gov/documentation/services-web-api">NWS Weather API</a></p>
+<p>More information about the documentation can be found at <a class="reference external" href="https://www.weather.gov/documentation/services-web-api">NWS Weather API</a>.</p>
 <p>For example, the location of the <a class="reference external" href="https://en.wikipedia.org/wiki/Mesa_Laboratory">NCAR Mesa Lab</a> is <code class="docutils literal notranslate"><span class="pre">39.97777</span></code> degrees latitude and <code class="docutils literal notranslate"><span class="pre">-105.274966</span></code> degrees longitude</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -543,7 +551,10 @@
 </div>
 </div>
 </div>
-<p>With a valid request and paramters, this request will return data as well</p>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Success</p>
+<p>With a valid request and paramters, this request will return data as well!</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncar_weather</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -598,7 +609,7 @@
 </div>
 </div>
 </div>
-<p>With the latitude and longtiude of a position, the API will return information about the closest NWS forecast office that can be further queried to return the weather. A JSON acts like a Python dictionary and to return the values stored, the json() can be queried for a specific key</p>
+<p>With the latitude and longtiude of a position, the API will return information about the closest NWS forecast office that can be further queried to return the weather. A JSON acts like a Python dictionary; to return the values stored, <code class="docutils literal notranslate"><span class="pre">json()</span></code> can be queried for a specific key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># JSON as Dictionary</span>
@@ -671,7 +682,7 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 <p>There is a lot more data returned from this request! The forecast information can be collected under <code class="docutils literal notranslate"><span class="pre">properties</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code>. Each period of time has various weather values to chose from:</p>
-<div class="cell docutils container">
+</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncar_forecast_hourly</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;periods&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
@@ -683,7 +694,7 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 </div>
-<p>To plot, let’s collect the <code class="docutils literal notranslate"><span class="pre">startTime</span></code>, <code class="docutils literal notranslate"><span class="pre">endTime</span></code> and <code class="docutils literal notranslate"><span class="pre">temperature</span></code> (in F) values</p>
+<p>To plot, let’s collect the <code class="docutils literal notranslate"><span class="pre">startTime</span></code>, <code class="docutils literal notranslate"><span class="pre">endTime</span></code> and <code class="docutils literal notranslate"><span class="pre">temperature</span></code> (° F) values</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">datetime_start</span> <span class="o">=</span> <span class="n">ncar_forecast_hourly</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;periods&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;startTime&quot;</span><span class="p">]</span>
@@ -694,8 +705,8 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-14T10:00:00-06:00
-2024-06-20T22:00:00-06:00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-20T16:00:00-06:00
+2024-06-27T04:00:00-06:00
 </pre></div>
 </div>
 </div>
@@ -713,7 +724,7 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[69, 76, 78, 78, 77, 74, 74, 73, 71, 71, 68, 68, 67, 67, 67, 67, 67, 65, 65, 65, 63, 67, 72, 77, 81, 83, 85, 86, 87, 87, 87, 86, 84, 80, 76, 73, 71, 69, 69, 68, 67, 66, 65, 63, 63, 66, 70, 75, 78, 81, 83, 84, 85, 86, 88, 88, 86, 82, 76, 72, 69, 69, 68, 68, 66, 64, 62, 61, 61, 62, 65, 68, 72, 76, 79, 82, 84, 86, 86, 86, 84, 82, 79, 76, 72, 69, 66, 63, 60, 59, 58, 58, 59, 61, 64, 67, 70, 73, 76, 77, 79, 79, 79, 78, 76, 74, 72, 69, 66, 63, 60, 58, 56, 54, 53, 53, 54, 55, 58, 61, 64, 67, 69, 71, 72, 73, 73, 72, 71, 70, 68, 66, 64, 62, 60, 58, 57, 56, 56, 56, 57, 59, 62, 64, 67, 70, 73, 75, 77, 78, 79, 79, 78, 77, 74, 72]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[83, 81, 79, 76, 73, 72, 71, 70, 68, 67, 67, 65, 65, 64, 63, 65, 66, 68, 71, 74, 76, 80, 81, 80, 82, 81, 80, 78, 74, 70, 69, 67, 66, 65, 65, 64, 64, 63, 64, 66, 70, 73, 76, 79, 81, 83, 84, 85, 85, 84, 83, 81, 78, 76, 75, 74, 73, 71, 70, 68, 66, 65, 66, 69, 74, 78, 81, 84, 86, 87, 88, 88, 88, 88, 87, 85, 82, 79, 77, 76, 75, 74, 72, 71, 69, 68, 69, 72, 77, 81, 84, 86, 88, 89, 90, 90, 90, 89, 88, 86, 83, 80, 78, 77, 76, 75, 73, 72, 70, 69, 69, 72, 76, 80, 83, 85, 87, 88, 89, 89, 89, 88, 87, 85, 82, 79, 77, 75, 74, 73, 71, 70, 68, 67, 67, 69, 73, 77, 81, 84, 86, 87, 87, 87, 87, 86, 85, 83, 80, 78, 77, 76, 75, 74, 72, 71]
 </pre></div>
 </div>
 </div>
@@ -730,45 +741,34 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hourly Tempearture at NCAR Mesa Lab for the Next </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">temperature</span><span class="p">)</span><span class="o">/</span><span class="mi">24</span><span class="si">}</span><span class="s2"> Days&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Datetime&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">90</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (F)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Temperature (</span><span class="se">\u00B0</span><span class="s2">F)&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/bec8c5694d757ba0587e60bde0f8faf9e8be4f6cc8a8201844c3aef825bb3a8e.png" src="../../_images/bec8c5694d757ba0587e60bde0f8faf9e8be4f6cc8a8201844c3aef825bb3a8e.png" />
+<img alt="../../_images/1f9673be3855f67ba3fb30d418e298bfc50b9ade4b8a3289aa3a4368fe48053f.png" src="../../_images/1f9673be3855f67ba3fb30d418e298bfc50b9ade4b8a3289aa3a4368fe48053f.png" />
 </div>
 </div>
-</section>
-<section id="last-section">
-<h2>Last Section<a class="headerlink" href="#last-section" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>If you’re comfortable, and as we briefly used for our embedded logo up top, you can embed raw html into Jupyter Markdown cells (edit to see):</p>
-<div class="admonition alert alert-info">
-<p class="admonition-title">Info</p>
-<p>Your relevant information here!</p>
-</div>
-<p>Feel free to copy this around and edit or play around with yourself. Some other <code class="docutils literal notranslate"><span class="pre">admonitions</span></code> you can put in:</p>
-<div class="admonition alert alert-success">
-<p class="admonition-title">Success</p>
-<p>We got this done after all!</p>
-</div>
-<div class="admonition alert alert-warning">
-<p class="admonition-title">Warning</p>
-<p>Be careful!</p>
-</div>
-<div class="admonition alert alert-danger">
-<p class="admonition-title">Danger</p>
-<p>Scary stuff be here.</p>
-</div>
-<p>We also suggest checking out Jupyter Book’s <a class="reference external" href="https://jupyterbook.org/content/metadata.html#jupyter-cell-tags">brief demonstration</a> on adding cell tags to your cells in Jupyter Notebook, Lab, or manually. Using these cell tags can allow you to <a class="reference external" href="https://jupyterbook.org/interactive/hiding.html">customize</a> how your code content is displayed and even <a class="reference external" href="https://jupyterbook.org/content/execute.html#dealing-with-code-that-raises-errors">demonstrate errors</a> without altogether crashing our loyal army of machines!</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
-<p>Add one final <code class="docutils literal notranslate"><span class="pre">---</span></code> marking the end of your body of content, and then conclude with a brief single paragraph summarizing at a high level the key pieces that were learned and how they tied to your objectives. Look to reiterate what the most important takeaways were.</p>
+<p>In this notebook, we have…</p>
+<ul class="simple">
+<li><p>covered basics about API terminology</p></li>
+<li><p>gone through a practice example of requesting data from the National Weather Service API</p></li>
+<li><p>generated a plot of forecasted temperatures</p></li>
+</ul>
 <section id="whats-next">
 <h3>What’s next?<a class="headerlink" href="#whats-next" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-<p>Let Jupyter book tie this to the next (sequential) piece of content that people could move on to down below and in the sidebar. However, if this page uniquely enables your reader to tackle other nonsequential concepts throughout this book, or even external content, link to it here!</p>
+<p>Now we can continue investigating other APIs using some example workflows in this cookbook.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../example-workflows/cneos-fireball.html"><span class="std std-doc">Center for Near-Earth Object Studies Fireball API</span></a></p></li>
+<li><p><a class="reference internal" href="../example-workflows/air-quality-system-api.html"><span class="std std-doc">Environmental Protection Agency’s Air Quality System API</span></a></p></li>
+<li><p><a class="reference internal" href="../example-workflows/earthaccess-sla-sss.html"><span class="doc std std-doc">National Aeronautics and Space Administration Earthaccess API</span></a></p></li>
+<li><p><a class="reference internal" href="../example-workflows/wfm-cloud-water.html"><span class="doc std std-doc">Whiteface Mountain Cloud Water Request</span></a></p></li>
+</ul>
 </section>
 </section>
 <section id="resources-and-references">
@@ -821,11 +821,11 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
       </div>
     </a>
     <a class="right-next"
-       href="../example-workflows/cneos-fireball.html"
+       href="../example-workflows/air-quality-system-api.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">NASA API: World Map of Fireball Impacts</p>
+        <p class="prev-next-title">Visualizing Data with EPA’s Air Quality System (AQS) API</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -849,7 +849,7 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#motivation">Motivation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-terminology">Api Terminology</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-terminology">API Terminology</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#understanding-status-codes">Understanding Status Codes</a></li>
 </ul>
 </li>
@@ -858,7 +858,6 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-weather-api">Example: Weather API</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#last-section">Last Section</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#whats-next">What’s next?</a></li>
 </ul>
@@ -1106,7 +1105,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
   
   <div class="footer-item">
     <p class="last-updated">
-  Last updated on 14 June 2024.
+  Last updated on 20 June 2024.
   <br/>
 </p>
   </div>
@@ -1160,7 +1159,7 @@ By the <a href="https://projectpythia.org/">Project Pythia</a> Community
         
           By the <a href="https://projectpythia.org/">Project Pythia</a> Community.
         
-          Last updated on 14 June 2024.
+          Last updated on 20 June 2024.
         </p>
       </div>
     </div>

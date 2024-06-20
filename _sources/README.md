@@ -6,16 +6,20 @@
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
 [![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
-This Project Pythia Cookbook covers the basics of retrieving and visualizing data from APIs in Python
+This Project Pythia Cookbook covers the basics of retrieving and visualizing data using APIs with Python.
 
 ## Motivation
 
- Cookbook that focuses on accessing and visualizing data from various geoscience related APIs. In the cookbook, we will show step by step tutorials on retrieving data from the public APIs, then creating an informational and visually appealing plots 
+There are many ways to gather data. Science and research entities like NASA are constantly producing and collecting data. As a result, attempting to collect and display live data can be difficult since new data is always being added or modified. 
+
+An API is a method to query a data source over the internet to retrieve data from a remote source. APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
+
+This cookbook focuses on accessing and visualizing data from various geoscience related APIs. Over the course of the cookbook, we will show step-by-step tutorials on retrieving data from some public APIs, as well as creating informational and visually appealing graphics to communicate the data to a general audience. 
  
- APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
 
 ## Authors
-[Cora Schneck](https://github.com/cyschneck), [Ana Krelling](https://github.com/apkrelling), [Adam Deitsch](https://github.com/AMDeitsch)
+
+[Cora Schneck](https://github.com/cyschneck), [Ana Krelling](https://github.com/apkrelling), [Adam Deitsch](https://github.com/AMDeitsch), [Hannah Zafar](@hannahzafar)
 
 ### Contributors
 
@@ -25,18 +29,20 @@ This Project Pythia Cookbook covers the basics of retrieving and visualizing dat
 
 ## Structure
 
-This cookbook will be broken up into two main sections: "Foundations" to cover the basics of working with and understanding APIs and "Example Workflows" for complete working examples
+This cookbook will be broken up into two main sections: "Foundations" to cover the basics of working with and understanding APIs and "Example Workflows" for complete working examples.
 
 ### API Foundations
 
-API Foundations will cover the terminology of APIs and how to make use of the data retrieved from API in Python
+API Foundations will cover the terminology of APIs and how to make use of the data retrieved from API in Python.
 
 ### Example Workflows
 
-Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots
+Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots.
 
-- NASA API: Visualize the location and total impact energy of fireballs and bolides on a world map
-- EarthAccess:
+- [JPL Center for Near-Earth Orbit Studies (CNEOS) API](https://ssd-api.jpl.nasa.gov/): Visualize the location and total impact energy of fireballs and bolides on a world map using the CNEOS [Fireball API](https://ssd-api.jpl.nasa.gov/doc/fireball.html).
+- [Earthdata API](https://www.earthdata.nasa.gov/learn/find-data): Access and visualize sea surface height and sea surface salinity data using the National Aeronautics and Space Administration's [earthaccess](https://github.com/nsidc/earthaccess) Python package.
+- [Air Quality System (AQS) API](https://aqs.epa.gov/aqsweb/documents/data_api.html): Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the Environmental Protection Agency's [pyaqsapi](https://github.com/USEPA/pyaqsapi) Python package.
+- [Whiteface Mountain Cloud Water Request](http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm): Request access to recent and historical cloud water chemistry data from the [Lance Research Laboratory](@LanceLab-ASRC) at the Atmospheric Sciences Research Center.
 
 ## Running the Notebooks
 
