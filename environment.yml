@@ -1,4 +1,4 @@
-name: api-cookbook
+name: api-cookbook-dev
 channels:
   - conda-forge
 dependencies:
