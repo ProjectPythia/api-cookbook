@@ -12,4 +12,4 @@ parts:
       - file: notebooks/example-workflows/air-quality-system-api
       - file: notebooks/example-workflows/cneos-fireball
       - file: notebooks/example-workflows/earthaccess-sla-sss
-      - file: notebooks/wfm-cloud-water
+      - file: notebooks/example-workflows/wfm-cloud-water
