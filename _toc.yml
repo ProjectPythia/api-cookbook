@@ -11,5 +11,9 @@ parts:
     chapters:
       - file: notebooks/example-workflows/air-quality-system-api
       - file: notebooks/example-workflows/cneos-fireball
+<<<<<<< HEAD
       - file: notebooks/example-workflows/example-workflow-earthaccess
       - file: notebooks/wfm-cloud-water
+=======
+      - file: notebooks/example-workflows/earthaccess-sla-sss
+>>>>>>> a0591e16b59c197e4010130d312cbcb6c253e4e4
