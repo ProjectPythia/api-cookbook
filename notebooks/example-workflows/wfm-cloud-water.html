@@ -527,9 +527,12 @@
 </tbody>
 </table>
 </div>
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note:</p>
 <p>In order to access the data, we don’t need an API. We just need to fill out a simple <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Form</span></code> at the following website:</p>
-<p>http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm</p>
-<p><a class="reference internal" href="notebooks/example-workflows/notebooks/images/WFM-Data-Form.png"><img alt="WFM Data Form" src="notebooks/example-workflows/notebooks/images/WFM-Data-Form.png" style="width: 250px;" /></a></img></p>
+</div>
+   <p>http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm</p>
+<p><img src="notebooks/images/WFM-Data-Form.png" width=250 alt="WFM Data Form"></img></p>
 </div><p>Once you are granted access, you can utilize <b>recent</b> and <b>historical</b> data spanning back to 1994.<br> The data come in <code class="docutils literal notranslate"><span class="pre">*.xlsx</span></code> files, or as multiple <code class="docutils literal notranslate"><span class="pre">*.xlsx</span></code> files in a zip drive, depending on which dataset you collect.</p>
 <p>This notebook uses 2022 Cloud Water Data (current as of June 18th, 2024) as an example.<br> As the data files come with various sheets covering multiple angles of quality control, we will simplify this notebook with a <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> file of the “valid” samples.</p>
 <p>The full data file can be viewed in <code class="docutils literal notranslate"><span class="pre">../files/WFC.2022.Data.R2--6_18_24.xlsx</span></code>.</p>
@@ -3115,11 +3118,8 @@
 </div>
 <div class="admonition alert alert-info">
 <p class="admonition-title">Some brief details about the data format…</p>
-<br>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">LABNO</span></code> values represent the <b>Julian date</b>, where the first two digits are <b>year</b>, and the next three are the <b>day</b>. The remaining two digits refer to internal identification regarding the collection bottles for same-day samples.
-<br><br>
-The cloud water at Whiteface Mountain is collected in bulk 12-hour samples, so the time the accumulated sample was “dumped” into a storage container is in the <code class="docutils literal notranslate"><span class="pre">DUMP</span> <span class="pre">TIME</span></code> column, and the duration of <b>time</b> in that 12-hour period where the summit was <b>in-cloud</b> is show in in the <code class="docutils literal notranslate"><span class="pre">COLLECTION_HOURS</span></code> column.</p>
+<p><br>The <b>LABNO</b> values represent the <b>Julian date</b>, where the first two digits are <b>year</b>, and the next three are the <b>day</b>. The remaining two digits refer to internal identification regarding the collection bottles for same-day samples.</p>
+<p>The cloud water at Whiteface Mountain is collected in bulk 12-hour samples, so the time the accumulated sample was “dumped” into a storage container is in the <b>DUMP TIME</b> column, and the duration of <b>time</b> in that 12-hour period where the summit was <b>in-cloud</b> is show in in the <b>COLLECTION_HOURS</b> column.</p>
 </div>
 <p>Let’s look at all the columns that have data in them below…</p>
 <div class="cell docutils container">
@@ -3206,9 +3206,7 @@ SuccinateMalate_ppb
 <p>More information about the <a class="reference internal" href="#&#64;LanceLab-ASRC"><span class="xref myst">Lance Research Laboratory</span></a>: https://research.asrc.albany.edu/facstaff/lance/index.html</p>
 <p>More information about the cloud water chemistry at Whiteface Mountain: https://acp.copernicus.org/articles/23/1619/2023/</p>
 <hr class="docutils" />
-<section id="information-about-the-author-adam-deitsch">
-<h3>Information about the author: <a class="reference external" href="https://amdeitsch.github.io/">Adam Deitsch</a><a class="headerlink" href="#information-about-the-author-adam-deitsch" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-</section>
+<p><b>Information about the author: <a class="reference external" href="https://amdeitsch.github.io/">Adam Deitsch</a></b></p>
 </section>
 </section>
 
@@ -3278,10 +3276,7 @@ SuccinateMalate_ppb
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#analyzing-the-data">Analyzing the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-the-data">Plotting the Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-author-adam-deitsch">Information about the author: Adam Deitsch</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
 </ul>
 </li>
 </ul>
