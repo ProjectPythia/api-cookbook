@@ -866,13 +866,11 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;date_local&#39;</span><span class="p">],</span> <span class="n">ozone</span><span class="p">[</span><span class="s1">&#39;sample_measurement&#39;</span><span class="p">],</span> <span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fdef5abe650&gt;]
-</pre></div>
-</div>
 <img alt="../../_images/d6bbce4ae118c6aade3fdc3c7f7697a845c6e86000a7442d77db55cf2437eb57.png" src="../../_images/d6bbce4ae118c6aade3fdc3c7f7697a845c6e86000a7442d77db55cf2437eb57.png" />
 </div>
 </div>
@@ -938,13 +936,11 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;datetime&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;sample_measurement&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">O3alb</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Axes: xlabel=&#39;datetime&#39;, ylabel=&#39;sample_measurement&#39;&gt;
-</pre></div>
-</div>
 <img alt="../../_images/51d3b8eb2092155e2e0c2ec656133a83e71c0cb4ea62ebfa3955436e818c0cc5.png" src="../../_images/51d3b8eb2092155e2e0c2ec656133a83e71c0cb4ea62ebfa3955436e818c0cc5.png" />
 </div>
 </div>
@@ -957,7 +953,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Design the figure:</span>
 
 <span class="c1"># Figure shape</span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="c1"># Give it a title</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">((</span><span class="sa">f</span><span class="s1">&#39;Ozone Concentration Albany, NY - </span><span class="si">{</span><span class="n">month</span><span class="si">}</span><span class="s1">/</span><span class="si">{</span><span class="n">year</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">),</span> <span class="n">fontsize</span> <span class="o">=</span> <span class="mi">20</span><span class="p">)</span>
@@ -1002,7 +998,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 2023-06-30 23:00:00
 </pre></div>
 </div>
-<img alt="../../_images/46c152f0e27d35d13481d7a365db09cadedb8b233f65a1ec2989e83de9ea2694.png" src="../../_images/46c152f0e27d35d13481d7a365db09cadedb8b233f65a1ec2989e83de9ea2694.png" />
+<img alt="../../_images/35c4f70d6dc8a37c5d496fa78d6c3d7942bcff32472c3194a8d740ae6a961d9a.png" src="../../_images/35c4f70d6dc8a37c5d496fa78d6c3d7942bcff32472c3194a8d740ae6a961d9a.png" />
 </div>
 </div>
 <p>We can also add a new data points to compare (e.g., NO<sub>2</sub>)</p>
@@ -1079,7 +1075,7 @@ units_of_measure      Parts per billion
 site_number                        0110
 latitude                         40.816
 longitude                       -73.902
-Name: 144, dtype: object
+Name: 48, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1102,7 +1098,7 @@ Name: 144, dtype: object
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Design the figure:   </span>
-<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
 
 <span class="n">shared_colors</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s1">&#39;muted&#39;</span><span class="p">)</span>
 
@@ -1170,7 +1166,7 @@ Name: 144, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/4b0273c5018503b67eb8cd595426a6750077129377c5500b8e0b1fb2889365e8.png" src="../../_images/4b0273c5018503b67eb8cd595426a6750077129377c5500b8e0b1fb2889365e8.png" />
+<img alt="../../_images/d466d27e8ebe425851c8afc0d378994d922d9453a617d2861f0c1229e802deeb.png" src="../../_images/d466d27e8ebe425851c8afc0d378994d922d9453a617d2861f0c1229e802deeb.png" />
 </div>
 </div>
 <div class="admonition alert alert-success">
