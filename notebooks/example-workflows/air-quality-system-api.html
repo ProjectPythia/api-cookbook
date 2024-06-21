@@ -406,7 +406,7 @@
 <div id="searchbox"></div>
                   <article class="bd-article">
                     
-  <p><a class="reference internal" href="../../_images/ProjectPythia_Logo_Final-01-Blue.svg"><img alt="Project Pythia Logo" src="../../_images/ProjectPythia_Logo_Final-01-Blue.svg" width="300" /></a></img><img alt="Wildfire smoke over New York City (June 7, 2023)" src="https://images.unsplash.com/photo-1686179225818-c07909cd2911?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /></img>
+  <p><img alt="Wildfire smoke over New York City (June 7, 2023)" src="https://images.unsplash.com/photo-1686179225818-c07909cd2911?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" /></img>
 Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ahmer Kalam</a> on <a href="https://unsplash.com/photos/a-foggy-city-skyline-with-the-sun-in-the-distance-Reuk1nmutFI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="visualizing-data-with-epas-air-quality-system-aqs-api">
 <h1>Visualizing Data with EPA’s Air Quality System (AQS) API<a class="headerlink" href="#visualizing-data-with-epas-air-quality-system-aqs-api" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
@@ -470,6 +470,16 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">pyaqsapi</span> <span class="k">as</span> <span class="nn">aqs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We will also set some limits to the size of data that Pandas displays, so as not to overload our screens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the maximum number of rows and columns to display</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Set to the number of rows you want to display</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Set to the number of columns you want to display</span>
 </pre></div>
 </div>
 </div>
@@ -605,234 +615,9 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>California</td>
     </tr>
     <tr>
-      <th>5</th>
-      <td>08</td>
-      <td>Colorado</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>09</td>
-      <td>Connecticut</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>10</td>
-      <td>Delaware</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>11</td>
-      <td>District Of Columbia</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>12</td>
-      <td>Florida</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>13</td>
-      <td>Georgia</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>15</td>
-      <td>Hawaii</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>16</td>
-      <td>Idaho</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>17</td>
-      <td>Illinois</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>18</td>
-      <td>Indiana</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>19</td>
-      <td>Iowa</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>20</td>
-      <td>Kansas</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>21</td>
-      <td>Kentucky</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>22</td>
-      <td>Louisiana</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>23</td>
-      <td>Maine</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>24</td>
-      <td>Maryland</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>25</td>
-      <td>Massachusetts</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>26</td>
-      <td>Michigan</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>27</td>
-      <td>Minnesota</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>28</td>
-      <td>Mississippi</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>29</td>
-      <td>Missouri</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>30</td>
-      <td>Montana</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>31</td>
-      <td>Nebraska</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>32</td>
-      <td>Nevada</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>33</td>
-      <td>New Hampshire</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>34</td>
-      <td>New Jersey</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>35</td>
-      <td>New Mexico</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>36</td>
-      <td>New York</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>37</td>
-      <td>North Carolina</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>38</td>
-      <td>North Dakota</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>39</td>
-      <td>Ohio</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>40</td>
-      <td>Oklahoma</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>41</td>
-      <td>Oregon</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>42</td>
-      <td>Pennsylvania</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>44</td>
-      <td>Rhode Island</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>45</td>
-      <td>South Carolina</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>46</td>
-      <td>South Dakota</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>47</td>
-      <td>Tennessee</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>48</td>
-      <td>Texas</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>49</td>
-      <td>Utah</td>
-    </tr>
-    <tr>
-      <th>45</th>
-      <td>50</td>
-      <td>Vermont</td>
-    </tr>
-    <tr>
-      <th>46</th>
-      <td>51</td>
-      <td>Virginia</td>
-    </tr>
-    <tr>
-      <th>47</th>
-      <td>53</td>
-      <td>Washington</td>
-    </tr>
-    <tr>
-      <th>48</th>
-      <td>54</td>
-      <td>West Virginia</td>
-    </tr>
-    <tr>
-      <th>49</th>
-      <td>55</td>
-      <td>Wisconsin</td>
-    </tr>
-    <tr>
-      <th>50</th>
-      <td>56</td>
-      <td>Wyoming</td>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
     </tr>
     <tr>
       <th>51</th>
@@ -861,6 +646,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     </tr>
   </tbody>
 </table>
+<p>56 rows × 2 columns</p>
 </div></div></div>
 </div>
 <p><b>Since states will be input via a number, let’s store <code class="docutils literal notranslate"><span class="pre">aqs_states()</span></code> as a variable that we can call on later to remind ourselves of what states we need.</b></p>
@@ -1047,17 +833,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <th>site_number</th>
       <th>parameter_code</th>
       <th>poc</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>datum</th>
-      <th>parameter</th>
-      <th>date_local</th>
       <th>...</th>
-      <th>detection_limit</th>
-      <th>uncertainty</th>
-      <th>qualifier</th>
-      <th>method_type</th>
-      <th>method</th>
       <th>method_code</th>
       <th>state</th>
       <th>county</th>
@@ -1073,17 +849,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1097,17 +863,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1121,17 +877,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1145,17 +891,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1169,17 +905,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1188,16 +914,6 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1217,17 +933,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1241,17 +947,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1265,17 +961,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1289,17 +975,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1313,17 +989,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1410,17 +1076,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <th>site_number</th>
       <th>parameter_code</th>
       <th>poc</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>datum</th>
-      <th>parameter</th>
-      <th>date_local</th>
       <th>...</th>
-      <th>detection_limit</th>
-      <th>uncertainty</th>
-      <th>qualifier</th>
-      <th>method_type</th>
-      <th>method</th>
       <th>method_code</th>
       <th>state</th>
       <th>county</th>
@@ -1436,17 +1092,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-01</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1460,17 +1106,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-01</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1484,17 +1120,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-01</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1508,17 +1134,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-01</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1532,17 +1148,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.146180</td>
-      <td>-77.548170</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-01</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET</td>
       <td>047</td>
       <td>New York</td>
       <td>Monroe</td>
@@ -1551,16 +1157,6 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -1580,17 +1176,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-30</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1604,17 +1190,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-30</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1628,17 +1204,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-30</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1652,17 +1218,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-30</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1676,17 +1232,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.961017</td>
-      <td>-73.139046</td>
-      <td>NAD83</td>
-      <td>Ozone</td>
-      <td>2023-06-30</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
       <td>Suffolk</td>
@@ -1706,7 +1252,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fa05b0717b0&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7fd3a2a86a70&gt;]
 </pre></div>
 </div>
 <img alt="../../_images/d6bbce4ae118c6aade3fdc3c7f7697a845c6e86000a7442d77db55cf2437eb57.png" src="../../_images/d6bbce4ae118c6aade3fdc3c7f7697a845c6e86000a7442d77db55cf2437eb57.png" />
@@ -2213,7 +1759,7 @@ units_of_measure      Parts per billion
 site_number                        0110
 latitude                         40.816
 longitude                       -73.902
-Name: 48, dtype: object
+Name: 144, dtype: object
 </pre></div>
 </div>
 </div>
@@ -2360,17 +1906,7 @@ Name: 48, dtype: object
       <th>site_number</th>
       <th>parameter_code</th>
       <th>poc</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>datum</th>
-      <th>parameter</th>
-      <th>date_local</th>
       <th>...</th>
-      <th>detection_limit</th>
-      <th>uncertainty</th>
-      <th>qualifier</th>
-      <th>method_type</th>
-      <th>method</th>
       <th>method_code</th>
       <th>state</th>
       <th>county</th>
@@ -2386,17 +1922,7 @@ Name: 48, dtype: object
       <td>0002</td>
       <td>44201</td>
       <td>1</td>
-      <td>39.567887</td>
-      <td>-104.957193</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.0050</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Colorado</td>
       <td>Arapahoe</td>
@@ -2410,17 +1936,7 @@ Name: 48, dtype: object
       <td>0002</td>
       <td>44201</td>
       <td>1</td>
-      <td>39.567887</td>
-      <td>-104.957193</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.0050</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Colorado</td>
       <td>Arapahoe</td>
@@ -2434,17 +1950,7 @@ Name: 48, dtype: object
       <td>0002</td>
       <td>44201</td>
       <td>1</td>
-      <td>39.567887</td>
-      <td>-104.957193</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.0050</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Colorado</td>
       <td>Arapahoe</td>
@@ -2458,17 +1964,7 @@ Name: 48, dtype: object
       <td>0002</td>
       <td>44201</td>
       <td>1</td>
-      <td>39.567887</td>
-      <td>-104.957193</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.0050</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Colorado</td>
       <td>Arapahoe</td>
@@ -2482,17 +1978,7 @@ Name: 48, dtype: object
       <td>0002</td>
       <td>44201</td>
       <td>1</td>
-      <td>39.567887</td>
-      <td>-104.957193</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.0050</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Colorado</td>
       <td>Arapahoe</td>
@@ -2501,16 +1987,6 @@ Name: 48, dtype: object
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -2530,17 +2006,7 @@ Name: 48, dtype: object
       <td>0009</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.689253</td>
-      <td>-122.402194</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.0006</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>Instrumental - Chemiluminescence API Model 265...</td>
       <td>199</td>
       <td>California</td>
       <td>Shasta</td>
@@ -2554,17 +2020,7 @@ Name: 48, dtype: object
       <td>0009</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.689253</td>
-      <td>-122.402194</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.0006</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>Instrumental - Chemiluminescence API Model 265...</td>
       <td>199</td>
       <td>California</td>
       <td>Shasta</td>
@@ -2578,17 +2034,7 @@ Name: 48, dtype: object
       <td>0009</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.689253</td>
-      <td>-122.402194</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.0006</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>Instrumental - Chemiluminescence API Model 265...</td>
       <td>199</td>
       <td>California</td>
       <td>Shasta</td>
@@ -2602,17 +2048,7 @@ Name: 48, dtype: object
       <td>0009</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.689253</td>
-      <td>-122.402194</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.0006</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>Instrumental - Chemiluminescence API Model 265...</td>
       <td>199</td>
       <td>California</td>
       <td>Shasta</td>
@@ -2626,17 +2062,7 @@ Name: 48, dtype: object
       <td>0009</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.689253</td>
-      <td>-122.402194</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.0006</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>Instrumental - Chemiluminescence API Model 265...</td>
       <td>199</td>
       <td>California</td>
       <td>Shasta</td>
@@ -2694,17 +2120,7 @@ Name: 48, dtype: object
       <th>site_number</th>
       <th>parameter_code</th>
       <th>poc</th>
-      <th>latitude</th>
-      <th>longitude</th>
-      <th>datum</th>
-      <th>parameter</th>
-      <th>date_local</th>
       <th>...</th>
-      <th>detection_limit</th>
-      <th>uncertainty</th>
-      <th>qualifier</th>
-      <th>method_type</th>
-      <th>method</th>
       <th>method_code</th>
       <th>state</th>
       <th>county</th>
@@ -2720,17 +2136,7 @@ Name: 48, dtype: object
       <td>5001</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.445278</td>
-      <td>-80.420833</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>AV - Power Failure.</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Washington</td>
@@ -2744,17 +2150,7 @@ Name: 48, dtype: object
       <td>5001</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.445278</td>
-      <td>-80.420833</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>AV - Power Failure.</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Washington</td>
@@ -2768,17 +2164,7 @@ Name: 48, dtype: object
       <td>5001</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.445278</td>
-      <td>-80.420833</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>AV - Power Failure.</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Washington</td>
@@ -2792,17 +2178,7 @@ Name: 48, dtype: object
       <td>5001</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.445278</td>
-      <td>-80.420833</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>AV - Power Failure.</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Washington</td>
@@ -2816,17 +2192,7 @@ Name: 48, dtype: object
       <td>5001</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.445278</td>
-      <td>-80.420833</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-20</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>AV - Power Failure.</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Washington</td>
@@ -2835,16 +2201,6 @@ Name: 48, dtype: object
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -2864,17 +2220,7 @@ Name: 48, dtype: object
       <td>0008</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.691857</td>
-      <td>-80.299211</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Beaver</td>
@@ -2888,17 +2234,7 @@ Name: 48, dtype: object
       <td>0008</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.691857</td>
-      <td>-80.299211</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Beaver</td>
@@ -2912,17 +2248,7 @@ Name: 48, dtype: object
       <td>0008</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.691857</td>
-      <td>-80.299211</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Beaver</td>
@@ -2936,17 +2262,7 @@ Name: 48, dtype: object
       <td>0008</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.691857</td>
-      <td>-80.299211</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Beaver</td>
@@ -2960,17 +2276,7 @@ Name: 48, dtype: object
       <td>0008</td>
       <td>44201</td>
       <td>1</td>
-      <td>40.691857</td>
-      <td>-80.299211</td>
-      <td>WGS84</td>
-      <td>Ozone</td>
-      <td>2023-06-21</td>
       <td>...</td>
-      <td>0.005</td>
-      <td>None</td>
-      <td>None</td>
-      <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>Pennsylvania</td>
       <td>Beaver</td>
