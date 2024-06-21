@@ -472,6 +472,16 @@
 </div>
 </div>
 </div>
+<p>We will also set some limits to the size of data that Pandas displays, so as not to overload our screens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set the maximum number of rows and columns to display</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_rows&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Set to the number of rows you want to display</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>  <span class="c1"># Set to the number of columns you want to display</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <hr class="docutils" />
 <section id="accessing-the-data">
@@ -531,7 +541,7 @@
 <p>In order to access the data, we don’t need an API. We just need to fill out a simple <code class="docutils literal notranslate"><span class="pre">Google</span> <span class="pre">Form</span></code> at the following website:</p>
 </div>
    <p>http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm</p>
-<p><img src="notebooks/images/WFM-Data-Form.png" width=250 alt="WFM Data Form"></img></p>
+<p><img src="notebooks/images/WFM-Data-Form.png" alt="WFM Data Form"></img></p>
 </div><p>Once you are granted access, you can utilize <b>recent</b> and <b>historical</b> data spanning back to 1994.<br> The data come in <code class="docutils literal notranslate"><span class="pre">*.xlsx</span></code> files, or as multiple <code class="docutils literal notranslate"><span class="pre">*.xlsx</span></code> files in a zip drive, depending on which dataset you collect.</p>
 <p>This notebook uses 2022 Cloud Water Data (current as of June 18th, 2024) as an example.<br> As the data files come with various sheets covering multiple angles of quality control, we will simplify this notebook with a <code class="docutils literal notranslate"><span class="pre">*.csv</span></code> file of the “valid” samples.</p>
 <p>The full data file can be viewed in <code class="docutils literal notranslate"><span class="pre">../files/WFC.2022.Data.R2--6_18_24.xlsx</span></code>.</p>
@@ -578,17 +588,7 @@
       <th>Unnamed: 2</th>
       <th>Unnamed: 3</th>
       <th>Unnamed: 4</th>
-      <th>Unnamed: 5</th>
-      <th>Unnamed: 6</th>
-      <th>Unnamed: 7</th>
-      <th>Unnamed: 8</th>
-      <th>Unnamed: 9</th>
       <th>...</th>
-      <th>Unnamed: 49</th>
-      <th>Unnamed: 50</th>
-      <th>Unnamed: 51</th>
-      <th>Unnamed: 52</th>
-      <th>Unnamed: 53</th>
       <th>Unnamed: 54</th>
       <th>Unnamed: 55</th>
       <th>Unnamed: 56</th>
@@ -604,17 +604,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -628,17 +618,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -652,17 +632,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -676,17 +646,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -700,17 +660,7 @@
       <td>COLLECTION_HOURS</td>
       <td>COLL_HR_F</td>
       <td>POOL_VOL ml</td>
-      <td>LWC g m-3</td>
-      <td>LWC_F</td>
-      <td>TEMP °C</td>
-      <td>WINDDIR_AVG °AZ</td>
-      <td>OCTANT</td>
       <td>...</td>
-      <td>MP_TEST</td>
-      <td>MISS_MAJ_ION</td>
-      <td>Glyoxalate_ppb</td>
-      <td>Formate_ppb</td>
-      <td>AcetateGlycolate_ppb</td>
       <td>Lactate_ppb</td>
       <td>Malonate_ppb</td>
       <td>Oxalate_ppb</td>
@@ -730,16 +680,6 @@
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
       <th>117</th>
@@ -748,17 +688,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -772,17 +702,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -796,17 +716,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -820,17 +730,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -844,17 +744,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -898,17 +788,7 @@
       <th>Unnamed: 2</th>
       <th>Unnamed: 3</th>
       <th>Unnamed: 4</th>
-      <th>Unnamed: 5</th>
-      <th>Unnamed: 6</th>
-      <th>Unnamed: 7</th>
-      <th>Unnamed: 8</th>
-      <th>Unnamed: 9</th>
       <th>...</th>
-      <th>Unnamed: 49</th>
-      <th>Unnamed: 50</th>
-      <th>Unnamed: 51</th>
-      <th>Unnamed: 52</th>
-      <th>Unnamed: 53</th>
       <th>Unnamed: 54</th>
       <th>Unnamed: 55</th>
       <th>Unnamed: 56</th>
@@ -924,17 +804,7 @@
       <td>COLLECTION_HOURS</td>
       <td>COLL_HR_F</td>
       <td>POOL_VOL ml</td>
-      <td>LWC g m-3</td>
-      <td>LWC_F</td>
-      <td>TEMP °C</td>
-      <td>WINDDIR_AVG °AZ</td>
-      <td>OCTANT</td>
       <td>...</td>
-      <td>MP_TEST</td>
-      <td>MISS_MAJ_ION</td>
-      <td>Glyoxalate_ppb</td>
-      <td>Formate_ppb</td>
-      <td>AcetateGlycolate_ppb</td>
       <td>Lactate_ppb</td>
       <td>Malonate_ppb</td>
       <td>Oxalate_ppb</td>
@@ -948,17 +818,7 @@
       <td>12.0</td>
       <td>NaN</td>
       <td>2312</td>
-      <td>0.703</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>217</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>93</td>
-      <td>325</td>
-      <td>221</td>
       <td>19</td>
       <td>M</td>
       <td>48</td>
@@ -972,17 +832,7 @@
       <td>6.3</td>
       <td>NaN</td>
       <td>1183</td>
-      <td>0.363</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>59</td>
-      <td>NE</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>91</td>
-      <td>250</td>
-      <td>198</td>
       <td>19</td>
       <td>M</td>
       <td>127</td>
@@ -996,17 +846,7 @@
       <td>7.2</td>
       <td>NaN</td>
       <td>425</td>
-      <td>0.477</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>282</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>90</td>
-      <td>98</td>
-      <td>72</td>
       <td>21</td>
       <td>M</td>
       <td>75</td>
@@ -1020,17 +860,7 @@
       <td>8.0</td>
       <td>NaN</td>
       <td>1866</td>
-      <td>0.473</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>177</td>
-      <td>S</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>133</td>
-      <td>83</td>
       <td>33</td>
       <td>M</td>
       <td>35</td>
@@ -1038,868 +868,18 @@
       <td>M</td>
     </tr>
     <tr>
-      <th>9</th>
-      <td>2216104</td>
-      <td>6/10/2022 6:00</td>
-      <td>12.0</td>
-      <td>NaN</td>
-      <td>4407</td>
-      <td>0.536</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>283</td>
-      <td>W</td>
+      <th>...</th>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>103</td>
-      <td>157</td>
-      <td>39</td>
-      <td>19</td>
-      <td>M</td>
-      <td>43</td>
-      <td>24</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>2216101</td>
-      <td>6/10/2022 18:00</td>
-      <td>11.0</td>
-      <td>NaN</td>
-      <td>2048</td>
-      <td>0.447</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>236</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>121</td>
-      <td>101</td>
-      <td>20</td>
-      <td>26</td>
-      <td>M</td>
-      <td>109</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>2216902</td>
-      <td>6/18/2022 6:00</td>
-      <td>9.1</td>
-      <td>NaN</td>
-      <td>2634</td>
-      <td>0.511</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>265</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>2219404</td>
-      <td>7/13/2022 6:00</td>
-      <td>10.0</td>
-      <td>NaN</td>
-      <td>3852</td>
-      <td>0.548</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>249</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>448</td>
-      <td>160</td>
-      <td>33</td>
-      <td>M</td>
-      <td>63</td>
-      <td>25</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>2219501</td>
-      <td>7/13/2022 18:00</td>
-      <td>2.4</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>0.463</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>274</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>65</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>2219502</td>
-      <td>7/14/2022 18:00</td>
-      <td>3.1</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>0.205</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>272</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>61</td>
-      <td>16</td>
-      <td>23</td>
-      <td>M</td>
-      <td>46</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>2220002</td>
-      <td>7/19/2022 6:00</td>
-      <td>12.0</td>
-      <td>NaN</td>
-      <td>5733</td>
-      <td>0.740</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>232</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>48</td>
-      <td>37</td>
-      <td>44</td>
-      <td>M</td>
-      <td>25</td>
-      <td>24</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>2220003</td>
-      <td>7/19/2022 18:00</td>
-      <td>7.8</td>
-      <td>NaN</td>
-      <td>1199</td>
-      <td>0.482</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>233</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>121</td>
-      <td>46</td>
-      <td>0</td>
-      <td>M</td>
-      <td>372</td>
-      <td>30</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>2220101</td>
-      <td>7/20/2022 18:00</td>
-      <td>2.3</td>
-      <td>NaN</td>
-      <td>420</td>
-      <td>0.519</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>242</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>687</td>
-      <td>869</td>
-      <td>101</td>
-      <td>M</td>
-      <td>205</td>
-      <td>42</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>2220601</td>
-      <td>7/25/2022 18:00</td>
-      <td>5.3</td>
-      <td>NaN</td>
-      <td>522</td>
-      <td>0.666</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>215</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>204</td>
-      <td>89</td>
-      <td>24</td>
-      <td>M</td>
-      <td>57</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>2220702</td>
-      <td>7/26/2022 6:00</td>
-      <td>8.9</td>
-      <td>NaN</td>
-      <td>652</td>
-      <td>0.463</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>234</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>216</td>
-      <td>33</td>
-      <td>24</td>
-      <td>M</td>
-      <td>38</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>2220701</td>
-      <td>7/26/2022 18:00</td>
-      <td>4.6</td>
-      <td>NaN</td>
-      <td>269</td>
-      <td>0.351</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>228</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>46</td>
-      <td>20</td>
-      <td>0</td>
-      <td>M</td>
-      <td>0</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>2221103</td>
-      <td>7/30/2022 18:00</td>
-      <td>12.0</td>
-      <td>NaN</td>
-      <td>3590</td>
-      <td>0.569</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>241</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>103</td>
-      <td>49</td>
-      <td>122</td>
-      <td>M</td>
-      <td>33</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>2221204</td>
-      <td>7/31/2022 6:00</td>
-      <td>11.9</td>
-      <td>NaN</td>
-      <td>3913</td>
-      <td>0.438</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>242</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>59</td>
-      <td>37</td>
-      <td>0</td>
-      <td>M</td>
-      <td>55</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>2221504</td>
-      <td>8/3/2022 6:00</td>
-      <td>5.6</td>
-      <td>NaN</td>
-      <td>310</td>
-      <td>0.493</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>274</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>204</td>
-      <td>81</td>
-      <td>171</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>2222102</td>
-      <td>8/9/2022 6:00</td>
-      <td>11.9</td>
-      <td>NaN</td>
-      <td>466</td>
-      <td>0.816</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>217</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>76</td>
-      <td>25</td>
-      <td>76</td>
-      <td>M</td>
-      <td>36</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>2222204</td>
-      <td>8/10/2022 6:00</td>
-      <td>10.6</td>
-      <td>NaN</td>
-      <td>139</td>
-      <td>0.259</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>244</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>190</td>
-      <td>71</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>2222302</td>
-      <td>8/11/2022 6:00</td>
-      <td>5.9</td>
-      <td>NaN</td>
-      <td>585</td>
-      <td>0.30</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>227</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>64</td>
-      <td>24</td>
-      <td>60</td>
-      <td>M</td>
-      <td>81</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>2223003</td>
-      <td>8/18/2022 18:00</td>
-      <td>6.4</td>
-      <td>NaN</td>
-      <td>2589</td>
-      <td>0.556</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>273</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>90</td>
-      <td>188</td>
-      <td>138</td>
-      <td>158</td>
-      <td>M</td>
-      <td>103</td>
-      <td>27</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>2223502</td>
-      <td>8/23/2022 6:00</td>
-      <td>6.4</td>
-      <td>NaN</td>
-      <td>327</td>
-      <td>0.224</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>129</td>
-      <td>SE</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>2223503</td>
-      <td>8/23/2022 18:00</td>
-      <td>3.2</td>
-      <td>NaN</td>
-      <td>150</td>
-      <td>0.467</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>173</td>
-      <td>S</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>2223604</td>
-      <td>8/24/2022 6:00</td>
-      <td>9.1</td>
-      <td>NaN</td>
-      <td>95</td>
-      <td>0.568</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>268</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>2223601</td>
-      <td>8/24/2022 18:00</td>
-      <td>6.5</td>
-      <td>NaN</td>
-      <td>42</td>
-      <td>0.520</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>270</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>2223702</td>
-      <td>8/25/2022 6:00</td>
-      <td>7.1</td>
-      <td>NaN</td>
-      <td>175</td>
-      <td>0.269</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>239</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>106</td>
-      <td>227</td>
-      <td>164</td>
-      <td>236</td>
-      <td>M</td>
-      <td>128</td>
-      <td>28</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>2224101</td>
-      <td>8/29/2022 18:00</td>
-      <td>5.3</td>
-      <td>NaN</td>
-      <td>153</td>
-      <td>0.770</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>210</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>129</td>
-      <td>81</td>
-      <td>141</td>
-      <td>116</td>
-      <td>M</td>
-      <td>133</td>
-      <td>26</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>2224301</td>
-      <td>8/31/2022 18:00</td>
-      <td>6.3</td>
-      <td>NaN</td>
-      <td>114</td>
-      <td>0.441</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>222</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>56</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>2224403</td>
-      <td>9/1/2022 18:00</td>
-      <td>6.0</td>
-      <td>NaN</td>
-      <td>163</td>
-      <td>0.448</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>238</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>107</td>
-      <td>45</td>
-      <td>86</td>
-      <td>17</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>24</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>2224704</td>
-      <td>9/4/2022 6:00</td>
-      <td>9.8</td>
-      <td>NaN</td>
-      <td>488</td>
-      <td>0.506</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>225</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>49</td>
-      <td>19</td>
-      <td>0</td>
-      <td>M</td>
-      <td>39</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>2224806</td>
-      <td>9/5/2022 6:00</td>
-      <td>7.1</td>
-      <td>NaN</td>
-      <td>478</td>
-      <td>0.545</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>211</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>91</td>
-      <td>267</td>
-      <td>117</td>
-      <td>96</td>
-      <td>M</td>
-      <td>90</td>
-      <td>31</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>2224807</td>
-      <td>9/5/2022 18:00</td>
-      <td>9.5</td>
-      <td>NaN</td>
-      <td>488</td>
-      <td>0.687</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>174</td>
-      <td>S</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>55</td>
-      <td>59</td>
-      <td>0</td>
-      <td>M</td>
-      <td>54</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>2225501</td>
-      <td>9/12/2022 18:00</td>
-      <td>1.5</td>
-      <td>NaN</td>
-      <td>244</td>
-      <td>0.119</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>77</td>
-      <td>E</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>50</td>
-      <td>17</td>
-      <td>0</td>
-      <td>M</td>
-      <td>70</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>2225603</td>
-      <td>9/13/2022 18:00</td>
-      <td>9.9</td>
-      <td>NaN</td>
-      <td>649</td>
-      <td>0.479</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>171</td>
-      <td>S</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>98</td>
-      <td>50</td>
-      <td>35</td>
-      <td>57</td>
-      <td>M</td>
-      <td>48</td>
-      <td>22</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>2225801</td>
-      <td>9/15/2022 18:00</td>
-      <td>5.4</td>
-      <td>NaN</td>
-      <td>3954</td>
-      <td>0.484</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>286</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>44</td>
-      <td>111</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>33</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>2225901</td>
-      <td>9/16/2022 18:00</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>198</td>
-      <td>117</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>43</th>
-      <td>2226002</td>
-      <td>9/17/2022 6:00</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>225</td>
-      <td>136</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>44</th>
-      <td>2226302</td>
-      <td>9/20/2022 6:00</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>52</td>
-      <td>27</td>
-      <td>0</td>
-      <td>M</td>
-      <td>M</td>
-      <td>0</td>
-      <td>M</td>
     </tr>
     <tr>
       <th>45</th>
@@ -1908,17 +888,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>M</td>
       <td>M</td>
       <td>0</td>
@@ -1932,17 +902,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>M</td>
       <td>M</td>
       <td>0</td>
@@ -1956,17 +916,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>M</td>
       <td>M</td>
       <td>BDL</td>
@@ -1980,17 +930,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2004,17 +944,7 @@
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2059,17 +989,7 @@
       <th>COLLECTION_HOURS</th>
       <th>COLL_HR_F</th>
       <th>POOL_VOL ml</th>
-      <th>LWC g m-3</th>
-      <th>LWC_F</th>
-      <th>TEMP °C</th>
-      <th>WINDDIR_AVG °AZ</th>
-      <th>OCTANT</th>
       <th>...</th>
-      <th>MP_TEST</th>
-      <th>MISS_MAJ_ION</th>
-      <th>Glyoxalate_ppb</th>
-      <th>Formate_ppb</th>
-      <th>AcetateGlycolate_ppb</th>
       <th>Lactate_ppb</th>
       <th>Malonate_ppb</th>
       <th>Oxalate_ppb</th>
@@ -2085,17 +1005,7 @@
       <td>12.0</td>
       <td>NaN</td>
       <td>2312</td>
-      <td>0.703</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>217</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>93</td>
-      <td>325</td>
-      <td>221</td>
       <td>19</td>
       <td>M</td>
       <td>48</td>
@@ -2109,17 +1019,7 @@
       <td>6.3</td>
       <td>NaN</td>
       <td>1183</td>
-      <td>0.363</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>59</td>
-      <td>NE</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>91</td>
-      <td>250</td>
-      <td>198</td>
       <td>19</td>
       <td>M</td>
       <td>127</td>
@@ -2133,17 +1033,7 @@
       <td>7.2</td>
       <td>NaN</td>
       <td>425</td>
-      <td>0.477</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>282</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>90</td>
-      <td>98</td>
-      <td>72</td>
       <td>21</td>
       <td>M</td>
       <td>75</td>
@@ -2157,17 +1047,7 @@
       <td>8.0</td>
       <td>NaN</td>
       <td>1866</td>
-      <td>0.473</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>177</td>
-      <td>S</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>133</td>
-      <td>83</td>
       <td>33</td>
       <td>M</td>
       <td>35</td>
@@ -2181,17 +1061,7 @@
       <td>12.0</td>
       <td>NaN</td>
       <td>4407</td>
-      <td>0.536</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>283</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>103</td>
-      <td>157</td>
-      <td>39</td>
       <td>19</td>
       <td>M</td>
       <td>43</td>
@@ -2199,796 +1069,18 @@
       <td>M</td>
     </tr>
     <tr>
-      <th>10</th>
-      <td>2216101</td>
-      <td>6/10/2022 18:00</td>
-      <td>11.0</td>
-      <td>NaN</td>
-      <td>2048</td>
-      <td>0.447</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>236</td>
-      <td>SW</td>
+      <th>...</th>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>121</td>
-      <td>101</td>
-      <td>20</td>
-      <td>26</td>
-      <td>M</td>
-      <td>109</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>2216902</td>
-      <td>6/18/2022 6:00</td>
-      <td>9.1</td>
-      <td>NaN</td>
-      <td>2634</td>
-      <td>0.511</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>265</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>2219404</td>
-      <td>7/13/2022 6:00</td>
-      <td>10.0</td>
-      <td>NaN</td>
-      <td>3852</td>
-      <td>0.548</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>249</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>448</td>
-      <td>160</td>
-      <td>33</td>
-      <td>M</td>
-      <td>63</td>
-      <td>25</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>2219501</td>
-      <td>7/13/2022 18:00</td>
-      <td>2.4</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>0.463</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>274</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>65</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>2219502</td>
-      <td>7/14/2022 18:00</td>
-      <td>3.1</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>0.205</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>272</td>
-      <td>W</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>61</td>
-      <td>16</td>
-      <td>23</td>
-      <td>M</td>
-      <td>46</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>2220002</td>
-      <td>7/19/2022 6:00</td>
-      <td>12.0</td>
-      <td>NaN</td>
-      <td>5733</td>
-      <td>0.740</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>232</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>48</td>
-      <td>37</td>
-      <td>44</td>
-      <td>M</td>
-      <td>25</td>
-      <td>24</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>2220003</td>
-      <td>7/19/2022 18:00</td>
-      <td>7.8</td>
-      <td>NaN</td>
-      <td>1199</td>
-      <td>0.482</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>233</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>121</td>
-      <td>46</td>
-      <td>0</td>
-      <td>M</td>
-      <td>372</td>
-      <td>30</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>2220101</td>
-      <td>7/20/2022 18:00</td>
-      <td>2.3</td>
-      <td>NaN</td>
-      <td>420</td>
-      <td>0.519</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>242</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>687</td>
-      <td>869</td>
-      <td>101</td>
-      <td>M</td>
-      <td>205</td>
-      <td>42</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>2220601</td>
-      <td>7/25/2022 18:00</td>
-      <td>5.3</td>
-      <td>NaN</td>
-      <td>522</td>
-      <td>0.666</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>215</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>204</td>
-      <td>89</td>
-      <td>24</td>
-      <td>M</td>
-      <td>57</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>2220702</td>
-      <td>7/26/2022 6:00</td>
-      <td>8.9</td>
-      <td>NaN</td>
-      <td>652</td>
-      <td>0.463</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>234</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>216</td>
-      <td>33</td>
-      <td>24</td>
-      <td>M</td>
-      <td>38</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>20</th>
-      <td>2220701</td>
-      <td>7/26/2022 18:00</td>
-      <td>4.6</td>
-      <td>NaN</td>
-      <td>269</td>
-      <td>0.351</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>228</td>
-      <td>SW</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>46</td>
-      <td>20</td>
-      <td>0</td>
-      <td>M</td>
-      <td>0</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>21</th>
-      <td>2221103</td>
-      <td>7/30/2022 18:00</td>
-      <td>12.0</td>
-      <td>NaN</td>
-      <td>3590</td>
-      <td>0.569</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>241</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>103</td>
-      <td>49</td>
-      <td>122</td>
-      <td>M</td>
-      <td>33</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>22</th>
-      <td>2221204</td>
-      <td>7/31/2022 6:00</td>
-      <td>11.9</td>
-      <td>NaN</td>
-      <td>3913</td>
-      <td>0.438</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>242</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>59</td>
-      <td>37</td>
-      <td>0</td>
-      <td>M</td>
-      <td>55</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>23</th>
-      <td>2221504</td>
-      <td>8/3/2022 6:00</td>
-      <td>5.6</td>
-      <td>NaN</td>
-      <td>310</td>
-      <td>0.493</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>274</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>204</td>
-      <td>81</td>
-      <td>171</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>24</th>
-      <td>2222102</td>
-      <td>8/9/2022 6:00</td>
-      <td>11.9</td>
-      <td>NaN</td>
-      <td>466</td>
-      <td>0.816</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>217</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>76</td>
-      <td>25</td>
-      <td>76</td>
-      <td>M</td>
-      <td>36</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>25</th>
-      <td>2222204</td>
-      <td>8/10/2022 6:00</td>
-      <td>10.6</td>
-      <td>NaN</td>
-      <td>139</td>
-      <td>0.259</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>244</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>190</td>
-      <td>71</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>2222302</td>
-      <td>8/11/2022 6:00</td>
-      <td>5.9</td>
-      <td>NaN</td>
-      <td>585</td>
-      <td>0.30</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>227</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>64</td>
-      <td>24</td>
-      <td>60</td>
-      <td>M</td>
-      <td>81</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>27</th>
-      <td>2223003</td>
-      <td>8/18/2022 18:00</td>
-      <td>6.4</td>
-      <td>NaN</td>
-      <td>2589</td>
-      <td>0.556</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>273</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>90</td>
-      <td>188</td>
-      <td>138</td>
-      <td>158</td>
-      <td>M</td>
-      <td>103</td>
-      <td>27</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>28</th>
-      <td>2223502</td>
-      <td>8/23/2022 6:00</td>
-      <td>6.4</td>
-      <td>NaN</td>
-      <td>327</td>
-      <td>0.224</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>129</td>
-      <td>SE</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>29</th>
-      <td>2223503</td>
-      <td>8/23/2022 18:00</td>
-      <td>3.2</td>
-      <td>NaN</td>
-      <td>150</td>
-      <td>0.467</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>173</td>
-      <td>S</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>30</th>
-      <td>2223604</td>
-      <td>8/24/2022 6:00</td>
-      <td>9.1</td>
-      <td>NaN</td>
-      <td>95</td>
-      <td>0.568</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>268</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>31</th>
-      <td>2223601</td>
-      <td>8/24/2022 18:00</td>
-      <td>6.5</td>
-      <td>NaN</td>
-      <td>42</td>
-      <td>0.520</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>270</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>32</th>
-      <td>2223702</td>
-      <td>8/25/2022 6:00</td>
-      <td>7.1</td>
-      <td>NaN</td>
-      <td>175</td>
-      <td>0.269</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>239</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>106</td>
-      <td>227</td>
-      <td>164</td>
-      <td>236</td>
-      <td>M</td>
-      <td>128</td>
-      <td>28</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>33</th>
-      <td>2224101</td>
-      <td>8/29/2022 18:00</td>
-      <td>5.3</td>
-      <td>NaN</td>
-      <td>153</td>
-      <td>0.770</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>210</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>129</td>
-      <td>81</td>
-      <td>141</td>
-      <td>116</td>
-      <td>M</td>
-      <td>133</td>
-      <td>26</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>34</th>
-      <td>2224301</td>
-      <td>8/31/2022 18:00</td>
-      <td>6.3</td>
-      <td>NaN</td>
-      <td>114</td>
-      <td>0.441</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>222</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>56</td>
-      <td>M</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>35</th>
-      <td>2224403</td>
-      <td>9/1/2022 18:00</td>
-      <td>6.0</td>
-      <td>NaN</td>
-      <td>163</td>
-      <td>0.448</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>238</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>107</td>
-      <td>45</td>
-      <td>86</td>
-      <td>17</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>24</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>36</th>
-      <td>2224704</td>
-      <td>9/4/2022 6:00</td>
-      <td>9.8</td>
-      <td>NaN</td>
-      <td>488</td>
-      <td>0.506</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>225</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>49</td>
-      <td>19</td>
-      <td>0</td>
-      <td>M</td>
-      <td>39</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>37</th>
-      <td>2224806</td>
-      <td>9/5/2022 6:00</td>
-      <td>7.1</td>
-      <td>NaN</td>
-      <td>478</td>
-      <td>0.545</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>211</td>
-      <td>SW</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>91</td>
-      <td>267</td>
-      <td>117</td>
-      <td>96</td>
-      <td>M</td>
-      <td>90</td>
-      <td>31</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>38</th>
-      <td>2224807</td>
-      <td>9/5/2022 18:00</td>
-      <td>9.5</td>
-      <td>NaN</td>
-      <td>488</td>
-      <td>0.687</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>174</td>
-      <td>S</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>55</td>
-      <td>59</td>
-      <td>0</td>
-      <td>M</td>
-      <td>54</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>39</th>
-      <td>2225501</td>
-      <td>9/12/2022 18:00</td>
-      <td>1.5</td>
-      <td>NaN</td>
-      <td>244</td>
-      <td>0.119</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>77</td>
-      <td>E</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>50</td>
-      <td>17</td>
-      <td>0</td>
-      <td>M</td>
-      <td>70</td>
-      <td>0</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>40</th>
-      <td>2225603</td>
-      <td>9/13/2022 18:00</td>
-      <td>9.9</td>
-      <td>NaN</td>
-      <td>649</td>
-      <td>0.479</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>171</td>
-      <td>S</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>98</td>
-      <td>50</td>
-      <td>35</td>
-      <td>57</td>
-      <td>M</td>
-      <td>48</td>
-      <td>22</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>41</th>
-      <td>2225801</td>
-      <td>9/15/2022 18:00</td>
-      <td>5.4</td>
-      <td>NaN</td>
-      <td>3954</td>
-      <td>0.484</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>286</td>
-      <td>W</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>44</td>
-      <td>111</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>33</td>
-      <td>M</td>
-    </tr>
-    <tr>
-      <th>42</th>
-      <td>2225901</td>
-      <td>9/16/2022 18:00</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>198</td>
-      <td>117</td>
-      <td>0</td>
-      <td>M</td>
-      <td>BDL</td>
-      <td>0</td>
-      <td>M</td>
     </tr>
     <tr>
       <th>43</th>
@@ -2997,17 +1089,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>225</td>
-      <td>136</td>
       <td>0</td>
       <td>M</td>
       <td>BDL</td>
@@ -3021,17 +1103,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>0</td>
-      <td>52</td>
-      <td>27</td>
       <td>0</td>
       <td>M</td>
       <td>M</td>
@@ -3045,17 +1117,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>M</td>
       <td>M</td>
       <td>0</td>
@@ -3069,17 +1131,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>M</td>
       <td>M</td>
       <td>0</td>
@@ -3093,17 +1145,7 @@
       <td>M</td>
       <td>NaN</td>
       <td>M</td>
-      <td>M</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>M</td>
-      <td>M</td>
-      <td>M</td>
       <td>M</td>
       <td>M</td>
       <td>BDL</td>
