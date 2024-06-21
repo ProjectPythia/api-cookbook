@@ -373,7 +373,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../example-workflows/air-quality-system-api.html">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../example-workflows/cneos-fireball.html">NASA API: World Map of Fireball Impacts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example-workflows/earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../example-workflows/wfm-cloud-water.html">Whiteface Mountain Cloud Water Data</a></li>
@@ -510,8 +509,12 @@ Photo by <a href="https://unsplash.com/@ffstop?utm_content=creditCopyText&utm_me
 </div>
 </div>
 </div>
-<p>A <code class="docutils literal notranslate"><span class="pre">200</span></code> status code represents that the base API is working as expected and a query request returns no errors. However, without any additional parameters, all the data that the request returns is just the status code.</p>
-</div><div class="cell docutils container">
+<div class="admonition alert alert-info">
+<p class="admonition-title">Info</p>
+<p>A <b>200</b> status code represents that the base API is working as expected and a query request returns no errors.</p>
+<p>However, without any additional parameters, all the data that the request returns is just the status code.</p>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># All Data</span>
 <span class="n">weather_request</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
@@ -681,8 +684,11 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 </div>
-<p>There is a lot more data returned from this request! The forecast information can be collected under <code class="docutils literal notranslate"><span class="pre">properties</span></code> and <code class="docutils literal notranslate"><span class="pre">period</span></code>. Each period of time has various weather values to chose from:</p>
-</div><div class="cell docutils container">
+<div class="admonition alert alert-info">
+<p class="admonition-title">Note</p>
+<p>There is a lot more data returned from this request! The forecast information can be collected under <b>properties</b> and <b>period</b>. Each period of time has various weather values to chose from:</p>
+</div>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ncar_forecast_hourly</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;properties&quot;</span><span class="p">][</span><span class="s2">&quot;periods&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 </pre></div>
@@ -705,8 +711,8 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-20T20:00:00-06:00
-2024-06-27T08:00:00-06:00
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-06-21T05:00:00-06:00
+2024-06-27T17:00:00-06:00
 </pre></div>
 </div>
 </div>
@@ -724,7 +730,7 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[73, 72, 71, 70, 68, 67, 67, 65, 65, 64, 63, 65, 66, 68, 71, 74, 76, 80, 81, 80, 82, 81, 80, 78, 74, 70, 69, 67, 66, 65, 65, 64, 64, 63, 64, 66, 70, 73, 76, 79, 81, 83, 84, 85, 85, 84, 83, 81, 78, 76, 75, 74, 73, 71, 70, 68, 66, 65, 66, 69, 74, 78, 81, 84, 86, 87, 88, 88, 88, 88, 87, 85, 82, 79, 77, 76, 75, 74, 72, 71, 69, 68, 69, 72, 77, 81, 84, 86, 88, 89, 90, 90, 90, 89, 88, 86, 83, 80, 78, 77, 76, 75, 73, 72, 70, 69, 69, 72, 76, 80, 83, 85, 87, 88, 89, 89, 89, 88, 87, 85, 82, 79, 77, 75, 74, 73, 71, 70, 68, 67, 67, 69, 73, 77, 81, 84, 86, 87, 87, 87, 87, 86, 85, 83, 80, 78, 77, 76, 75, 74, 72, 71, 70, 69, 69, 71]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[63, 59, 61, 63, 67, 73, 78, 81, 82, 81, 80, 80, 81, 80, 79, 76, 73, 70, 68, 66, 65, 65, 64, 63, 62, 63, 66, 70, 74, 78, 81, 83, 84, 85, 85, 85, 84, 83, 80, 77, 74, 71, 70, 69, 69, 68, 66, 65, 64, 65, 69, 74, 80, 83, 86, 87, 87, 87, 88, 89, 89, 88, 84, 80, 76, 74, 73, 72, 71, 70, 69, 68, 68, 69, 72, 75, 80, 84, 88, 91, 92, 92, 91, 89, 87, 85, 83, 80, 78, 76, 74, 72, 70, 68, 67, 67, 67, 69, 71, 74, 77, 80, 83, 86, 87, 88, 88, 87, 86, 84, 82, 80, 77, 75, 72, 70, 68, 66, 65, 65, 65, 67, 69, 73, 76, 80, 83, 86, 87, 88, 88, 87, 86, 84, 82, 80, 78, 76, 73, 71, 70, 68, 67, 67, 68, 69, 72, 75, 79, 83, 86, 88, 90, 90, 89, 88]
 </pre></div>
 </div>
 </div>
@@ -734,7 +740,7 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">22</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
 
-<span class="c1"># Plot Fireball Locations with Energy</span>
+<span class="c1"># Plot Hourly Temperature</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">hour_x</span><span class="p">,</span> <span class="n">temperature</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;dodgerblue&quot;</span><span class="p">)</span>
 
 <span class="c1"># Setup Axis Limits and Title/Labels</span>
@@ -747,8 +753,12 @@ value: {&#39;@id&#39;: &#39;https://api.weather.gov/points/39.9778,-105.275&#39;
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../../_images/ef768bd28523a22fa20369dd48a1dd3db583aeae2168de2948a39ae633a17197.png" src="../../_images/ef768bd28523a22fa20369dd48a1dd3db583aeae2168de2948a39ae633a17197.png" />
+<img alt="../../_images/98adc65239aee3c7ffb99c035cbe52288c28c139f59586f08a2a28894fd689f2.png" src="../../_images/98adc65239aee3c7ffb99c035cbe52288c28c139f59586f08a2a28894fd689f2.png" />
 </div>
+</div>
+<div class="admonition alert alert-success">
+<p class="admonition-title">Success</p>
+<p>We have ploted the forecasted hourly temperatures for next week!</p>
 </div>
 </section>
 <hr class="docutils" />

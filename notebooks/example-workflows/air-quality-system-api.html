@@ -373,7 +373,6 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Workflows</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="cneos-fireball.html">NASA API: World Map of Fireball Impacts</a></li>
 <li class="toctree-l1"><a class="reference internal" href="earthaccess-sla-sss.html">Data access via earthaccess library and vizualization with cartopy</a></li>
 <li class="toctree-l1"><a class="reference internal" href="wfm-cloud-water.html">Whiteface Mountain Cloud Water Data</a></li>
@@ -411,10 +410,7 @@
 Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Ahmer Kalam</a> on <a href="https://unsplash.com/photos/a-foggy-city-skyline-with-the-sun-in-the-distance-Reuk1nmutFI?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a></p>
 <section class="tex2jax_ignore mathjax_ignore" id="visualizing-data-with-epas-air-quality-system-aqs-api">
 <h1>Visualizing Data with EPA’s Air Quality System (AQS) API<a class="headerlink" href="#visualizing-data-with-epas-air-quality-system-aqs-api" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
-</section>
 <hr class="docutils" />
-<section class="tex2jax_ignore mathjax_ignore" id="aqs-api-workflow">
-<h1>AQS API Workflow<a class="headerlink" href="#aqs-api-workflow" title="Link to this heading"><i class="fas fa-link"></i></a></h1>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
 <p>Air quality data are an important aspect of both atmospheric and environmental sciences. Understanding the concentrations of particulate matter and chemical species (e.g., O<sub>3</sub> and NO<sub>x</sub>) can be useful for air pollution analysis from both the physical science and health science perspectives.</p>
@@ -482,8 +478,11 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <hr class="docutils" />
 <section id="accessing-data-from-the-aqs">
 <h2>Accessing Data from the AQS<a class="headerlink" href="#accessing-data-from-the-aqs" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
+<div class="admonition alert alert-warning">
+<p class="admonition-title">Important:</p>
 <p><b>If you have previously registered an account with the AQS</b>, now will be a good time to get that information out and <b>skip past the</b> <code class="docutils literal notranslate"><span class="pre">aqs.aqs_sign_up()</span></code> <b>step below</b>.</p>
-<p><b>If not</b>, you should have an email address in mind that you’d like to use.</p>
+</div>
+<p><b>If not</b>, you should have an email address in mind that you'd like to use.</p>
 </div><section id="register-a-new-email-with-aqs-sign-up">
 <h3>Register a new email with <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code><a class="headerlink" href="#register-a-new-email-with-aqs-sign-up" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <p>In the cell below, uncomment the code and replace ‘<code class="docutils literal notranslate"><span class="pre">EMAIL</span></code>’ with an email address to use for API credentials.</p>
@@ -494,8 +493,11 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </div>
 </div>
 </div>
-<p><b>Replace your email address</b> with ‘<b>EMAIL</b>’ after you’ve run <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code>, or <b>comment out</b> the line!
-<p>A <b>new API key</b> will be generated <i><b>every time</b></i> that line of code is executed!</p>
+<div class="admonition alert alert-danger">
+<p class="admonition-title">IMPORTANT</p>
+<p><b>Replace your email address</b> with ‘<b>EMAIL</b>’ after you’ve run <code class="docutils literal notranslate"><span class="pre">aqs_sign_up()</span></code>, or <b>comment out</b> the line!</p>
+</div>
+<p>A <b>new API key</b> will be generated <i><b>every time</b></i> that line of code is executed!
 </div><section id="data-can-be-pulled-from-the-aqs-in-a-number-of-different-ways">
 <h4>Data can be pulled from the AQS in a number of different ways…<a class="headerlink" href="#data-can-be-pulled-from-the-aqs-in-a-number-of-different-ways" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
 <ol class="arabic simple">
@@ -513,38 +515,10 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <h3>Let’s look at how the package deals with states…<a class="headerlink" href="#lets-look-at-how-the-package-deals-with-states" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqs</span><span class="o">.</span><span class="n">aqs_states</span><span class="p">()</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># aqs.aqs_states()</span>
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Please use the aqs_credentials  function to enter your credentials before using this function
-</pre></div>
-</div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-  </tbody>
-</table>
-</div></div></div>
 </div>
 <div class="admonition alert alert-danger">
 <p class="admonition-title">Whoops!</p>
@@ -557,12 +531,12 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <p><em>Let’s also save our username and key as variables that we can easily call later.</em></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Comment</span></code> out the first line and <code class="docutils literal notranslate"><span class="pre">Uncomment</span></code> back in the second line in the cell below.</p></li>
-<li><p>Replace <code class="docutils literal notranslate"><span class="pre">'AQS_USERNAME'</span></code> and <code class="docutils literal notranslate"><span class="pre">'AQS_KEY'</span></code> with your credentials. We stored them as <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html">environment variables</a>, to ensure they are kept secret.</p></li>
+<li><p>Replace ‘<code class="docutils literal notranslate"><span class="pre">AQS_USERNAME</span></code>’ and ‘<code class="docutils literal notranslate"><span class="pre">AQS_KEY</span></code>’ with your credentials. We stored them as <a class="reference external" href="https://pubs.opengroup.org/onlinepubs/9699919799/basedefs/V1_chap08.html">environment variables</a>, to ensure they are kept secret while building this notebook.</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqs</span><span class="o">.</span><span class="n">aqs_credentials</span><span class="p">(</span><span class="n">username</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AQS_USERNAME&#39;</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AQS_KEY&#39;</span><span class="p">))</span>
-<span class="c1">#aqs.aqs_credentials(username=AQS_USERNAME, key=AQS_KEY)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqs</span><span class="o">.</span><span class="n">aqs_credentials</span><span class="p">(</span><span class="n">username</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AQS_USERNAME&#39;</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;AQS_KEY&#39;</span><span class="p">))</span>
+<span class="c1">#aqs.aqs_credentials(username=&#39;AQS_USERNAME&#39;, key=&#39;AQS_KEY&#39;)</span>
 </pre></div>
 </div>
 </div>
@@ -955,8 +929,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </tbody>
 </table>
 </div>
-<section id="lets-also-store-the-parameter-codes-as-variables-to-make-things-more-simple">
-<h4>Let’s also store the parameter codes as variables to make things more simple.<a class="headerlink" href="#lets-also-store-the-parameter-codes-as-variables-to-make-things-more-simple" title="Link to this heading"><i class="fas fa-link"></i></a></h4>
+<p><b>Let’s also store the parameter codes as variables to make things more simple.</b></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CO</span> <span class="o">=</span> <span class="mi">42101</span>
@@ -967,7 +940,6 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </div>
 </div>
 </div>
-</section>
 </section>
 </section>
 <hr class="docutils" />
@@ -992,7 +964,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </div>
 <div class="admonition alert alert-warning">
 <p class="admonition-title">Warning</p>
-<p>The AQS does <b>not</b> have real-time data. Also, note that the above times are in UTC!</p>
+<p>The AQS does <b>not</b> have real-time data. Also, note that the above times are in <b>UTC!</b></p>
 </div>
 <p>We’ll subtract one day so we have the past day of data.</p>
 <div class="cell docutils container">
@@ -1097,12 +1069,12 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     <tr>
       <th>0</th>
       <td>36</td>
-      <td>067</td>
-      <td>1015</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.05235</td>
-      <td>-76.05921</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-20</td>
@@ -1111,22 +1083,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Onondaga</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>45060</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>1</th>
       <td>36</td>
-      <td>067</td>
-      <td>1015</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.05235</td>
-      <td>-76.05921</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-20</td>
@@ -1135,22 +1107,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Onondaga</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>45060</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>2</th>
       <td>36</td>
-      <td>067</td>
-      <td>1015</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.05235</td>
-      <td>-76.05921</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-20</td>
@@ -1159,22 +1131,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Onondaga</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>45060</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>3</th>
       <td>36</td>
-      <td>067</td>
-      <td>1015</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.05235</td>
-      <td>-76.05921</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-20</td>
@@ -1183,22 +1155,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Onondaga</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>45060</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>4</th>
       <td>36</td>
-      <td>067</td>
-      <td>1015</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>43.05235</td>
-      <td>-76.05921</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-20</td>
@@ -1207,12 +1179,12 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Onondaga</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>45060</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1241,13 +1213,13 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     <tr>
       <th>1337</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-21</td>
       <td>...</td>
@@ -1258,20 +1230,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>1338</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-21</td>
       <td>...</td>
@@ -1282,20 +1254,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>1339</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-21</td>
       <td>...</td>
@@ -1306,20 +1278,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>1340</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-21</td>
       <td>...</td>
@@ -1330,20 +1302,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>1341</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-21</td>
       <td>...</td>
@@ -1354,9 +1326,9 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
   </tbody>
 </table>
@@ -1390,20 +1362,14 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <li><p>Sample Information</p></li>
 <li><p>Data QA Information</p></li>
 </ol>
-<div class="admonition alert alert-info">
-<p class="admonition-title">We’ll focus on a few from 1, 2, and 3:</p>
-<p><b>Latitude</b> and <b>Longitude</b> can be used to plot these data over a map, which will be addressed in <i>Notebook 3 of this Cookbook</i>.
-<p>
-<b>Local Date</b> and <b>Time</b>, as well as <b>State</b>, <b>County</b>, and <b>Site Number</b> can be used as to isolate data for a time series.
-<p>
-<b>Units of Measure</b> will be necessary for annotations and labels.</p>
-</p></p>
-</div>
-<div class="admonition alert alert-info">
+<p>We’ll focus on a few from 1, 2, and 3:
+<p><b>Latitude</b> and <b>Longitude</b> can be used to plot these data over a map, which will be addressed in <i>Notebook 3 of this Cookbook</i></p>
+<p><b>Local Date</b> and <b>Time</b>, as well as <b>State</b>, <b>County</b>, and <b>Site Number</b> can be used as to isolate data for a time series.</p>
+<p><b>Units of Measure</b> will be necessary for annotations and labels.</p></p>
+</div><div class="admonition alert alert-info">
 <p class="admonition-title">PAUSE</p>
-<p>We’ve seen how to pull the data, and we’ve seen that pulling current data is not possible due to the lag between sample time and quality-assurance checks.
+<p>We’ve seen how to pull the data, and we’ve seen that pulling current data is not possible due to the lag between sample time and quality-assurance checks.</p>
 <p>You are encouraged to check for more current data but, for now, let’s look at this month’s data from last year.</p>
-</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1466,12 +1432,12 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     <tr>
       <th>0</th>
       <td>36</td>
-      <td>029</td>
-      <td>0002</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>42.99328</td>
-      <td>-78.77153</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-01</td>
@@ -1480,22 +1446,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Erie</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>15380</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>1</th>
       <td>36</td>
-      <td>029</td>
-      <td>0002</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>42.99328</td>
-      <td>-78.77153</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-01</td>
@@ -1504,22 +1470,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Erie</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>15380</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>2</th>
       <td>36</td>
-      <td>029</td>
-      <td>0002</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>42.99328</td>
-      <td>-78.77153</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-01</td>
@@ -1528,22 +1494,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Erie</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>15380</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>3</th>
       <td>36</td>
-      <td>029</td>
-      <td>0002</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>42.99328</td>
-      <td>-78.77153</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-01</td>
@@ -1552,22 +1518,22 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Erie</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>15380</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>4</th>
       <td>36</td>
-      <td>029</td>
-      <td>0002</td>
+      <td>055</td>
+      <td>1007</td>
       <td>44201</td>
       <td>1</td>
-      <td>42.99328</td>
-      <td>-78.77153</td>
+      <td>43.146180</td>
+      <td>-77.548170</td>
       <td>WGS84</td>
       <td>Ozone</td>
       <td>2023-06-01</td>
@@ -1576,12 +1542,12 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>None</td>
       <td>None</td>
       <td>FEM</td>
-      <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
-      <td>087</td>
+      <td>INSTRUMENTAL - ULTRA VIOLET</td>
+      <td>047</td>
       <td>New York</td>
-      <td>Erie</td>
+      <td>Monroe</td>
       <td>2023-07-31</td>
-      <td>15380</td>
+      <td>40380</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1610,13 +1576,13 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
     <tr>
       <th>20142</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-30</td>
       <td>...</td>
@@ -1627,20 +1593,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>20143</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-30</td>
       <td>...</td>
@@ -1651,20 +1617,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>20144</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-30</td>
       <td>...</td>
@@ -1675,20 +1641,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>20145</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-30</td>
       <td>...</td>
@@ -1699,20 +1665,20 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
     <tr>
       <th>20146</th>
       <td>36</td>
-      <td>045</td>
-      <td>0002</td>
+      <td>103</td>
+      <td>0044</td>
       <td>44201</td>
       <td>1</td>
-      <td>44.08747</td>
-      <td>-75.97316</td>
-      <td>WGS84</td>
+      <td>40.961017</td>
+      <td>-73.139046</td>
+      <td>NAD83</td>
       <td>Ozone</td>
       <td>2023-06-30</td>
       <td>...</td>
@@ -1723,9 +1689,9 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>INSTRUMENTAL - ULTRA VIOLET ABSORPTION</td>
       <td>087</td>
       <td>New York</td>
-      <td>Jefferson</td>
+      <td>Suffolk</td>
       <td>2023-07-31</td>
-      <td>48060</td>
+      <td>35620</td>
     </tr>
   </tbody>
 </table>
@@ -1740,19 +1706,19 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f964c7f5990&gt;]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x7f09ec62d7b0&gt;]
 </pre></div>
 </div>
-<img alt="../../_images/e4b4998cf5ebdbe0a22473a366b35d37fbc20dd236a7333bf8f416ff3ca7cee9.png" src="../../_images/e4b4998cf5ebdbe0a22473a366b35d37fbc20dd236a7333bf8f416ff3ca7cee9.png" />
+<img alt="../../_images/d6bbce4ae118c6aade3fdc3c7f7697a845c6e86000a7442d77db55cf2437eb57.png" src="../../_images/d6bbce4ae118c6aade3fdc3c7f7697a845c6e86000a7442d77db55cf2437eb57.png" />
 </div>
 </div>
 <div class="admonition alert alert-warning">
 <p class="admonition-title">Spatiotemporal Issues Abound!</p>
 <p>It looks like the primary hiccups in trying to plot these data are the fact that the DataFrame has a separate column for date and time, and that there are multiple sample sites across the DataFrame.</p>
-</div>
-<p></p>We can combine the dates and times into a single datetime value.<p>
+<p>We can combine the dates and times into a single datetime value.</p>
 <p>We can also specify the sample sites we want to look at, or take averages across a county or the whole state.<p>Either way, we’ll need to prepare the data.</p></p>
-</div></section>
+</div>
+</section>
 <hr class="docutils" />
 <section id="preparing-the-data-for-visualization">
 <h2>Preparing the data for visualization<a class="headerlink" href="#preparing-the-data-for-visualization" title="Link to this heading"><i class="fas fa-link"></i></a></h2>
@@ -1806,7 +1772,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
   </thead>
   <tbody>
     <tr>
-      <th>16737</th>
+      <th>17267</th>
       <td>2023-06-01</td>
       <td>00:00</td>
       <td>0.047</td>
@@ -1816,7 +1782,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>16738</th>
+      <th>17268</th>
       <td>2023-06-01</td>
       <td>01:00</td>
       <td>0.046</td>
@@ -1826,7 +1792,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>16739</th>
+      <th>17269</th>
       <td>2023-06-01</td>
       <td>02:00</td>
       <td>0.043</td>
@@ -1836,7 +1802,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>16740</th>
+      <th>17270</th>
       <td>2023-06-01</td>
       <td>03:00</td>
       <td>0.042</td>
@@ -1846,7 +1812,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>16741</th>
+      <th>17271</th>
       <td>2023-06-01</td>
       <td>04:00</td>
       <td>0.038</td>
@@ -1866,7 +1832,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>...</td>
     </tr>
     <tr>
-      <th>18859</th>
+      <th>17982</th>
       <td>2023-06-30</td>
       <td>19:00</td>
       <td>0.059</td>
@@ -1876,7 +1842,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>18860</th>
+      <th>17983</th>
       <td>2023-06-30</td>
       <td>20:00</td>
       <td>0.057</td>
@@ -1886,7 +1852,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>18861</th>
+      <th>17984</th>
       <td>2023-06-30</td>
       <td>21:00</td>
       <td>0.058</td>
@@ -1896,7 +1862,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>18862</th>
+      <th>17985</th>
       <td>2023-06-30</td>
       <td>22:00</td>
       <td>0.059</td>
@@ -1906,7 +1872,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>-73.75733</td>
     </tr>
     <tr>
-      <th>18863</th>
+      <th>17986</th>
       <td>2023-06-30</td>
       <td>23:00</td>
       <td>0.065</td>
@@ -1923,10 +1889,8 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 <div class="admonition alert alert-warning">
 <p class="admonition-title">Warning</p>
 <p>Something is a bit off, here. We see that the datetimes are mostly, but not entirely in order.</p>
+<p><b>OR…</b> you see that there is no data at all. This is the result of data being sporatic over space and time</p>
 </div>
-<p><b>OR…</b> you see that there is no data at all. This is the result of data being sporatic over space and time.</p>
-</div>
-<p><b>Perhaps this notebook should choose a specific time that we know there is data in, at least after showing that this problem might arise?</b></div></p>
 <p>Let’s make sure our new DataFrame for Albany is properly chronological.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1973,7 +1937,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
   </thead>
   <tbody>
     <tr>
-      <th>16737</th>
+      <th>17267</th>
       <td>2023-06-01</td>
       <td>00:00</td>
       <td>0.047</td>
@@ -1984,7 +1948,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-01 00:00:00</td>
     </tr>
     <tr>
-      <th>16738</th>
+      <th>17268</th>
       <td>2023-06-01</td>
       <td>01:00</td>
       <td>0.046</td>
@@ -1995,7 +1959,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-01 01:00:00</td>
     </tr>
     <tr>
-      <th>16739</th>
+      <th>17269</th>
       <td>2023-06-01</td>
       <td>02:00</td>
       <td>0.043</td>
@@ -2006,7 +1970,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-01 02:00:00</td>
     </tr>
     <tr>
-      <th>16740</th>
+      <th>17270</th>
       <td>2023-06-01</td>
       <td>03:00</td>
       <td>0.042</td>
@@ -2017,7 +1981,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-01 03:00:00</td>
     </tr>
     <tr>
-      <th>16741</th>
+      <th>17271</th>
       <td>2023-06-01</td>
       <td>04:00</td>
       <td>0.038</td>
@@ -2039,7 +2003,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>...</td>
     </tr>
     <tr>
-      <th>18859</th>
+      <th>17982</th>
       <td>2023-06-30</td>
       <td>19:00</td>
       <td>0.059</td>
@@ -2050,7 +2014,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-30 19:00:00</td>
     </tr>
     <tr>
-      <th>18860</th>
+      <th>17983</th>
       <td>2023-06-30</td>
       <td>20:00</td>
       <td>0.057</td>
@@ -2061,7 +2025,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-30 20:00:00</td>
     </tr>
     <tr>
-      <th>18861</th>
+      <th>17984</th>
       <td>2023-06-30</td>
       <td>21:00</td>
       <td>0.058</td>
@@ -2072,7 +2036,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-30 21:00:00</td>
     </tr>
     <tr>
-      <th>18862</th>
+      <th>17985</th>
       <td>2023-06-30</td>
       <td>22:00</td>
       <td>0.059</td>
@@ -2083,7 +2047,7 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
       <td>2023-06-30 22:00:00</td>
     </tr>
     <tr>
-      <th>18863</th>
+      <th>17986</th>
       <td>2023-06-30</td>
       <td>23:00</td>
       <td>0.065</td>
@@ -2190,15 +2154,15 @@ Photo by <a href="https://unsplash.com/@ahmerkalam?utm_content=creditCopyText&ut
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Queens&#39;, &#39;Suffolk&#39;, &#39;Bronx&#39;, &#39;Monroe&#39;, &#39;Erie&#39;], dtype=object)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Bronx&#39;, &#39;Erie&#39;, &#39;Queens&#39;, &#39;Monroe&#39;, &#39;Suffolk&#39;], dtype=object)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="admonition alert alert-danger">
 <p class="admonition-title">ALBANY?!</p>
-<p>Albany doesn’t seem to display data for NO<sub>2</sub>.
-You’re welcome to check on your own for another pollutant to compare, but we’ll shift to another county that covers both O<sub>3</sub> and NO<sub>2</sub>.</p>
+<p>Albany doesn’t seem to display data for NO<sub>2</sub>.</p>
+<p>You’re welcome to check on your own for another pollutant to compare, but we’ll shift to another county that covers both O<sub>3</sub> and NO<sub>2</sub>.</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2207,10 +2171,10 @@ You’re welcome to check on your own for another pollutant to compare, but we�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Erie&#39;, &#39;Chautauqua&#39;, &#39;Bronx&#39;, &#39;Saratoga&#39;, &#39;New York&#39;, &#39;Onondaga&#39;,
-       &#39;Monroe&#39;, &#39;Niagara&#39;, &#39;Richmond&#39;, &#39;Steuben&#39;, &#39;Dutchess&#39;, &#39;Essex&#39;,
-       &#39;Suffolk&#39;, &#39;Westchester&#39;, &#39;Oswego&#39;, &#39;Wayne&#39;, &#39;Rockland&#39;, &#39;Queens&#39;,
-       &#39;Hamilton&#39;, &#39;Putnam&#39;, &#39;Albany&#39;, &#39;Tompkins&#39;, &#39;Jefferson&#39;],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([&#39;Monroe&#39;, &#39;Bronx&#39;, &#39;Tompkins&#39;, &#39;Onondaga&#39;, &#39;Chautauqua&#39;, &#39;Niagara&#39;,
+       &#39;Essex&#39;, &#39;Erie&#39;, &#39;Saratoga&#39;, &#39;Steuben&#39;, &#39;Dutchess&#39;, &#39;Suffolk&#39;,
+       &#39;Westchester&#39;, &#39;New York&#39;, &#39;Rockland&#39;, &#39;Putnam&#39;, &#39;Hamilton&#39;,
+       &#39;Wayne&#39;, &#39;Richmond&#39;, &#39;Queens&#39;, &#39;Albany&#39;, &#39;Oswego&#39;, &#39;Jefferson&#39;],
       dtype=object)
 </pre></div>
 </div>
@@ -2240,7 +2204,7 @@ units_of_measure      Parts per million
 site_number                        0133
 latitude                        40.8679
 longitude                     -73.87809
-Name: 130, dtype: object 
+Name: 145, dtype: object 
 
 NO2:  date_local                   2023-06-01
 time_local                        00:00
@@ -2249,7 +2213,7 @@ units_of_measure      Parts per billion
 site_number                        0110
 latitude                         40.816
 longitude                       -73.902
-Name: 159, dtype: object
+Name: 0, dtype: object
 </pre></div>
 </div>
 </div>
@@ -3052,9 +3016,7 @@ Name: 159, dtype: object
 <p>To access real-time data for air pollution, the <a class="reference external" href="https://docs.airnowapi.org/">AirNow API</a> can be utilized.</p>
 <p>Thanks to Daniel Garver (EPA Region 4) for help locating the AQS API, and for directing the authors of this Cookbook to the appropriate resources.</p>
 <hr class="docutils" />
-<section id="information-about-the-author-adam-deitsch">
-<h3>Information about the author: <a class="reference external" href="https://amdeitsch.github.io/">Adam Deitsch</a><a class="headerlink" href="#information-about-the-author-adam-deitsch" title="Link to this heading"><i class="fas fa-link"></i></a></h3>
-</section>
+<p><b>Information about the author: <a class="reference external" href="https://amdeitsch.github.io/">Adam Deitsch</a></b></p>
 </section>
 </section>
 
@@ -3123,8 +3085,6 @@ Name: 159, dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Visualizing Data with EPA’s Air Quality System (AQS) API</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#aqs-api-workflow">AQS API Workflow</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites">Prerequisites</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#imports">Imports</a></li>
@@ -3137,10 +3097,7 @@ Name: 159, dtype: object
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#use-the-aqs-credentials-function-to-input-your-username-email-address-and-access-key">Use the <code class="docutils literal notranslate"><span class="pre">aqs_credentials()</span></code> function to input your username (email address) and access key.</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-look-at-those-states-now">Let’s look at those states now…</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-also-store-the-parameter-codes-as-variables-to-make-things-more-simple">Let’s also store the parameter codes as variables to make things more simple.</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lets-look-at-those-states-now">Let’s look at those states now…</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exploring-the-format-of-the-data">Exploring the format of the data</a></li>
@@ -3158,14 +3115,8 @@ Name: 159, dtype: object
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#information-about-the-author-adam-deitsch">Information about the author: Adam Deitsch</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resources-and-references">Resources and references</a></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-
   </nav></div>
 
 </div></div>
