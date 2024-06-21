@@ -2,9 +2,9 @@
 
 # API Cookbook
 
-[![nightly-build](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/cookbook-template/actions/workflows/nightly-build.yaml)
-[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/cookbook-template/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
+[![nightly-build](https://github.com/ProjectPythia/api-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/api-cookbook/actions/workflows/nightly-build.yaml)
+[![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/api-cookbook/main?labpath=notebooks)
+[![DOI](https://zenodo.org/badge/813804649.svg)](https://zenodo.org/badge/latestdoi/813804649)
 
 This Project Pythia Cookbook covers the basics of retrieving and visualizing data using APIs with Python.
 
@@ -23,7 +23,7 @@ This cookbook focuses on accessing and visualizing data from various geoscience 
 
 ### Contributors
 
-<a href="https://github.com/ProjectPythia/cookbook-template/graphs/contributors">
+<a href="https://github.com/ProjectPythia/api-cookbook/graphs/contributors">
   <img src="https://contrib.rocks/image?repo=ProjectPythia/api-cookbook" />
 </a>
 
