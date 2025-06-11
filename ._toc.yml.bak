@@ -1,0 +1,15 @@
+format: jb-book
+root: README
+parts:
+  - caption: Preamble
+    chapters:
+      - file: notebooks/how-to-cite
+  - caption: API Foundations
+    chapters:
+      - file: notebooks/api-foundations/api-basics
+  - caption: Example Workflows
+    chapters:
+      - file: notebooks/example-workflows/air-quality-system-api
+      - file: notebooks/example-workflows/cneos-fireball
+      - file: notebooks/example-workflows/earthaccess-sla-sss
+      - file: notebooks/example-workflows/wfm-cloud-water
