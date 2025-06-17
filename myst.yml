@@ -1,12 +1,12 @@
 version: 1
 extends:
-  - https://raw.githubusercontent.com/projectpythia-mystmd/pythia-config/main/pythia.yml
+  - https://raw.githubusercontent.com/projectpythia/pythia-config/main/pythia.yml
 project:
   title: API Cookbook
   authors:
     - name: Project Pythia Community
       url: https://projectpythia.org/
-  github: https://github.com/projectpythia-mystmd/api-cookbook
+  github: https://github.com/projectpythia/api-cookbook
   copyright: '2024'
   toc:
     - file: README.md
@@ -24,7 +24,7 @@ project:
         - file: notebooks/example-workflows/wfm-cloud-water.ipynb
   jupyter:
       binder:
-        repo: projectpythia-mystmd/api-cookbook
+        repo: projectpythia/api-cookbook
 site:
   options:
     logo: notebooks/images/logos/pythia_logo-white-rtext.svg
