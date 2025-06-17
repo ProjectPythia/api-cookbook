@@ -21,8 +21,6 @@ jobs:
       AQS_KEY: ${{ secrets.AQS_KEY }}
       EARTHDATA_USERNAME: ${{ secrets.EARTHDATA_USERNAME }}
       EARTHDATA_PASSWORD: ${{ secrets.EARTHDATA_PASSWORD }}
-    with:
-      environment_name: cookbook-dev
 
   deploy:
     needs: build
