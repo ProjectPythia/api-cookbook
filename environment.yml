@@ -17,3 +17,4 @@ dependencies:
   - dask
   - pip:
       - git+https://github.com/USEPA/pyaqsapi.git
+  - mystmd
