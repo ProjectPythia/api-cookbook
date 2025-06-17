@@ -1,0 +1,1 @@
+import{a}from"/api-cookbook/build/_shared/chunk-2YEAM2KW.js";import"/api-cookbook/build/_shared/chunk-7H4MNJGC.js";import"/api-cookbook/build/_shared/chunk-ZOXRFJWB.js";import"/api-cookbook/build/_shared/chunk-2NH4LW52.js";export default a();
