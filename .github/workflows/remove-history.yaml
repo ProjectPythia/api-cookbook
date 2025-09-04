@@ -14,6 +14,8 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
+        path: gh-pages
         fetch-depth: 0 # Fetch entire history
     - name: Git Log
-      run: git log --oneline --graph --decorate
+      #run: git log --oneline --graph --decorate
+      run: git log -1 --pretty=%B
