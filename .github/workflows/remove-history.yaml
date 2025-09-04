@@ -1,0 +1,24 @@
+# Delete Commit History
+# Only keep the active/current commit
+
+name: delete-commit-history
+
+on:
+  workflow_dispatch:  # Manual triggering
+  schedule:
+    - cron: "0 1 * * *" 
+
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v5
+    - name: Switch to gh-pages branch
+      with:
+        path: gh-pages
+
+    - name: Get last commit messages
+      run: |
+        git log -1 --pretty=%B
