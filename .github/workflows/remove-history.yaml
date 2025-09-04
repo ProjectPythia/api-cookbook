@@ -17,6 +17,7 @@ jobs:
     - uses: actions/checkout@v5
       with:
         repository: ProjectPythia/api-cookbook
+        fetch-depth: 0 # Fetch whole history
         path: gh-pages
 
     - name: Get last commit messages
