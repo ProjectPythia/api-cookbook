@@ -14,8 +14,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        path: gh-pages
+        ref: gh-pages # change branch
         fetch-depth: 0 # Fetch entire history
     - name: Git Log
-      #run: git log --oneline --graph --decorate
-      run: git log -1 --pretty=%B
+      run: |
+        echo "COMMIT_MSG=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
+        echo "${{ env.COMMIT_MSG }}"
