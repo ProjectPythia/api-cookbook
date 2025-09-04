@@ -19,4 +19,4 @@ jobs:
     - name: Git Log
       run: |
         echo "COMMIT_MSG=$(git log -1 --pretty=%B)" >> $GITHUB_ENV
-        echo "${{ env.COMMIT_MSG }}"
+        echo "${{ COMMIT_MSG }}"
