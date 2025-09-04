@@ -8,18 +8,12 @@ on:
   #schedule:
   #  - cron: "0 1 * * *" 
 
-
 jobs:
   cleanup:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@v4
       with:
-        repository: ProjectPythia/api-cookbook
-        fetch-depth: 0 # Fetch whole history
-        path: gh-pages
-
-    - name: Get last commit messages
-      run: |
-        git log -1 --pretty=%B
+        fetch-depth: 0 # Fetch entire history
+    - name: Git Log
+      run: git log --oneline --graph --decorate
