@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:3000/sitemap_style.xsl" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://localhost:3000</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/how-to-cite</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/api-foundations/api-basics</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/example-workflows/air-quality-system-api</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/example-workflows/cneos-fireball</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/example-workflows/earthaccess-sla-sss</loc>
+  </url>
+  <url>
+    <loc>http://localhost:3000/notebooks/example-workflows/wfm-cloud-water</loc>
+  </url>
+</urlset>
