@@ -4,6 +4,7 @@
 
 [![nightly-build](https://github.com/ProjectPythia/api-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/api-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/api-cookbook/main?labpath=notebooks)
+[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
 This Project Pythia Cookbook covers the basics of retrieving and visualizing data using APIs with Python.
 
