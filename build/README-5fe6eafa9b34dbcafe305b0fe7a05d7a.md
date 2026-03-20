@@ -4,7 +4,7 @@
 
 [![nightly-build](https://github.com/ProjectPythia/api-cookbook/actions/workflows/nightly-build.yaml/badge.svg)](https://github.com/ProjectPythia/api-cookbook/actions/workflows/nightly-build.yaml)
 [![Binder](https://binder.projectpythia.org/badge_logo.svg)](https://binder.projectpythia.org/v2/gh/ProjectPythia/api-cookbook/main?labpath=notebooks)
-[![DOI](https://zenodo.org/badge/813804649.svg)](https://zenodo.org/badge/latestdoi/813804649)
+[![DOI](https://zenodo.org/badge/475509405.svg)](https://zenodo.org/badge/latestdoi/475509405)
 
 This Project Pythia Cookbook covers the basics of retrieving and visualizing data using APIs with Python.
 
@@ -19,7 +19,7 @@ This cookbook focuses on accessing and visualizing data from various geoscience 
 
 ## Authors
 
-[Cora Schneck](https://github.com/cyschneck), [Ana Krelling](https://github.com/apkrelling), [Adam Deitsch](https://github.com/AMDeitsch), [Hannah Zafar](@hannahzafar)
+[Cora Schneck](https://github.com/cyschneck), [Ana Krelling](https://github.com/apkrelling), [Adam Deitsch](https://github.com/AMDeitsch), [Hannah Zafar](https://github.com/hannahzafar)
 
 ### Contributors
 
@@ -40,9 +40,9 @@ API Foundations will cover the terminology of APIs and how to make use of the da
 Example Workflows will cover complete example of working with various APIs. This includes how to retrieve and understand data returned from different sources and manipulate the data to produce useful and appealing plots.
 
 - [JPL Center for Near-Earth Orbit Studies (CNEOS) API](https://ssd-api.jpl.nasa.gov/): Visualize the location and total impact energy of fireballs and bolides on a world map using the CNEOS [Fireball API](https://ssd-api.jpl.nasa.gov/doc/fireball.html).
-- [Earthdata API](https://www.earthdata.nasa.gov/learn/find-data): Access and visualize sea surface height and sea surface salinity data using the National Aeronautics and Space Administration's [earthaccess](https://github.com/nsidc/earthaccess) Python package.
+- [Earthdata API](https://search.earthdata.nasa.gov/): Access and visualize sea surface height and sea surface salinity data using the National Aeronautics and Space Administration's [earthaccess](https://github.com/nsidc/earthaccess) Python package.
 - [Air Quality System (AQS) API](https://aqs.epa.gov/aqsweb/documents/data_api.html): Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the Environmental Protection Agency's [pyaqsapi](https://github.com/USEPA/pyaqsapi) Python package.
-- [Whiteface Mountain Cloud Water Request](http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm): Request access to recent and historical cloud water chemistry data from the [Lance Research Laboratory](@LanceLab-ASRC) at the Atmospheric Sciences Research Center.
+- [Whiteface Mountain Cloud Water Request](http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm): Request access to recent and historical cloud water chemistry data from the [Lance Research Laboratory](https://github.com/LanceLab-ASRC) at the Atmospheric Sciences Research Center.
 
 ## Running the Notebooks
 
