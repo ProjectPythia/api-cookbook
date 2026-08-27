@@ -1,6 +1,17 @@
 thumbnail: thumbnail.png
 tags:
   domains:
-    - sampledomain
+    - api
+    - data acccess
+    - wip
   packages:
-    - samplepackage
+    - matplotlib
+    - seaborn
+    - geopandas
+    - hvplot
+    - cartopy
+    - xarray
+    - earthaccess
+    - h5netcdf
+    - dask
+    - pyaqsapi
