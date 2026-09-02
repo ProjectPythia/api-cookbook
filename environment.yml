@@ -7,7 +7,6 @@ dependencies:
   - geopandas
   - jupyter-book
   - jupyterlab
-  - sphinx-pythia-theme
   - pip
   - hvplot
   - cartopy
