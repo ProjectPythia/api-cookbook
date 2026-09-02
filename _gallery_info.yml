@@ -3,15 +3,14 @@ tags:
   domains:
     - api
     - data acccess
+    - remote sensing
     - wip
   packages:
     - matplotlib
-    - seaborn
     - geopandas
-    - hvplot
     - cartopy
     - xarray
     - earthaccess
-    - h5netcdf
     - dask
-    - pyaqsapi
+  events:
+    - Cook-off 2024
