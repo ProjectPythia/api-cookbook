@@ -15,6 +15,9 @@ There are many ways to gather data. Science and research entities like NASA are 
 An API is a method to query a data source over the internet to retrieve data from a remote source. APIs are useful tools for working with live and constantly updating data sources. However, the terminology and methods for retrieving and manipulating the data in Python can make APIs confusing.
 
 This cookbook focuses on accessing and visualizing data from various geoscience related APIs. Over the course of the cookbook, we will show step-by-step tutorials on retrieving data from some public APIs, as well as creating informational and visually appealing graphics to communicate the data to a general audience. 
+
+> [!NOTE]
+> This cookbook is a work in progress and is actively under construction
  
 
 ## Authors
