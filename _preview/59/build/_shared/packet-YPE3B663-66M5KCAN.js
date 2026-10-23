@@ -1,1 +1,0 @@
-import{a as e,b as r}from"/api-cookbook/_preview/59/build/_shared/chunk-IMEQYZY3.js";import"/api-cookbook/_preview/59/build/_shared/chunk-GEZIJWLJ.js";import"/api-cookbook/_preview/59/build/_shared/chunk-RAQ24GF6.js";export{e as PacketModule,r as createPacketServices};
