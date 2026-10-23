@@ -21,7 +21,6 @@ project:
         - file: notebooks/example-workflows/air-quality-system-api.ipynb
         - file: notebooks/example-workflows/cneos-fireball.ipynb
         - file: notebooks/example-workflows/earthaccess-sla-sss.ipynb
-        - file: notebooks/example-workflows/wfm-cloud-water.ipynb
   jupyter:
       binder:
         repo: projectpythia/api-cookbook
