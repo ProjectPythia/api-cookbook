@@ -19,7 +19,4 @@
   <url>
     <loc>http://localhost:3000/notebooks/example-workflows/earthaccess-sla-sss</loc>
   </url>
-  <url>
-    <loc>http://localhost:3000/notebooks/example-workflows/wfm-cloud-water</loc>
-  </url>
 </urlset>
