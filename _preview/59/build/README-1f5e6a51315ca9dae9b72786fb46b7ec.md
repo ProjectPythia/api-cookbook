@@ -45,7 +45,6 @@ Example Workflows will cover complete example of working with various APIs. This
 - [JPL Center for Near-Earth Orbit Studies (CNEOS) API](https://ssd-api.jpl.nasa.gov/): Visualize the location and total impact energy of fireballs and bolides on a world map using the CNEOS [Fireball API](https://ssd-api.jpl.nasa.gov/doc/fireball.html).
 - [Earthdata API](https://search.earthdata.nasa.gov/): Access and visualize sea surface height and sea surface salinity data using the National Aeronautics and Space Administration's [earthaccess](https://github.com/nsidc/earthaccess) Python package.
 - [Air Quality System (AQS) API](https://aqs.epa.gov/aqsweb/documents/data_api.html): Visualize and compare air quality and atmospheric chemistry concentrations over geographic areas by leveraging the Environmental Protection Agency's [pyaqsapi](https://github.com/USEPA/pyaqsapi) Python package.
-- [Whiteface Mountain Cloud Water Request](http://atmoschem.asrc.cestm.albany.edu/~cloudwater/pub/Data.htm): Request access to recent and historical cloud water chemistry data from the [Lance Research Laboratory](https://github.com/LanceLab-ASRC) at the Atmospheric Sciences Research Center.
 
 ## Running the Notebooks
 
